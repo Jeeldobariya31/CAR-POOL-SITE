@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  color: #100f0f;
+  overflow-x: hidden;
+}
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.parta {
+  opacity: 0.5;
+  margin-top: 20px;
+  margin-left: 135px;
+  width: 1200px;
+  height: 550px;
+  text-align: center;
+  padding: 10px;
+  padding-top: 100px;
+  background-image: url("11291.jpg"); /* Add your image URL here */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 3px solid black;
+  border-radius: 20px;
+
+  /* 3D Hover Effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  perspective: 1000px;
+
+  /* Floating Animation */
+  animation: float 3s ease-in-out infinite;
+}
+
+.parta:hover {
+  transform: rotateY(10deg) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.parta h1 {
+  font-size: 3rem;
+  color: #060606;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 8px rgba(199, 233, 206, 0.5);
+}
+
+.parta h2 {
+  font-size: 1.8rem;
+  color: #090909;
+  margin-bottom: 15px;
+}
+
+.parta p {
+  font-size: 1.1rem;
+  color: #060606;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.steps,
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  background: rgba(78, 78, 78, 0.255);
+  border-radius: 20px;
+  padding: 25px;
+  width: 260px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.4s, box-shadow 0.4s;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 8px 20px rgba(5, 5, 5, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 16px 32px rgba(9, 0, 0, 0.3);
+  background-color: rgba(187, 184, 184, 0.49);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #f4f3f3;
+}
+
+.card p {
+  color: #fffdfd;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.partb {
+  margin-top: 20px;
+  margin-left: 135px;
+  width: 1200px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0),
+    rgba(11, 0, 0, 0.1)
+  );
+  border: 2px solid #ffffff;
+  border-radius: 30px 30px 30px 30px;
+  overflow: hidden;
+  padding-top: 40px;
+  box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.partb section h2 {
+  color: #edebeb;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Profile</title>
+
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="nevstyle.css" />
+  <link rel="stylesheet" href="generalstyle.css" />
+  <link rel="stylesheet" href="btnstyle.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
+
+  <!-- Icons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    .glass-container {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      color: #fff;
+    }
+
+    .edit-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .edit-form label {
+      font-weight: 500;
+    }
+
+    .edit-form input, .edit-form select {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .form-actions button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      background-color: #2980b9;
+    }
+
+    .form-actions button:hover {
+      background-color: #1c6ea4;
+    }
+
+    @media(max-width: 768px) {
+      .form-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bgVideo">
+    <source src="152184-802335622_small.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+  <!-- ✅ Navbar (same as profile page) -->
+  <div class="nev">
+    <div class="par1"><h1>JD'S CAR POOLING</h1></div>
+    <div class="par2">
+      <div class="navigation">
+        <ul>
+          <li class="list"><a href="home.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span class="text">Home</span></a></li>
+          <li class="list active"><a href="profile.html"><span class="icon"><ion-icon name="person-outline"></ion-icon></span><span class="text">Profile</span></a></li>
+          <li class="list"><a href="offerride.html"><span class="icon"><i class="fa-solid fa-briefcase"></i></span><span class="text">Offer</span></a></li>
+          <li class="list"><a href="searchride.html"><span class="icon"><i class="fa-solid fa-magnifying-glass-location"></i></span><span class="text">Search</span></a></li>
+          <li class="list"><a href="contectus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span class="text">About</span></a></li>
+          <div class="indicator"></div>
+        </ul>
+      </div>
+    </div>
+    <div class="par3">
+      <a class="button-wrapper" href="register.html"><span class="button">Register</span></a>
+      <a class="button-wrapper" href="login.html"><span class="button">Login</span></a>
+      <a class="button-wrapper" href="logout.html"><span class="button">Logout</span></a>
+    </div>
+  </div>
+
+  <!-- ✅ Main Edit Form -->
+  <div class="glass-container">
+    <h2 style="margin-bottom: 30px;">Edit Your Profile</h2>
+
+    <form class="edit-form">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" value="Jeel Dobariya" />
+      </div>
+
+      <div class="form-group">
+        <label>Birthdate</label>
+        <input type="date" value="2003-01-15" />
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <select>
+          <option selected>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" value="9876543210" />
+      </div>
+
+      <div class="form-group">
+        <label>Alternate Mobile Number</label>
+        <input type="tel" value="9000000000" />
+      </div>
+
+      <div class="form-group">
+        <label>Aadhaar Number</label>
+        <input type="text" value="XXXX-XXXX-1234" />
+      </div>
+
+      <div class="form-group">
+        <label>License Number</label>
+        <input type="text" value="GJ-21-2023-DR1234" />
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Save Changes</button>
+        <button type="button" onclick="history.back()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="./nevscript.js"></script>
+
+</body>
+</html>

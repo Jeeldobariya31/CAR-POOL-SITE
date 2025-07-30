@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.nev {
+  border: #222327 2px solid;
+  position: relative;
+  width: 1280px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;/* Align left and right */
+  align-items: center;
+  background-color: black;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 0 20px; /* Add padding for spacing */
+}
+
+.par1 {
+  flex: 1; 
+  color: white;
+  font-size: 18px;
+}
+.par3 {
+  color: white;
+  font-size: 12px;
+}
+
+.par2 {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.navigation {
+  background-color: #000; /* Black background */
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.navigation ul {
+  display: flex;
+  position: relative;
+  width: 350px;
+}
+
+.navigation ul li {
+  position: relative;
+  list-style: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+
+.navigation ul li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.navigation ul li a .icon {
+  font-size: 1.5em;
+  line-height: 75px;
+  transition: 0.5s;
+  color: rgba(235, 240, 236, 0.5);
+}
+
+.navigation ul li:hover a .icon,
+.navigation ul li.active a .icon {
+  color: #edd207;
+}
+
+.navigation ul li.active a .icon {
+  transform: translateY(-8px);
+}
+
+.navigation ul li a .text {
+  position: absolute;
+  opacity: 0;
+  font-weight: 700;
+  font-size: 0.7em;
+  color: #f7f9f7;
+  transition: 0.5s;
+  text-transform: uppercase;
+}
+
+.navigation ul li.active a .text {
+  transform: translateY(13px);
+  opacity: 1;
+}
+
+.indicator {
+  position: absolute;
+  width: 70px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  width: 85%;
+  height: 18px;
+  background: #edd207;
+  border-radius: 10px;
+}
+
+.indicator::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 7.5px;
+  height: 7.5px;
+  border-radius: 50%;
+  background: #333;
+  box-shadow: 0 0 0 2px #edd207, 50px 50px #edd207, 40px 0 #edd207, 0 40px #edd207;
+  transform: rotate(45deg);
+  animation: animate 2s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%, 100% {
+    transform: rotate(35deg);
+  }
+  50% {
+    transform: rotate(55deg);
+  }
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(70px * 1));
+}
+.navigation ul li:nth-child(3).active ~ .indicator {
+  transform: translateX(calc(70px * 2));
+}
+.navigation ul li:nth-child(4).active ~ .indicator {
+  transform: translateX(calc(70px * 3));
+}
+.navigation ul li:nth-child(5).active ~ .indicator {
+  transform: translateX(calc(70px * 4));
+}

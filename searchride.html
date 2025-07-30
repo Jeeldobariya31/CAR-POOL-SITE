@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Ride</title>
+  <link rel="stylesheet" href="nevstyle.css" />
+  <link rel="stylesheet" href="generalstyle.css" />
+  <link rel="stylesheet" href="btnstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <style>
+    .ride-form {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 800px;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .ride-form input, .ride-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .search-results {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    .ride-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+    }
+
+    .ride-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .ride-card .details {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <video autoplay muted loop id="bgVideo">
+    <source src="152184-802335622_small.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="nev">
+    <div class="par1">
+      <h1>JD'S CAR POOLING</h1>
+    </div>
+    <div class="par2">
+      <div class="navigation">
+        <ul>
+          <li class="list">
+            <a href="home.html">
+              <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+              <span class="text">Home</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="profile.html">
+              <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+              <span class="text">Profile</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="offerride.html">
+              <span class="icon"><i class="fa-solid fa-briefcase"></i></span>
+              <span class="text">Offer</span>
+            </a>
+          </li>
+          <li class="list active">
+            <a href="searchride.html">
+              <span class="icon"><i class="fa-solid fa-magnifying-glass-location"></i></span>
+              <span class="text">Search</span>
+            </a>
+          </li>
+          <li class="list">
+            <a href="contectus.html">
+              <span class="icon"><i class="fa-solid fa-phone"></i></span>
+              <span class="text">About</span>
+            </a>
+          </li>
+          <div class="indicator"></div>
+        </ul>
+      </div>
+    </div>
+    <div class="par3">
+      <a class="button-wrapper" href="login.html">
+            <span class="dot dot-1"></span>
+            <span class="dot dot-2"></span>
+            <span class="dot dot-3"></span>
+            <span class="dot dot-4"></span>
+            <span class="dot dot-5"></span>
+            <span class="dot dot-6"></span>
+            <span class="dot dot-7"></span>
+            <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Login<span>
+          </a>
+      <a class="button-wrapper" href="register.html">
+            <span class="dot dot-1"></span>
+            <span class="dot dot-2"></span>
+            <span class="dot dot-3"></span>
+            <span class="dot dot-4"></span>
+            <span class="dot dot-5"></span>
+            <span class="dot dot-6"></span>
+            <span class="dot dot-7"></span>
+            <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">register<span>
+          </a>
+    </div>
+  </div>
+
+  <div class="ride-form">
+    <h2>Find a Ride</h2>
+    <input type="text" placeholder="From City" id="fromCity">
+    <input type="text" placeholder="To City" id="toCity">
+    <input type="date" id="rideDate">
+    <a class="button-wrapper" onclick="searchRide()" style="margin-left: 100px;color: black;">
+            <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Search ride<span>
+          </a>
+  </div>
+
+  <div class="search-results" id="results">
+    <!-- Ride results will appear here -->
+  </div>
+
+  <script>
+    function searchRide() {
+      const results = document.getElementById("results");
+      results.innerHTML = "";
+
+      const dummyRides = [
+        {
+          driver: "Ravi Mehta",
+          car: "Maruti Swift - Red",
+          from: "Ahmedabad",
+          to: "Surat",
+          date: "2025-07-30",
+          price: "250",
+          seats: 3,
+          driverPhoto: "driver1.jpg",
+          carPhoto: "car1.jpg"
+        },
+        {
+          driver: "Kiran Patel",
+          car: "Honda City - White",
+          from: "Rajkot",
+          to: "Vadodara",
+          date: "2025-07-29",
+          price: "400",
+          seats: 2,
+          driverPhoto: "driver2.jpg",
+          carPhoto: "car2.jpg"
+        }
+      ];
+
+      dummyRides.forEach(ride => {
+        results.innerHTML += `
+          <div class="ride-card">
+            <div class="details">
+              <img src="${ride.driverPhoto}" alt="Driver">
+              <img src="${ride.carPhoto}" alt="Car">
+              <div>
+                <h3>${ride.driver}</h3>
+                <p><strong>Car:</strong> ${ride.car}</p>
+                <p><strong>From:</strong> ${ride.from} → <strong>To:</strong> ${ride.to}</p>
+                <p><strong>Date:</strong> ${ride.date}</p>
+                <p><strong>Seats Available:</strong> ${ride.seats}</p>
+                <p><strong>Price:</strong> ₹${ride.price} per seat</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+  </script>
+  <script src="./nevscript.js"></script>
+</body>
+
+</html>

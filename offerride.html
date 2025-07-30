@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Offer Ride</title>
+  <link rel="stylesheet" href="nevstyle.css" />
+  <link rel="stylesheet" href="generalstyle.css" />
+  <link rel="stylesheet" href="btnstyle.css" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
+
+  <style>
+   
+
+    .offer-container {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .add-btn {
+      margin-bottom: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .add-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .form-popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      visibility: hidden;
+    }
+
+    .form-popup.active {
+      visibility: visible;
+    }
+
+    .form-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 800px;
+      color: #fff;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .form-box h2 {
+      margin-bottom: 1rem;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .form-box input::file-selector-button {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: none;
+      background-color: #fff;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .form-box button {
+      margin-top: 1rem;
+      background-color: #fff;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      backdrop-filter: blur(10px);
+      margin: 1rem auto;
+      padding: 1rem;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card img {
+      max-width: 100px;
+      border-radius: 10px;
+      margin: 5px;
+    }
+
+    .card .info {
+      margin: 10px;
+      text-align: left;
+    }
+
+    .delete-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .form-box {
+        max-height: 85vh;
+        overflow-y: auto;
+      }
+
+      .card {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop id="bgVideo">
+    <source src="152184-802335622_small.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Navbar -->
+  <div class="nev">
+    <div class="par1"><h1>JD'S CAR POOLING</h1></div>
+    <div class="par2">
+      <div class="navigation">
+        <ul>
+          <li class="list"><a href="home.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span class="text">Home</span></a></li>
+          <li class="list"><a href="profile.html"><span class="icon"><ion-icon name="person-outline"></ion-icon></span><span class="text">Profile</span></a></li>
+          <li class="list active"><a href="offerride.html"><span class="icon"><i class="fa-solid fa-briefcase"></i></span><span class="text">Offer</span></a></li>
+          <li class="list"><a href="searchride.html"><span class="icon"><i class="fa-solid fa-magnifying-glass-location"></i></span><span class="text">Search</span></a></li>
+          <li class="list"><a href="aboutus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span class="text">ABOUT</span></a></li>
+          <div class="indicator"></div>
+        </ul>
+      </div>
+    </div>
+    <div class="par3">
+      <a class="button-wrapper" href="register.html"><span class="dot dot-1"></span><span class="button">Register</span></a>
+      <a class="button-wrapper" href="login.html"><span class="dot dot-1"></span><span class="button">Login</span></a>
+    </div>
+  </div>
+
+  <!-- Offer Ride Container -->
+  <div class="offer-container">
+    <button class="add-btn" onclick="showForm()">+ Add Taxi</button>
+
+    <div class="form-popup" id="popupForm">
+      <div class="form-box">
+        <h2>Taxi Details</h2>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="text" id="carNumber" placeholder="Car Number" required>
+        <input type="text" id="carType" placeholder="Car Type">
+        <input type="text" id="carColor" placeholder="Car Color">
+        <input type="number" id="seat" placeholder="No. of Seats">
+        <input type="text" id="fuel" placeholder="Fuel Type">
+        <input type="number" id="price" placeholder="Price per Seat">
+        <input type="text" id="aadhar" placeholder="Aadhaar Number">
+        <input type="text" id="license" placeholder="License Number">
+        <input type="text" id="phone" placeholder="Driver Phone Number">
+        <input type="text" id="location" placeholder="Current Location">
+        <input type="text" id="rating" placeholder="Service Rating (1-5)">
+        <label>Driver Photo:</label>
+        <input type="file" id="driverPhoto" accept="image/*">
+        <label>Taxi Photo:</label>
+        <input type="file" id="taxiPhoto" accept="image/*">
+        <button onclick="addTaxi()">Submit</button>
+      </div>
+    </div>
+
+    <div id="history"></div>
+  </div>
+
+  <script>
+    const popup = document.getElementById('popupForm');
+    const history = document.getElementById('history');
+    let taxiList = JSON.parse(localStorage.getItem("taxis")) || [];
+
+    function showForm() {
+      popup.classList.add("active");
+    }
+
+    function addTaxi() {
+      const taxi = {
+        name: document.getElementById('name').value,
+        carNumber: document.getElementById('carNumber').value,
+        carType: document.getElementById('carType').value,
+        carColor: document.getElementById('carColor').value,
+        seat: document.getElementById('seat').value,
+        fuel: document.getElementById('fuel').value,
+        price: document.getElementById('price').value,
+        aadhar: document.getElementById('aadhar').value,
+        license: document.getElementById('license').value,
+        phone: document.getElementById('phone').value,
+        location: document.getElementById('location').value,
+        rating: document.getElementById('rating').value,
+        driverPhoto: URL.createObjectURL(document.getElementById('driverPhoto').files[0]),
+        taxiPhoto: URL.createObjectURL(document.getElementById('taxiPhoto').files[0])
+      };
+
+      taxiList.push(taxi);
+      localStorage.setItem("taxis", JSON.stringify(taxiList));
+      popup.classList.remove("active");
+      renderTaxis();
+    }
+
+    function deleteTaxi(index) {
+      taxiList.splice(index, 1);
+      localStorage.setItem("taxis", JSON.stringify(taxiList));
+      renderTaxis();
+    }
+
+    function renderTaxis() {
+      history.innerHTML = "";
+      taxiList.forEach((taxi, index) => {
+        history.innerHTML += `
+          <div class="card">
+            <div><strong>${taxi.name}</strong></div>
+            <img src="${taxi.driverPhoto}" alt="Driver">
+            <img src="${taxi.taxiPhoto}" alt="Taxi">
+            <div class="info">
+              Car: ${taxi.carNumber} (${taxi.carColor} ${taxi.carType})<br>
+              Fuel: ${taxi.fuel}, Seats: ${taxi.seat}, ₹${taxi.price}/seat<br>
+              Aadhaar: ${taxi.aadhar}, License: ${taxi.license}<br>
+              Phone: ${taxi.phone}, Location: ${taxi.location}<br>
+              Rating: ${taxi.rating} ⭐
+            </div>
+            <button class="delete-btn" onclick="deleteTaxi(${index})">Delete</button>
+          </div>
+        `;
+      });
+    }
+
+    renderTaxis();
+  </script>
+</body>
+</html>
