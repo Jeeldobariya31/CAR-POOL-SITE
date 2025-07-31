@@ -15,11 +15,10 @@
     .about-container {
       position: relative;
       top: 150px;
-      max-width: 900px;
-      margin: 0 auto;
+      max-width: 1200px;
+      margin: 0 auto 200px auto;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 20px;
-     
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       padding: 40px;
       color: #fff;
@@ -49,6 +48,68 @@
       line-height: 1.8;
     }
 
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      animation: fadeInUp 0.6s ease;
+    }
+
+    .info-card h3 {
+      color: #fbbf24;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      gap: 10px;
+    }
+
+    .contact-info i {
+      color: #fbbf24;
+      font-size: 1.2rem;
+      width: 20px;
+    }
+
+    .stats-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .stat-item h4 {
+      color: #fbbf24;
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
     .feedback-section {
       margin-top: 40px;
     }
@@ -59,45 +120,162 @@
       gap: 15px;
       color: #fff;
       background: rgba(255, 255, 255, 0.15);
-      padding: 20px;
+      padding: 30px;
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(255,255,255,0.2);
       backdrop-filter: blur(10px);
     }
 
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
     .feedback-form input,
     .feedback-form textarea,
+    .feedback-form select,
     .feedback-form button {
-      padding: 10px;
+      padding: 12px;
       border-radius: 10px;
       border: none;
       color: #fff;
       outline: none;
       font-size: 1rem;
-    }
-
-    .feedback-form input,
-    .feedback-form textarea {
       background: rgba(255, 255, 255, 0.2);
-      color: white;
     }
 
-    .feedback-form button {
-      background-color: #ffbf00;
-      font-weight: bold;
+    .feedback-form input::placeholder,
+    .feedback-form textarea::placeholder {
+      color: #333;
+      font-weight: 500;
+    }
+
+    .feedback-form select {
       cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+      padding-right: 40px;
+    }
+
+    .feedback-form select option {
+      background: #333;
+      color: #fff;
+      padding: 8px;
     }
 
     .feedback-card {
       margin-top: 20px;
       background: rgba(255, 255, 255, 0.15);
-      padding: 20px;
+      padding: 25px;
       border-radius: 15px;
       backdrop-filter: blur(10px);
       color: #fff;
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
       animation: fadeInUp 0.6s ease;
+      border-left: 4px solid #fbbf24;
     }
+
+    .feedback-card h4 {
+      color: #fbbf24;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .feedback-card p {
+      margin: 8px 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  /* Footer Styles */
+  .main-footer {
+    background: #22223b;
+    color: #fff;
+    padding: 40px 0 0 0;
+    margin-top: 40px;
+    font-size: 1rem;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  }
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 10vw 24px 10vw;
+    gap: 2rem;
+  }
+  .footer-brand h3 {
+    color: #fbbf24;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+  }
+  .footer-brand p {
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin: 0;
+  }
+  .footer-nav h4, .footer-social h4 {
+    color: #fbbf24;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-nav ul li {
+    margin-bottom: 6px;
+  }
+  .footer-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-nav ul li a:hover {
+    color: #fbbf24;
+  }
+  .footer-social a {
+    color: #111;
+    font-size: 1.4rem;
+    margin-right: 12px;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover {
+    color: #fbbf24;
+  }
+  .footer-bottom {
+    text-align: center;
+    background: #1a1a2e;
+    color: #bdbdbd;
+    padding: 16px 0;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+  @media (max-width: 800px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 4vw 24px 4vw;
+    }
+    .main-footer {
+      padding: 32px 0 0 0;
+    }
+  }
   </style>
 </head>
 
@@ -184,22 +362,158 @@
       Join us today and become part of a smarter way to travel!
     </p>
 
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Our Mission</h3>
+        <p>
+          To provide a convenient, affordable, and eco-friendly carpooling experience.
+          We strive to make commuting easier for everyone by connecting drivers and passengers.
+        </p>
+      </div>
+      <div class="info-card">
+        <h3>Our Vision</h3>
+        <p>
+          To become the leading carpooling platform in the region,
+          transforming daily commutes into sustainable and social experiences.
+        </p>
+      </div>
+      <div class="info-card">
+        <h3>Our Values</h3>
+        <ul>
+          <li>Safety and Trust</li>
+          <li>Community Building</li>
+          <li>Sustainability</li>
+          <li>Transparency</li>
+          <li>Innovation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <h2>Our Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h4>500+</h4>
+          <p>Active Rides Shared</p>
+        </div>
+        <div class="stat-item">
+          <h4>1000+</h4>
+          <p>Happy Users</p>
+        </div>
+        <div class="stat-item">
+          <h4>2000+</h4>
+          <p>Kilometers Saved</p>
+        </div>
+        <div class="stat-item">
+          <h4>100+</h4>
+          <p>Drivers Registered</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+          <i class="fas fa-phone"></i>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-envelope"></i>
+          <span>info@jdscarpooling.com</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Mumbai, Maharashtra, India</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-clock"></i>
+          <span>24/7 Customer Support</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h3>Business Hours</h3>
+        <div class="contact-info">
+          <i class="fas fa-calendar"></i>
+          <span>Monday - Friday: 8:00 AM - 8:00 PM</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-calendar"></i>
+          <span>Saturday: 9:00 AM - 6:00 PM</span>
+        </div>
+        <div class="contact-info">
+          <i class="fas fa-calendar"></i>
+          <span>Sunday: 10:00 AM - 4:00 PM</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <h3>Safety Features</h3>
+        <ul>
+          <li>Verified User Profiles</li>
+          <li>Real-time GPS Tracking</li>
+          <li>Emergency Contact System</li>
+          <li>User Rating & Reviews</li>
+          <li>24/7 Support Team</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>How It Works</h3>
+        <ol>
+          <li><strong>Sign Up:</strong> Create your profile with verification</li>
+          <li><strong>Post/Find:</strong> Offer rides or search for available rides</li>
+          <li><strong>Connect:</strong> Chat and confirm details with your match</li>
+          <li><strong>Travel:</strong> Enjoy your journey and rate your experience</li>
+        </ol>
+      </div>
+      <div class="info-card">
+        <h3>Benefits</h3>
+        <ul>
+          <li>Save up to 60% on travel costs</li>
+          <li>Reduce carbon footprint</li>
+          <li>Meet new people</li>
+          <li>Flexible scheduling</li>
+          <li>Safe and secure platform</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="feedback-section">
-      <h2>Feedback</h2>
+      <h2>Share Your Experience</h2>
       <form class="feedback-form" onsubmit="addFeedback(event)">
-        <input type="text" placeholder="Your Name" required>
-        <textarea placeholder="Your Feedback" rows="4" required></textarea>
-        <a class="button-wrapper" onclick="alert('submitted')" style="color: black;">
-        <span class="dot dot-1"></span>
-        <span class="dot dot-2"></span>
-        <span class="dot dot-3"></span>
-        <span class="dot dot-4"></span>
-        <span class="dot dot-5"></span>
-        <span class="dot dot-6"></span>
-        <span class="dot dot-7"></span>
-        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Submit</span>
-      </a>
-      
+        <div class="form-row">
+          <input type="text" placeholder="Your Full Name" required>
+          <input type="email" placeholder="Your Email Address" required>
+        </div>
+        <div class="form-row">
+          <select name="rating" required>
+            <option value="">Select Rating</option>
+            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4">⭐⭐⭐⭐ Very Good</option>
+            <option value="3">⭐⭐⭐ Good</option>
+            <option value="2">⭐⭐ Fair</option>
+            <option value="1">⭐ Poor</option>
+          </select>
+          <select name="serviceType" required>
+            <option value="">Service Type</option>
+            <option value="driver">As a Driver</option>
+            <option value="passenger">As a Passenger</option>
+            <option value="both">Both</option>
+          </select>
+        </div>
+        <textarea placeholder="Tell us about your experience with JD's Car Pooling..." rows="5" required></textarea>
+        <a class="button-wrapper" onclick="submitFeedback()" style="display: inline-block; margin-top: 10px;">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase" style="color: #111;">Submit Feedback</span>
+        </a>
       </form>
 
       <div id="feedbackDisplay"></div>
@@ -207,19 +521,99 @@
   </div>
 
   <script>
-    function addFeedback(event) {
-      event.preventDefault();
-      const form = event.target;
-      const name = form.querySelector('input').value;
+    function submitFeedback() {
+      const form = document.querySelector('.feedback-form');
+      const name = form.querySelector('input[type="text"]').value;
+      const email = form.querySelector('input[type="email"]').value;
+      const rating = form.querySelector('select[name="rating"]');
+      const serviceType = form.querySelector('select[name="serviceType"]');
       const message = form.querySelector('textarea').value;
+
+      // Validate form
+      if (!name || !email || !rating.value || !serviceType.value || !message) {
+        alert('Please fill in all fields!');
+        return;
+      }
+
+      const ratingText = rating.options[rating.selectedIndex].text;
+      const serviceText = serviceType.options[serviceType.selectedIndex].text;
+
       const card = document.createElement('div');
       card.className = 'feedback-card';
-      card.innerHTML = `<h4>${name}</h4><p>${message}</p>`;
+      card.innerHTML = `
+        <h4>${name}</h4>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Rating:</strong> ${ratingText}</p>
+        <p><strong>Service Type:</strong> ${serviceText}</p>
+        <p><strong>Feedback:</strong> ${message}</p>
+      `;
       document.getElementById('feedbackDisplay').prepend(card);
       form.reset();
+      
+      // Show success message
+      alert('Thank you for your feedback!');
+    }
+
+    function addFeedback(event) {
+      event.preventDefault();
+      submitFeedback();
     }
   </script>
   <script src="./nevscript.js"></script>
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>JD'S CAR POOLING</h3>
+        <p>Connecting riders and drivers for a greener tomorrow.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="offerride.html">Offer Ride</a></li>
+          <li><a href="searchride.html">Search Ride</a></li>
+          <li><a href="contectus.html">About/Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <a href="#" title="Instagram" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-instagram"></i></span>
+        </a>
+        <a href="#" title="Facebook" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-facebook"></i></span>
+        </a>
+        <a href="#" title="Twitter" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-twitter"></i></span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 JD'S CAR POOLING. All rights reserved.
+    </div>
+  </footer>
 </body>
 
 </html>

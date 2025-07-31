@@ -19,52 +19,56 @@ body {
   z-index: -1;
 }
 .parta {
-  opacity: 0.5;
-  margin-top: 20px;
-  margin-left: 135px;
-  width: 1200px;
-  height: 550px;
+  color: #111 !important;
+  position: relative;
+  opacity: 1;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 900px;
+  height: auto;
   text-align: center;
-  padding: 10px;
-  padding-top: 100px;
-  background-image: url("11291.jpg"); /* Add your image URL here */
+  padding: 32px 24px;
+  background-image: url("11291.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   border: 3px solid black;
   border-radius: 20px;
-
-  /* 3D Hover Effect */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   perspective: 1000px;
-
-  /* Floating Animation */
   animation: float 3s ease-in-out infinite;
+  overflow: hidden;
 }
-
-.parta:hover {
-  transform: rotateY(10deg) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+.parta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  border-radius: 20px;
+  z-index: 0;
 }
-
+.parta > * {
+  position: relative;
+  z-index: 1;
+}
+.parta h1, .parta h2, .parta p {
+  color: #111 !important;
+  text-shadow: none;
+}
 .parta h1 {
   font-size: 3rem;
-  color: #060606;
   margin-bottom: 20px;
-  text-shadow: 3px 3px 8px rgba(199, 233, 206, 0.5);
 }
-
 .parta h2 {
   font-size: 1.8rem;
-  color: #090909;
   margin-bottom: 15px;
 }
-
 .parta p {
   font-size: 1.1rem;
-  color: #060606;
   max-width: 700px;
   margin: 0 auto 30px auto;
   line-height: 1.6;

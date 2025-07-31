@@ -11,32 +11,160 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
-
   <style>
-   
-
-    .offer-container {
-      padding: 2rem;
-      text-align: center;
+    body, html {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #22223b 0%, #4a4e69 100%);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
     }
-
+    /* Footer Styles */
+  .main-footer {
+    background: #22223b;
+    color: #fff;
+    padding: 40px 0 0 0;
+    margin-top: 40px;
+    font-size: 1rem;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  }
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 10vw 24px 10vw;
+    gap: 2rem;
+  }
+  .footer-brand h3 {
+    color: #fbbf24;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+  }
+  .footer-brand p {
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin: 0;
+  }
+  .footer-nav h4, .footer-social h4 {
+    color: #fbbf24;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-nav ul li {
+    margin-bottom: 6px;
+  }
+  .footer-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-nav ul li a:hover {
+    color: #fbbf24;
+  }
+  .footer-social a {
+    color: #111;
+    font-size: 1.4rem;
+    margin-right: 12px;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover {
+    color: #fbbf24;
+  }
+  .footer-bottom {
+    text-align: center;
+    background: #1a1a2e;
+    color: #bdbdbd;
+    padding: 16px 0;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+  @media (max-width: 800px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 4vw 24px 4vw;
+    }
+    .main-footer {
+      padding: 32px 0 0 0;
+    }
+  }
+    .offer-main {
+      max-width: 1100px;
+      margin: 60px auto 40px auto;
+      padding: 32px 24px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+      animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: none; }
+    }
+    .stats-cards {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      flex: 1 1 180px;
+      background: rgba(255,255,255,0.13);
+      border-radius: 16px;
+      padding: 24px 0;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      font-size: 1.2rem;
+      animation: fadeInUp 1.3s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    .stat-card h2 {
+      font-size: 2.5rem;
+      color: #fbbf24;
+      margin-bottom: 6px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .stat-card p {
+      color: #fff;
+      font-size: 1.1rem;
+    }
     .add-btn {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       background: rgba(255, 255, 255, 0.2);
       border: 2px solid #fff;
       color: #fff;
-      padding: 12px 24px;
-      border-radius: 10px;
+      padding: 14px 32px;
+      border-radius: 12px;
       font-weight: bold;
+      font-size: 1.1rem;
       backdrop-filter: blur(10px);
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 12px rgba(251,191,36,0.08);
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
     }
-
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(251,191,36,0.2); }
+      70% { box-shadow: 0 0 0 12px rgba(251,191,36,0); }
+      100% { box-shadow: 0 0 0 0 rgba(251,191,36,0); }
+    }
     .add-btn:hover {
-      background: rgba(255, 255, 255, 0.4);
+      background: #fbbf24;
+      color: #22223b;
+      border-color: #fbbf24;
     }
-
     .form-popup {
       position: fixed;
       top: 0; left: 0;
@@ -48,27 +176,38 @@
       backdrop-filter: blur(8px);
       z-index: 100;
       visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.4s, visibility 0.4s;
     }
-
     .form-popup.active {
       visibility: visible;
+      opacity: 1;
     }
-
     .form-box {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(18, 10, 10, 0.686);
       border-radius: 20px;
-      padding: 2rem;
-      width: 90%;
-      max-width: 800px;
+      padding: 2rem 2.5rem;
+      width: 95%;
+      max-width: 600px;
       color: #fff;
       overflow-y: auto;
       max-height: 90vh;
+      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+      animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) both;
+      position: relative;
     }
-
     .form-box h2 {
       margin-bottom: 1rem;
+      color: #fbbf24;
     }
-
+    .form-box label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1rem;
+      margin-top: 10px;
+      color: #fbbf24;
+    }
     .form-box input {
       width: 100%;
       padding: 10px;
@@ -78,8 +217,19 @@
       outline: none;
       background: rgba(255,255,255,0.15);
       color: #fff;
+      font-size: 1rem;
+      transition: box-shadow 0.2s;
     }
-
+    .form-box input:focus {
+      box-shadow: 0 0 0 2px #fbbf24;
+    }
+    .form-box input::placeholder {
+      color: #ddd;
+    }
+    .form-box input[type="file"] {
+      background: none;
+      color: #fff;
+    }
     .form-box input::file-selector-button {
       padding: 6px 10px;
       border-radius: 6px;
@@ -88,72 +238,163 @@
       color: #333;
       cursor: pointer;
     }
-
-    .form-box button {
-      margin-top: 1rem;
-      background-color: #fff;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+    .form-box .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 1.2rem;
+      justify-content: flex-end;
     }
-
+    .form-box .button-wrapper {
+      margin: 0;
+    }
+    .form-box .error {
+      color: #ff4d4f;
+      font-size: 0.98rem;
+      margin-bottom: 8px;
+      margin-top: 2px;
+    }
+    .rides-list {
+      margin-top: 24px;
+    }
     .card {
       background: rgba(255,255,255,0.1);
       color: #fff;
       backdrop-filter: blur(10px);
       margin: 1rem auto;
-      padding: 1rem;
+      padding: 1.2rem 1.5rem;
       border-radius: 15px;
-      width: 90%;
+      width: 95%;
       max-width: 800px;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 2px 12px rgba(251,191,36,0.08);
+      position: relative;
+      animation: fadeInUp 0.8s cubic-bezier(.23,1.01,.32,1) both;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 24px rgba(251,191,36,0.18);
+    }
+    .card .card-header {
+      display: flex;
       align-items: center;
+      gap: 18px;
+      width: 100%;
+      margin-bottom: 10px;
     }
-
-    .card img {
-      max-width: 100px;
+    .card img.driver-photo {
+      max-width: 70px;
       border-radius: 10px;
-      margin: 5px;
+      margin: 5px 0;
+      border: 2px solid #fbbf24;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     }
-
+    .card img.taxi-photo {
+      max-width: 90px;
+      border-radius: 10px;
+      margin: 5px 0 5px 10px;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
     .card .info {
-      margin: 10px;
+      flex: 1;
       text-align: left;
+      font-size: 1.08rem;
     }
-
-    .delete-btn {
+    .card .card-actions {
       margin-top: 10px;
-      padding: 6px 12px;
-      background-color: red;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      display: flex;
+      gap: 10px;
     }
-
+    .card .delete-btn, .card .edit-btn {
+      padding: 6px 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .card .delete-btn {
+      background: #ff4d4f;
+      color: #fff;
+    }
+    .card .delete-btn:hover {
+      background: #d90429;
+    }
+    .card .edit-btn {
+      background: #fbbf24;
+      color: #22223b;
+    }
+    .card .edit-btn:hover {
+      background: #ffe066;
+    }
+    .card .rating-stars {
+      margin-top: 8px;
+    }
+    .rating-stars span {
+      font-size: 22px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .rating-stars span.active {
+      color: gold;
+    }
+    .card .added-date {
+      font-size: 0.95rem;
+      color: #bdbdbd;
+      margin-top: 4px;
+    }
+    .card .expand-btn {
+      background: none;
+      border: none;
+      color: #fbbf24;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-left: auto;
+      margin-top: 2px;
+      transition: color 0.2s;
+    }
+    .card .expand-btn:hover {
+      color: #fff;
+    }
+    .card .details {
+      display: none;
+      margin-top: 10px;
+      animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    .card.active .details {
+      display: block;
+    }
+    .no-rides {
+      text-align: center;
+      color: #fbbf24;
+      font-size: 1.2rem;
+      margin-top: 40px;
+      animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    @media (max-width: 900px) {
+      .stats-cards { flex-direction: column; }
+    }
     @media (max-width: 600px) {
-      .form-box {
-        max-height: 85vh;
-        overflow-y: auto;
-      }
-
-      .card {
-        flex-direction: column;
-      }
+      .offer-main { padding: 12px 2vw; }
+      .form-box, .stat-card, .card { padding: 12px 8px; }
+      .card-header { flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
   <video autoplay muted loop id="bgVideo">
     <source src="152184-802335622_small.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
   </video>
-
-  <!-- Navbar -->
+  <!-- Navigation -->
   <div class="nev">
-    <div class="par1"><h1>JD'S CAR POOLING</h1></div>
+    <div class="par1">
+      <h1>JD'S CAR POOLING</h1>
+    </div>
     <div class="par2">
       <div class="navigation">
         <ul>
@@ -161,107 +402,320 @@
           <li class="list"><a href="profile.html"><span class="icon"><ion-icon name="person-outline"></ion-icon></span><span class="text">Profile</span></a></li>
           <li class="list active"><a href="offerride.html"><span class="icon"><i class="fa-solid fa-briefcase"></i></span><span class="text">Offer</span></a></li>
           <li class="list"><a href="searchride.html"><span class="icon"><i class="fa-solid fa-magnifying-glass-location"></i></span><span class="text">Search</span></a></li>
-          <li class="list"><a href="aboutus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span class="text">ABOUT</span></a></li>
+          <li class="list"><a href="contectus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span class="text">About</span></a></li>
           <div class="indicator"></div>
         </ul>
       </div>
     </div>
     <div class="par3">
-      <a class="button-wrapper" href="register.html"><span class="dot dot-1"></span><span class="button">Register</span></a>
-      <a class="button-wrapper" href="login.html"><span class="dot dot-1"></span><span class="button">Login</span></a>
+      <a class="button-wrapper" href="register.html">
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+        <span class="dot dot-4"></span>
+        <span class="dot dot-5"></span>
+        <span class="dot dot-6"></span>
+        <span class="dot dot-7"></span>
+        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Register<span>
+      </a>
+      <a class="button-wrapper" href="login.html">
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+        <span class="dot dot-4"></span>
+        <span class="dot dot-5"></span>
+        <span class="dot dot-6"></span>
+        <span class="dot dot-7"></span>
+        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Login<span>
+      </a>
     </div>
   </div>
-
-  <!-- Offer Ride Container -->
-  <div class="offer-container">
+  <div class="offer-main" style="flex: 1 0 auto;">
+    <div class="stats-cards">
+      <div class="stat-card">
+        <h2 id="totalRides">0</h2>
+        <p>Total Rides Offered</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="totalSeats">0</h2>
+        <p>Total Seats</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="avgRating">0</h2>
+        <p>Average Rating</p>
+      </div>
+    </div>
     <button class="add-btn" onclick="showForm()">+ Add Taxi</button>
-
     <div class="form-popup" id="popupForm">
       <div class="form-box">
         <h2>Taxi Details</h2>
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="text" id="carNumber" placeholder="Car Number" required>
-        <input type="text" id="carType" placeholder="Car Type">
-        <input type="text" id="carColor" placeholder="Car Color">
-        <input type="number" id="seat" placeholder="No. of Seats">
-        <input type="text" id="fuel" placeholder="Fuel Type">
-        <input type="number" id="price" placeholder="Price per Seat">
-        <input type="text" id="aadhar" placeholder="Aadhaar Number">
-        <input type="text" id="license" placeholder="License Number">
-        <input type="text" id="phone" placeholder="Driver Phone Number">
-        <input type="text" id="location" placeholder="Current Location">
-        <input type="text" id="rating" placeholder="Service Rating (1-5)">
-        <label>Driver Photo:</label>
-        <input type="file" id="driverPhoto" accept="image/*">
-        <label>Taxi Photo:</label>
-        <input type="file" id="taxiPhoto" accept="image/*">
-        <button onclick="addTaxi()">Submit</button>
+        <form id="taxiForm" onsubmit="submitTaxi(event)">
+          <label>Your Name <i class="fa fa-info-circle" title="Enter your full name."></i></label>
+          <input type="text" id="name" placeholder="Your Name" required>
+          <label>Car Number <i class="fa fa-info-circle" title="e.g. GJ-01-AA-1234"></i></label>
+          <input type="text" id="carNumber" placeholder="Car Number" required>
+          <label>Car Type <i class="fa fa-info-circle" title="e.g. Sedan, Hatchback"></i></label>
+          <input type="text" id="carType" placeholder="Car Type" required>
+          <label>Car Color</label>
+          <input type="text" id="carColor" placeholder="Car Color" required>
+          <label>No. of Seats</label>
+          <input type="number" id="seat" placeholder="No. of Seats" min="1" required>
+          <label>Fuel Type</label>
+          <input type="text" id="fuel" placeholder="Fuel Type" required>
+          <label>Price per Seat (₹)</label>
+          <input type="number" id="price" placeholder="Price per Seat" min="1" required>
+          <label>Aadhaar Number</label>
+          <input type="text" id="aadhar" placeholder="Aadhaar Number" required>
+          <label>License Number</label>
+          <input type="text" id="license" placeholder="License Number" required>
+          <label>Driver Phone Number</label>
+          <input type="text" id="phone" placeholder="Driver Phone Number" required>
+          <label>Current Location</label>
+          <input type="text" id="location" placeholder="Current Location" required>
+          <label>Service Rating (1-5)</label>
+          <input type="number" id="rating" placeholder="Service Rating (1-5)" min="1" max="5" required>
+          <label>Driver Photo</label>
+          <input type="file" id="driverPhoto" accept="image/*" required>
+          <label>Taxi Photo</label>
+          <input type="file" id="taxiPhoto" accept="image/*" required>
+          <div class="form-actions">
+            <a class="button-wrapper" onclick="hideForm()" style="margin-right: 8px;">
+              <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Cancel</span>
+            </a>
+            <a class="button-wrapper" onclick="submitTaxi(event)">
+              <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Submit</span>
+            </a>
+          </div>
+          <div class="error" id="formError"></div>
+        </form>
       </div>
     </div>
-
-    <div id="history"></div>
+    <div class="rides-list" id="history"></div>
+    <div class="no-rides" id="noRides" style="display:none;">No rides offered yet. Click "+ Add Taxi" to get started!</div>
   </div>
-
+  <footer class="main-footer" style="flex-shrink: 0;">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>JD'S CAR POOLING</h3>
+        <p>Connecting riders and drivers for a greener tomorrow.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="offerride.html">Offer Ride</a></li>
+          <li><a href="searchride.html">Search Ride</a></li>
+          <li><a href="contectus.html">About/Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <a href="#" title="Instagram" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-instagram"></i></span>
+        </a>
+        <a href="#" title="Facebook" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-facebook"></i></span>
+        </a>
+        <a href="#" title="Twitter" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-twitter"></i></span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 JD'S CAR POOLING. All rights reserved.
+    </div>
+  </footer>
+  <script src="./nevscript.js"></script>
+  <script src="./btnscript.js"></script>
   <script>
-    const popup = document.getElementById('popupForm');
-    const history = document.getElementById('history');
+    // Animated counters
+    function animateCounter(id, end, duration = 1200) {
+      const el = document.getElementById(id);
+      let start = 0;
+      const step = Math.ceil(end / (duration / 20));
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= end) {
+          el.textContent = end;
+          clearInterval(timer);
+        } else {
+          el.textContent = start;
+        }
+      }, 20);
+    }
+    // Taxi data
     let taxiList = JSON.parse(localStorage.getItem("taxis")) || [];
-
-    function showForm() {
-      popup.classList.add("active");
-    }
-
-    function addTaxi() {
-      const taxi = {
-        name: document.getElementById('name').value,
-        carNumber: document.getElementById('carNumber').value,
-        carType: document.getElementById('carType').value,
-        carColor: document.getElementById('carColor').value,
-        seat: document.getElementById('seat').value,
-        fuel: document.getElementById('fuel').value,
-        price: document.getElementById('price').value,
-        aadhar: document.getElementById('aadhar').value,
-        license: document.getElementById('license').value,
-        phone: document.getElementById('phone').value,
-        location: document.getElementById('location').value,
-        rating: document.getElementById('rating').value,
-        driverPhoto: URL.createObjectURL(document.getElementById('driverPhoto').files[0]),
-        taxiPhoto: URL.createObjectURL(document.getElementById('taxiPhoto').files[0])
-      };
-
-      taxiList.push(taxi);
+    // Show/Hide form
+    const popup = document.getElementById('popupForm');
+    function showForm() { popup.classList.add("active"); }
+    function hideForm() { popup.classList.remove("active"); document.getElementById('formError').textContent = ""; }
+    // Add/Edit Taxi
+    let editIndex = null;
+    function submitTaxi(e) {
+      if (e) e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const carNumber = document.getElementById('carNumber').value.trim();
+      const carType = document.getElementById('carType').value.trim();
+      const carColor = document.getElementById('carColor').value.trim();
+      const seat = document.getElementById('seat').value.trim();
+      const fuel = document.getElementById('fuel').value.trim();
+      const price = document.getElementById('price').value.trim();
+      const aadhar = document.getElementById('aadhar').value.trim();
+      const license = document.getElementById('license').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const rating = document.getElementById('rating').value.trim();
+      const driverPhotoInput = document.getElementById('driverPhoto');
+      const taxiPhotoInput = document.getElementById('taxiPhoto');
+      const errorDiv = document.getElementById('formError');
+      // Validation
+      if (!name || !carNumber || !carType || !carColor || !seat || !fuel || !price || !aadhar || !license || !phone || !location || !rating) {
+        errorDiv.textContent = "Please fill in all fields.";
+        return;
+      }
+      if (isNaN(seat) || seat < 1) { errorDiv.textContent = "Seats must be a positive number."; return; }
+      if (isNaN(price) || price < 1) { errorDiv.textContent = "Price must be a positive number."; return; }
+      if (isNaN(rating) || rating < 1 || rating > 5) { errorDiv.textContent = "Rating must be 1-5."; return; }
+      let driverPhoto, taxiPhoto;
+      if (editIndex === null) {
+        if (!driverPhotoInput.files[0] || !taxiPhotoInput.files[0]) { errorDiv.textContent = "Please upload both photos."; return; }
+        driverPhoto = URL.createObjectURL(driverPhotoInput.files[0]);
+        taxiPhoto = URL.createObjectURL(taxiPhotoInput.files[0]);
+      } else {
+        driverPhoto = driverPhotoInput.files[0] ? URL.createObjectURL(driverPhotoInput.files[0]) : taxiList[editIndex].driverPhoto;
+        taxiPhoto = taxiPhotoInput.files[0] ? URL.createObjectURL(taxiPhotoInput.files[0]) : taxiList[editIndex].taxiPhoto;
+      }
+      const now = new Date();
+      const addedDate = now.toLocaleString();
+      const taxi = { name, carNumber, carType, carColor, seat, fuel, price, aadhar, license, phone, location, rating, driverPhoto, taxiPhoto, addedDate };
+      if (editIndex === null) {
+        taxiList.push(taxi);
+      } else {
+        taxiList[editIndex] = taxi;
+        editIndex = null;
+      }
       localStorage.setItem("taxis", JSON.stringify(taxiList));
-      popup.classList.remove("active");
+      hideForm();
       renderTaxis();
+      errorDiv.textContent = "";
+      setTimeout(() => alert('Taxi details saved!'), 200);
     }
-
     function deleteTaxi(index) {
+      if (!confirm('Delete this ride?')) return;
       taxiList.splice(index, 1);
       localStorage.setItem("taxis", JSON.stringify(taxiList));
       renderTaxis();
     }
-
+    function editTaxi(index) {
+      editIndex = index;
+      const t = taxiList[index];
+      document.getElementById('name').value = t.name;
+      document.getElementById('carNumber').value = t.carNumber;
+      document.getElementById('carType').value = t.carType;
+      document.getElementById('carColor').value = t.carColor;
+      document.getElementById('seat').value = t.seat;
+      document.getElementById('fuel').value = t.fuel;
+      document.getElementById('price').value = t.price;
+      document.getElementById('aadhar').value = t.aadhar;
+      document.getElementById('license').value = t.license;
+      document.getElementById('phone').value = t.phone;
+      document.getElementById('location').value = t.location;
+      document.getElementById('rating').value = t.rating;
+      document.getElementById('driverPhoto').value = "";
+      document.getElementById('taxiPhoto').value = "";
+      showForm();
+    }
     function renderTaxis() {
+      const history = document.getElementById('history');
+      const noRides = document.getElementById('noRides');
       history.innerHTML = "";
+      if (taxiList.length === 0) {
+        noRides.style.display = "block";
+      } else {
+        noRides.style.display = "none";
+      }
+      let totalSeats = 0, totalRating = 0;
       taxiList.forEach((taxi, index) => {
+        totalSeats += parseInt(taxi.seat);
+        totalRating += parseFloat(taxi.rating);
         history.innerHTML += `
-          <div class="card">
-            <div><strong>${taxi.name}</strong></div>
-            <img src="${taxi.driverPhoto}" alt="Driver">
-            <img src="${taxi.taxiPhoto}" alt="Taxi">
-            <div class="info">
-              Car: ${taxi.carNumber} (${taxi.carColor} ${taxi.carType})<br>
-              Fuel: ${taxi.fuel}, Seats: ${taxi.seat}, ₹${taxi.price}/seat<br>
-              Aadhaar: ${taxi.aadhar}, License: ${taxi.license}<br>
-              Phone: ${taxi.phone}, Location: ${taxi.location}<br>
-              Rating: ${taxi.rating} ⭐
+          <div class="card" id="card${index}">
+            <div class="card-header">
+              <img src="${taxi.driverPhoto}" alt="Driver" class="driver-photo">
+              <img src="${taxi.taxiPhoto}" alt="Taxi" class="taxi-photo">
+              <div class="info">
+                <strong>${taxi.name}</strong> | <span style="color:#fbbf24">${taxi.carNumber}</span><br>
+                ${taxi.carColor} ${taxi.carType}, ${taxi.fuel}<br>
+                Seats: ${taxi.seat}, ₹${taxi.price}/seat<br>
+                Aadhaar: ${taxi.aadhar}, License: ${taxi.license}<br>
+                Phone: ${taxi.phone}, Location: ${taxi.location}
+                <div class="added-date">Added: ${taxi.addedDate}</div>
+              </div>
+              <button class="expand-btn" onclick="toggleDetails(event, ${index})"><i class="fa fa-chevron-down"></i></button>
             </div>
-            <button class="delete-btn" onclick="deleteTaxi(${index})">Delete</button>
+            <div class="details" id="details${index}">
+              <div class="rating-stars" data-index="${index}">
+                <span data-value="1">&#9733;</span>
+                <span data-value="2">&#9733;</span>
+                <span data-value="3">&#9733;</span>
+                <span data-value="4">&#9733;</span>
+                <span data-value="5">&#9733;</span>
+              </div>
+              <div style="margin-top:8px;">Service Rating: <strong>${taxi.rating} ★</strong></div>
+              <div class="card-actions">
+                <button class="edit-btn" onclick="editTaxi(${index})">Edit</button>
+                <button class="delete-btn" onclick="deleteTaxi(${index})">Delete</button>
+              </div>
+            </div>
           </div>
         `;
       });
+      animateCounter('totalRides', taxiList.length);
+      animateCounter('totalSeats', totalSeats);
+      animateCounter('avgRating', taxiList.length ? (totalRating/taxiList.length).toFixed(1) : 0);
+      setTimeout(() => {
+        document.querySelectorAll('.rating-stars').forEach(group => {
+          group.addEventListener('click', function (e) {
+            if (e.target.tagName === 'SPAN') {
+              const value = e.target.dataset.value;
+              [...this.children].forEach(star => {
+                star.classList.toggle('active', star.dataset.value <= value);
+              });
+              alert(`Rated ${value} star(s) for this ride!`);
+            }
+          });
+        });
+      }, 100);
     }
-
+    function toggleDetails(e, index) {
+      e.stopPropagation();
+      const card = document.getElementById('card'+index);
+      const details = document.getElementById('details'+index);
+      card.classList.toggle('active');
+      details.classList.toggle('active');
+    }
     renderTaxis();
   </script>
 </body>

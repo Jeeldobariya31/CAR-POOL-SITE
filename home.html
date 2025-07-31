@@ -6,7 +6,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOME</title>
 <style>
- 
+  /* Footer Styles */
+  .main-footer {
+    background: #22223b;
+    color: #fff;
+    padding: 40px 0 0 0;
+    margin-top: 40px;
+    font-size: 1rem;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+  }
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 0 10vw 24px 10vw;
+    gap: 2rem;
+  }
+  .footer-brand h3 {
+    color: #fbbf24;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+  }
+  .footer-brand p {
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin: 0;
+  }
+  .footer-nav h4, .footer-social h4 {
+    color: #fbbf24;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-nav ul li {
+    margin-bottom: 6px;
+  }
+  .footer-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-nav ul li a:hover {
+    color: #fbbf24;
+  }
+  .footer-social a {
+    color: #111;
+    font-size: 1.4rem;
+    margin-right: 12px;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover {
+    color: #fbbf24;
+  }
+  .footer-bottom {
+    text-align: center;
+    background: #1a1a2e;
+    color: #bdbdbd;
+    padding: 16px 0;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    font-size: 0.95rem;
+    margin-top: 12px;
+  }
+  @media (max-width: 800px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 4vw 24px 4vw;
+    }
+    .main-footer {
+      padding: 32px 0 0 0;
+    }
+  }
+  /* Glassy Section Styles */
+  .glassy-section {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+  }
+  .glassy-section h2, .glassy-section h3, .glassy-section h4, .glassy-section p, .glassy-section li, .glassy-section span {
+    color: #fff !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  }
+  .glassy-section .button {
+    color: #22223b;
+  }
+  /* Section overrides for glassy look */
+  .stats-section, .testimonials-section, .faq-section, .safety-section, .contact-section {
+    background: rgba(255, 255, 255, 0.016);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.053);
+    color: #fff;
+  }
+  .stats-section h2, .stats-section h3, .stats-section p,
+  .testimonials-section h2, .testimonials-section p, .testimonials-section span,
+  .faq-section h2, .faq-section h4, .faq-section p,
+  .safety-section h2, .safety-section li,
+  .contact-section h2, .contact-section p {
+    color: #fff !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  }
 </style>
   <!-- External CSS -->
   <link rel="stylesheet" href="nevstyle.css" />
@@ -101,7 +214,7 @@
 
   <!-- Welcome Section -->
   <div class="parta">
-    <div class="a">
+   
       <h1>🚗 Welcome to JD'S CARPOOLING !!!</h1>
       <h2>🌟 Save Money. Share Rides. Protect the Planet.</h2>
       <p>
@@ -109,12 +222,12 @@
         empty seats to passengers heading the same way. Let’s reduce traffic, cut fuel costs, and build a greener,
         smarter community – together.
       </p>
-    </div>
+    
   </div>
 
   <!-- Features Section -->
   <div class="partb">
-    <section>
+    <section class="glassy-section" style="margin-bottom: 32px;">
       <h2>How It Works ?</h2>
       <div class="steps">
         <div class="card">
@@ -165,7 +278,7 @@
       </div>
     </section>
 
-    <section style="background-color: rgba(0, 0, 0, 0.1);">
+    <section class="glassy-section" style="background-color: rgba(0, 0, 0, 0.1); margin-bottom: 32px;">
       <h2>Why Choose CarConnect?</h2>
       <div class="features">
         <div class="card">
@@ -186,11 +299,150 @@
         </div>
       </div>
     </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+      <h2>Our Impact</h2>
+      <div class="stats-cards">
+        <div class="stat-card">
+          <h3>1,200+</h3>
+          <p>Rides Shared</p>
+        </div>
+        <div class="stat-card">
+          <h3>5 Tons</h3>
+          <p>CO₂ Saved</p>
+        </div>
+        <div class="stat-card">
+          <h3>2,000+</h3>
+          <p>Happy Users</p>
+        </div>
+        <div class="stat-card">
+          <h3>100%</h3>
+          <p>Verified Profiles</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2>What Our Users Say</h2>
+      <div class="testimonials-cards">
+        <div class="testimonial-card">
+          <p>"CarMate made my daily commute affordable and fun! Met amazing people along the way."</p>
+          <span>- Priya S.</span>
+        </div>
+        <div class="testimonial-card">
+          <p>"I love how easy it is to find rides and share costs. Highly recommended!"</p>
+          <span>- Rahul M.</span>
+        </div>
+        <div class="testimonial-card">
+          <p>"Safety and convenience, all in one place. I feel secure every time I ride."</p>
+          <span>- Anjali T.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h4>Is it safe to carpool with strangers?</h4>
+          <p>All users are verified and rated. You can check profiles and reviews before sharing a ride.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How do I pay for my ride?</h4>
+          <p>Payment can be arranged directly with the driver or through our secure platform (coming soon!).</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I offer a ride if I don't have a fixed schedule?</h4>
+          <p>Yes! You can post rides as per your convenience and connect with riders who match your timing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Safety Tips Section -->
+    <section class="safety-section">
+      <h2>Safety Tips</h2>
+      <ul class="safety-tips">
+        <li>Always verify the profile and rating of your co-rider or driver.</li>
+        <li>Share your trip details with a friend or family member.</li>
+        <li>Meet in public places for pick-up and drop-off.</li>
+        <li>Follow all traffic rules and respect each other.</li>
+      </ul>
+    </section>
+
+    <!-- Contact/Support Quick Link -->
+    <section class="contact-section">
+      <h2>Need Help or Have Questions?</h2>
+      <p>Contact our support team for assistance.</p>
+      <a class="button-wrapper" href="contectus.html" style="display: inline-block; margin-top: 18px;">
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+        <span class="dot dot-4"></span>
+        <span class="dot dot-5"></span>
+        <span class="dot dot-6"></span>
+        <span class="dot dot-7"></span>
+        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Contact Us</span>
+      </a>
+    </section>
   </div>
 
   <!-- Footer -->
-  <footer>
-    &copy; 2025 JD'S CAR POOLING . All rights reserved
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>JD'S CAR POOLING</h3>
+        <p>Connecting riders and drivers for a greener tomorrow.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="offerride.html">Offer Ride</a></li>
+          <li><a href="searchride.html">Search Ride</a></li>
+          <li><a href="contectus.html">About/Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <a href="#" title="Instagram" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-instagram"></i></span>
+        </a>
+        <a href="#" title="Facebook" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-facebook"></i></span>
+        </a>
+        <a href="#" title="Twitter" class="button-wrapper">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+          <span class="dot dot-4"></span>
+          <span class="dot dot-5"></span>
+          <span class="dot dot-6"></span>
+          <span class="dot dot-7"></span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-twitter"></i></span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 JD'S CAR POOLING. All rights reserved.
+    </div>
   </footer>
 
   <!-- Scripts -->
