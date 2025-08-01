@@ -54,13 +54,14 @@ body {
 }
 
 .wrapper {
+  margin:30px ;
+  background: #00000082;
   width: 400px;
-  border-radius: 8px;
+  border-radius: 8px 80px;
   padding: 30px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(9px);
-  -webkit-backdrop-filter: blur(9px);
+  border: 1px solid rgba(255, 255, 255, 0.723);
+  
 }
 
 form {

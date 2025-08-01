@@ -11,17 +11,19 @@
   <link rel="stylesheet" href="btnstyle.css">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     .about-container {
       position: relative;
       top: 20px;
       max-width: 1200px;
       margin: 0 auto 200px auto;
-      background: rgba(255, 255, 255, 0.1);
-     padding: 50px;
-      border: 3px solid black;
-       border-radius: 0px 100px;
+      background: rgba(0, 0, 0, 0.571);
+      padding: 50px;
+      border: 3px solid rgb(224, 222, 222);
+      border-radius: 0px 100px;
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       padding: 40px;
       color: #fff;
@@ -33,6 +35,7 @@
         opacity: 0;
         transform: translateY(40px);
       }
+
       100% {
         opacity: 1;
         transform: translateY(0);
@@ -57,18 +60,19 @@
       gap: 30px;
       margin: 40px 0;
     }
-    .info-card:hover{
+
+    .info-card:hover {
       background-color: #111;
       scale: 1.05;
     }
 
     .info-card {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(192, 190, 190, 0.399);
       padding: 30px;
       padding-left: 50px;
       border-radius: 15px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
       animation: fadeInUp 0.6s ease;
     }
 
@@ -92,24 +96,24 @@
     }
 
     .stats-section {
-      background: rgba(182, 179, 179, 0.063);
+
       padding: 30px;
       border-radius: 15px;
-      margin: 30px 0;
+      margin: 10px 0;
       text-align: center;
+
     }
 
     .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
     }
 
     .stat-item {
-      background: rgba(192, 190, 190, 0);
+      background: rgba(192, 190, 190, 0.399);
       padding: 20px;
       border-radius: 10px;
+      margin: 20px;
     }
 
     .stat-item h4 {
@@ -127,10 +131,10 @@
       flex-direction: column;
       gap: 15px;
       color: #fff;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(192, 190, 190, 0.399);
       padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
     }
 
@@ -184,7 +188,7 @@
       border-radius: 15px;
       backdrop-filter: blur(10px);
       color: #fff;
-      box-shadow: 0 0 8px rgba(255,255,255,0.1);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
       animation: fadeInUp 0.6s ease;
       border-left: 4px solid #fbbf24;
     }
@@ -205,7 +209,6 @@
         grid-template-columns: 1fr;
       }
     }
-  
   </style>
 </head>
 
@@ -429,8 +432,8 @@
           <select name="serviceType" required style="color: #111;">
             <option style="color: #111" value="">Service Type</option>
             <option style="color: #111" value="driver">As a Driver</option>
-            <option style="color: #111 "value="passenger">As a Passenger</option>
-            <option style="color: #111 "value="both">Both</option>
+            <option style="color: #111 " value="passenger">As a Passenger</option>
+            <option style="color: #111 " value="both">Both</option>
           </select>
         </div>
         <textarea placeholder="Tell us about your experience with JD's Car Pooling..." rows="5" required></textarea>
@@ -442,7 +445,8 @@
           <span class="dot dot-5"></span>
           <span class="dot dot-6"></span>
           <span class="dot dot-7"></span>
-          <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase" style="color: #111;">Submit Feedback</span>
+          <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase" style="color: #111;">Submit
+            Feedback</span>
         </a>
       </form>
 
@@ -479,7 +483,7 @@
       `;
       document.getElementById('feedbackDisplay').prepend(card);
       form.reset();
-      
+
       // Show success message
       alert('Thank you for your feedback!');
     }

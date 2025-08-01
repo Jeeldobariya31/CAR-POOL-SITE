@@ -15,7 +15,7 @@
      margin: 0px 10px;
   }
   .card {
-  background: rgba(78, 78, 78, 0.255);
+  background: rgba(192, 190, 190, 0.399);
   border-radius: 20px;
   padding: 25px;
   width: 260px;
@@ -29,6 +29,7 @@
   transform: translateY(-12px) scale(1.03);
   box-shadow: 0 16px 32px rgba(9, 0, 0, 0.3);
   background-color: #111;
+  scale: 1.05;
 }
 
 .card h3 {

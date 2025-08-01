@@ -74,37 +74,11 @@ body {
   line-height: 1.6;
 }
 
-.card {
-  background: rgba(78, 78, 78, 0.255);
-  border-radius: 20px;
-  padding: 25px;
-  width: 260px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.4s, box-shadow 0.4s;
-  animation: float 3s ease-in-out infinite;
-  box-shadow: 0 8px 20px rgba(5, 5, 5, 0.2);
-}
-
-.card:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 16px 32px rgba(9, 0, 0, 0.3);
-  background-color: #111;
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  color: #f4f3f3;
-}
-
-.card p {
-  color: #fffdfd;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
 
 .partb {
+  background: #100f0f8f;
   padding: 50px;
-  border: 2px solid black;
+  border: 2px solid rgb(224, 222, 222);
   margin-left: 135px;
   width: 1200px;
   border-radius: 0px 100px;
