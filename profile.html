@@ -6,6 +6,7 @@
   <title>PROFILE</title>
   <link rel="stylesheet" href="nevstyle.css" />
   <link rel="stylesheet" href="generalstyle.css" />
+  <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" href="btnstyle.css" />
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -22,7 +23,6 @@
 
     body, html {
       min-height: 100vh;
-      background: linear-gradient(120deg, #22223b 0%, #4a4e69 100%);
       font-family: 'Poppins', sans-serif;
       color: #fff;
       overflow-x: hidden;
@@ -39,10 +39,12 @@
     }
 
     .profile-main {
+
       max-width: 1100px;
       margin: 60px auto 40px auto;
-      padding: 32px 24px;
-      border-radius: 24px;
+      padding: 50px;
+      border: 3px solid black;
+       border-radius: 0px 100px;
       background: rgba(255,255,255,0.08);
       box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
       animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) both;
@@ -115,6 +117,8 @@
     }
     .info-card:hover {
       box-shadow: 0 6px 24px rgba(251,191,36,0.18);
+      background-color: #111;
+      scale: 1.05;
     }
     .info-card h3 {
       color: #fbbf24;
@@ -136,6 +140,10 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       font-size: 1.2rem;
       animation: fadeInUp 1.3s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    .stat-card:hover{
+      background-color: #111;
+      scale: 1.05;
     }
     .stat-card h2 {
       font-size: 2.5rem;
@@ -165,6 +173,8 @@
     }
     .ride-card:hover {
       box-shadow: 0 6px 24px rgba(251,191,36,0.18);
+      background-color: black;
+      scale: 1.2;
     }
     .ride-details {
       display: none;
@@ -260,87 +270,6 @@
       .info-card, .stat-card, .feedback-section, .platform-rating { padding: 12px 8px; }
       .feedback-form textarea { min-width: 120px; }
     }
-  </style>
-  <!-- Footer Styles -->
-  <style>
-  .main-footer {
-    background: #22223b;
-    color: #fff;
-    padding: 40px 0 0 0;
-    margin-top: 40px;
-    font-size: 1rem;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-  }
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 0 10vw 24px 10vw;
-    gap: 2rem;
-  }
-  .footer-brand h3 {
-    color: #fbbf24;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
-  }
-  .footer-brand p {
-    color: #e0e0e0;
-    font-size: 1rem;
-    margin: 0;
-  }
-  .footer-nav h4, .footer-social h4 {
-    color: #fbbf24;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-  }
-  .footer-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .footer-nav ul li {
-    margin-bottom: 6px;
-  }
-  .footer-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-nav ul li a:hover {
-    color: #fbbf24;
-  }
-  .footer-social a {
-    color: #111;
-    font-size: 1.4rem;
-    margin-right: 12px;
-    transition: color 0.2s;
-  }
-  .footer-social a:hover {
-    color: #fbbf24;
-  }
-  .footer-bottom {
-    text-align: center;
-    background: #1a1a2e;
-    color: #bdbdbd;
-    padding: 16px 0;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    font-size: 0.95rem;
-    margin-top: 12px;
-  }
-  @media (max-width: 800px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: center;
-      padding: 0 4vw 24px 4vw;
-    }
-    .main-footer {
-      padding: 32px 0 0 0;
-    }
-  }
   </style>
 </head>
 <body>

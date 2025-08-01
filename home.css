@@ -74,20 +74,6 @@ body {
   line-height: 1.6;
 }
 
-section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.steps,
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 30px;
-}
-
 .card {
   background: rgba(78, 78, 78, 0.255);
   border-radius: 20px;
@@ -102,7 +88,7 @@ section {
 .card:hover {
   transform: translateY(-12px) scale(1.03);
   box-shadow: 0 16px 32px rgba(9, 0, 0, 0.3);
-  background-color: rgba(187, 184, 184, 0.49);
+  background-color: #111;
 }
 
 .card h3 {
@@ -117,16 +103,11 @@ section {
 }
 
 .partb {
-  margin-top: 20px;
+  padding: 50px;
+  border: 2px solid black;
   margin-left: 135px;
   width: 1200px;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0),
-    rgba(11, 0, 0, 0.1)
-  );
-  border: 2px solid #ffffff;
-  border-radius: 30px 30px 30px 30px;
+  border-radius: 0px 100px;
   overflow: hidden;
   padding-top: 40px;
   box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -140,14 +121,7 @@ section {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
-footer {
-  margin-top: 30px;
-  text-align: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
-  font-size: 0.9rem;
-  color: #ffffff;
-}
+
 
 @keyframes fadeIn {
   from {
@@ -169,3 +143,29 @@ footer {
     transform: translateY(-8px);
   }
 }
+
+  /* Section overrides for glassy look */
+  .steps-section, .Choose-section, .stats-section, .testimonials-section, .faq-section, .safety-section, .contact-section {
+    background: rgba(255, 255, 255, 0.016);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(242, 233, 233, 0.936);
+    color: #fff;
+    margin: 10px;
+    padding: 30px;
+  }
+  .stats-section h2, .stats-section h3, .stats-section p,
+  .testimonials-section h2, .testimonials-section p, .testimonials-section span,
+  .faq-section h2, .faq-section h4, .faq-section p,
+  .safety-section h2, .safety-section li,
+  .contact-section h2, .contact-section p {
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  }
+  
+  
+  .button{
+    color: #100f0f;
+  }

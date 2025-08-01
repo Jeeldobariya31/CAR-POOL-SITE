@@ -8,10 +8,35 @@
   <link rel="stylesheet" href="nevstyle.css" />
   <link rel="stylesheet" href="generalstyle.css" />
   <link rel="stylesheet" href="btnstyle.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <style>
+    .ride-main {
+      max-width: 1100px;
+      margin: 60px auto 40px auto;
+      padding: 50px;
+      border: 3px solid black;
+      border-radius: 0px 100px;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      animation: fadeInUp 1s cubic-bezier(.23, 1.01, .32, 1) both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
     .ride-form {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(15px);
@@ -24,7 +49,8 @@
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     }
 
-    .ride-form input, .ride-form select {
+    .ride-form input,
+    .ride-form select {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -113,42 +139,42 @@
     </div>
     <div class="par3">
       <a class="button-wrapper" href="login.html">
-            <span class="dot dot-1"></span>
-            <span class="dot dot-2"></span>
-            <span class="dot dot-3"></span>
-            <span class="dot dot-4"></span>
-            <span class="dot dot-5"></span>
-            <span class="dot dot-6"></span>
-            <span class="dot dot-7"></span>
-            <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Login<span>
-          </a>
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+        <span class="dot dot-4"></span>
+        <span class="dot dot-5"></span>
+        <span class="dot dot-6"></span>
+        <span class="dot dot-7"></span>
+        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Login<span>
+      </a>
       <a class="button-wrapper" href="register.html">
-            <span class="dot dot-1"></span>
-            <span class="dot dot-2"></span>
-            <span class="dot dot-3"></span>
-            <span class="dot dot-4"></span>
-            <span class="dot dot-5"></span>
-            <span class="dot dot-6"></span>
-            <span class="dot dot-7"></span>
-            <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">register<span>
-          </a>
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+        <span class="dot dot-4"></span>
+        <span class="dot dot-5"></span>
+        <span class="dot dot-6"></span>
+        <span class="dot dot-7"></span>
+        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">register<span>
+      </a>
     </div>
   </div>
+  <div class="ride-main">
+    <div class="ride-form">
+      <h2>Find a Ride</h2>
+      <input type="text" placeholder="From City" id="fromCity">
+      <input type="text" placeholder="To City" id="toCity">
+      <input type="date" id="rideDate">
+      <a class="button-wrapper" onclick="searchRide()" style="margin-left: 100px;color: black;">
+        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Search ride<span>
+      </a>
+    </div>
 
-  <div class="ride-form">
-    <h2>Find a Ride</h2>
-    <input type="text" placeholder="From City" id="fromCity">
-    <input type="text" placeholder="To City" id="toCity">
-    <input type="date" id="rideDate">
-    <a class="button-wrapper" onclick="searchRide()" style="margin-left: 100px;color: black;">
-            <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Search ride<span>
-          </a>
+    <div class="search-results" id="results">
+      <!-- Ride results will appear here -->
+    </div>
   </div>
-
-  <div class="search-results" id="results">
-    <!-- Ride results will appear here -->
-  </div>
-
   <script>
     function searchRide() {
       const results = document.getElementById("results");
@@ -255,85 +281,99 @@
     </div>
   </footer>
   <style>
-  /* Footer Styles */
-  .main-footer {
-    background: #22223b;
-    color: #fff;
-    padding: 40px 0 0 0;
-    margin-top: 40px;
-    font-size: 1rem;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-  }
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 0 10vw 24px 10vw;
-    gap: 2rem;
-  }
-  .footer-brand h3 {
-    color: #fbbf24;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
-  }
-  .footer-brand p {
-    color: #e0e0e0;
-    font-size: 1rem;
-    margin: 0;
-  }
-  .footer-nav h4, .footer-social h4 {
-    color: #fbbf24;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-  }
-  .footer-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .footer-nav ul li {
-    margin-bottom: 6px;
-  }
-  .footer-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-nav ul li a:hover {
-    color: #fbbf24;
-  }
-  .footer-social a {
-    color: #111;
-    font-size: 1.4rem;
-    margin-right: 12px;
-    transition: color 0.2s;
-  }
-  .footer-social a:hover {
-    color: #fbbf24;
-  }
-  .footer-bottom {
-    text-align: center;
-    background: #1a1a2e;
-    color: #bdbdbd;
-    padding: 16px 0;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    font-size: 0.95rem;
-    margin-top: 12px;
-  }
-  @media (max-width: 800px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: center;
-      padding: 0 4vw 24px 4vw;
-    }
+    /* Footer Styles */
     .main-footer {
-      padding: 32px 0 0 0;
+      background: #22223b;
+      color: #fff;
+      padding: 40px 0 0 0;
+      margin-top: 40px;
+      font-size: 1rem;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
     }
-  }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 0 10vw 24px 10vw;
+      gap: 2rem;
+    }
+
+    .footer-brand h3 {
+      color: #fbbf24;
+      margin-bottom: 8px;
+      font-size: 1.5rem;
+    }
+
+    .footer-brand p {
+      color: #e0e0e0;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .footer-nav h4,
+    .footer-social h4 {
+      color: #fbbf24;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .footer-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-nav ul li {
+      margin-bottom: 6px;
+    }
+
+    .footer-nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-nav ul li a:hover {
+      color: #fbbf24;
+    }
+
+    .footer-social a {
+      color: #111;
+      font-size: 1.4rem;
+      margin-right: 12px;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover {
+      color: #fbbf24;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      background: #1a1a2e;
+      color: #bdbdbd;
+      padding: 16px 0;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+      font-size: 0.95rem;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 4vw 24px 4vw;
+      }
+
+      .main-footer {
+        padding: 32px 0 0 0;
+      }
+    }
   </style>
 </body>
 

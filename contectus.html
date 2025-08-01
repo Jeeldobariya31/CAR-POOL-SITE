@@ -7,6 +7,7 @@
   <title>ABOUT US</title>
   <link rel="stylesheet" href="nevstyle.css" />
   <link rel="stylesheet" href="generalstyle.css" />
+  <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" href="btnstyle.css">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -14,11 +15,13 @@
   <style>
     .about-container {
       position: relative;
-      top: 150px;
+      top: 20px;
       max-width: 1200px;
       margin: 0 auto 200px auto;
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
+     padding: 50px;
+      border: 3px solid black;
+       border-radius: 0px 100px;
       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
       padding: 40px;
       color: #fff;
@@ -54,10 +57,15 @@
       gap: 30px;
       margin: 40px 0;
     }
+    .info-card:hover{
+      background-color: #111;
+      scale: 1.05;
+    }
 
     .info-card {
       background: rgba(255, 255, 255, 0.15);
-      padding: 25px;
+      padding: 30px;
+      padding-left: 50px;
       border-radius: 15px;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 8px rgba(255,255,255,0.1);
@@ -84,7 +92,7 @@
     }
 
     .stats-section {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(182, 179, 179, 0.063);
       padding: 30px;
       border-radius: 15px;
       margin: 30px 0;
@@ -99,7 +107,7 @@
     }
 
     .stat-item {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(192, 190, 190, 0);
       padding: 20px;
       border-radius: 10px;
     }
@@ -164,14 +172,14 @@
     }
 
     .feedback-form select option {
-      background: #333;
+      background: #f8f6f600;
       color: #fff;
       padding: 8px;
     }
 
     .feedback-card {
       margin-top: 20px;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.008);
       padding: 25px;
       border-radius: 15px;
       backdrop-filter: blur(10px);
@@ -197,85 +205,7 @@
         grid-template-columns: 1fr;
       }
     }
-  /* Footer Styles */
-  .main-footer {
-    background: #22223b;
-    color: #fff;
-    padding: 40px 0 0 0;
-    margin-top: 40px;
-    font-size: 1rem;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
-  }
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 0 10vw 24px 10vw;
-    gap: 2rem;
-  }
-  .footer-brand h3 {
-    color: #fbbf24;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
-  }
-  .footer-brand p {
-    color: #e0e0e0;
-    font-size: 1rem;
-    margin: 0;
-  }
-  .footer-nav h4, .footer-social h4 {
-    color: #fbbf24;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-  }
-  .footer-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .footer-nav ul li {
-    margin-bottom: 6px;
-  }
-  .footer-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-nav ul li a:hover {
-    color: #fbbf24;
-  }
-  .footer-social a {
-    color: #111;
-    font-size: 1.4rem;
-    margin-right: 12px;
-    transition: color 0.2s;
-  }
-  .footer-social a:hover {
-    color: #fbbf24;
-  }
-  .footer-bottom {
-    text-align: center;
-    background: #1a1a2e;
-    color: #bdbdbd;
-    padding: 16px 0;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-    font-size: 0.95rem;
-    margin-top: 12px;
-  }
-  @media (max-width: 800px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: center;
-      padding: 0 4vw 24px 4vw;
-    }
-    .main-footer {
-      padding: 32px 0 0 0;
-    }
-  }
+  
   </style>
 </head>
 
@@ -392,19 +322,19 @@
     <div class="stats-section">
       <h2>Our Statistics</h2>
       <div class="stats-grid">
-        <div class="stat-item">
+        <div class="stat-item card">
           <h4>500+</h4>
           <p>Active Rides Shared</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item card">
           <h4>1000+</h4>
           <p>Happy Users</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item card">
           <h4>2000+</h4>
           <p>Kilometers Saved</p>
         </div>
-        <div class="stat-item">
+        <div class="stat-item card">
           <h4>100+</h4>
           <p>Drivers Registered</p>
         </div>
@@ -488,7 +418,7 @@
           <input type="email" placeholder="Your Email Address" required>
         </div>
         <div class="form-row">
-          <select name="rating" required>
+          <select name="rating" required style="color: #111">
             <option value="">Select Rating</option>
             <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
             <option value="4">⭐⭐⭐⭐ Very Good</option>
@@ -496,11 +426,11 @@
             <option value="2">⭐⭐ Fair</option>
             <option value="1">⭐ Poor</option>
           </select>
-          <select name="serviceType" required>
-            <option value="">Service Type</option>
-            <option value="driver">As a Driver</option>
-            <option value="passenger">As a Passenger</option>
-            <option value="both">Both</option>
+          <select name="serviceType" required style="color: #111;">
+            <option style="color: #111" value="">Service Type</option>
+            <option style="color: #111" value="driver">As a Driver</option>
+            <option style="color: #111 "value="passenger">As a Passenger</option>
+            <option style="color: #111 "value="both">Both</option>
           </select>
         </div>
         <textarea placeholder="Tell us about your experience with JD's Car Pooling..." rows="5" required></textarea>
