@@ -25,17 +25,18 @@ body {
   margin-top: 40px;
   margin-left: auto;
   margin-right: auto;
-  width: 90%;
-  max-width: 900px;
+  width: 100%;
+  max-width:1100px ;
   height: auto;
   text-align: center;
   padding: 32px 24px;
-  background-image: url("11291.jpg");
+  /* background-image: url("11291.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-  border: 3px solid black;
+  background-size: cover; */
+  border: 3px solid rgb(250, 248, 248);
   border-radius: 20px;
+  background: rgba(255, 255, 255, 0.016);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -55,8 +56,12 @@ body {
   position: relative;
   z-index: 1;
 }
-.parta h1, .parta h2, .parta p {
-  color: #111 !important;
+
+.parta:hover{
+  background-color:black;
+}
+ .parta h1,.parta h2, .parta p {
+  color: #ffffff ;
   text-shadow: none;
 }
 .parta h1 {
@@ -89,10 +94,12 @@ body {
 }
 
 .partb section h2 {
-  color: #edebeb;
+  color: #fbbf24;
   font-size: 2rem;
   margin-bottom: 30px;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+  border-bottom: 2px solid #fbbf24;
 }
 
 

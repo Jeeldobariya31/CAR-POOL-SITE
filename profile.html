@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +22,8 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    body, html {
+    body,
+    html {
       min-height: 100vh;
       font-family: 'Poppins', sans-serif;
       color: #fff;
@@ -44,15 +46,24 @@
       margin: 60px auto 40px auto;
       padding: 50px;
       border: 3px solid rgb(224, 222, 222);
-       border-radius: 0px 100px;
+      border-radius: 0px 100px;
       background: rgba(0, 0, 0, 0.571);
-      box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
-      animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) both;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+      animation: fadeInUp 1s cubic-bezier(.23, 1.01, .32, 1) both;
     }
+
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: none; }
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
+
     .profile-header {
       display: flex;
       align-items: center;
@@ -60,20 +71,25 @@
       margin-bottom: 32px;
       flex-wrap: wrap;
     }
+
     .profile-photo {
-      width: 140px; height: 140px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       border: 4px solid #fbbf24;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
       object-fit: cover;
-      transition: transform 0.4s cubic-bezier(.23,1.01,.32,1);
+      transition: transform 0.4s cubic-bezier(.23, 1.01, .32, 1);
     }
+
     .profile-photo:hover {
       transform: scale(1.07) rotate(-2deg);
     }
+
     .profile-info {
       flex: 1;
     }
+
     .profile-info h2 {
       font-size: 2.2rem;
       margin-bottom: 4px;
@@ -81,196 +97,267 @@
       align-items: center;
       gap: 10px;
     }
+
     .profile-info .verified {
       color: #4ade80;
       font-size: 1.2rem;
       vertical-align: middle;
     }
+
     .profile-info .username {
       color: #fbbf24;
       font-size: 1.1rem;
       margin-bottom: 8px;
     }
+
     .profile-actions {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
+
     .profile-actions .button-wrapper {
       margin: 0;
     }
+
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 24px;
       margin-bottom: 32px;
     }
+
     .info-card {
       background: rgba(192, 190, 190, 0.399);
       border-radius: 16px;
       padding: 20px 24px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
       transition: box-shadow 0.3s;
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) both;
+      animation: fadeInUp 1.2s cubic-bezier(.23, 1.01, .32, 1) both;
     }
+
     .info-card:hover {
       background-color: #111;
       scale: 1.05;
     }
+
     .info-card h3 {
       color: #fbbf24;
       margin-bottom: 10px;
       font-size: 1.2rem;
+      border-bottom: 2px solid #fbbf24;
     }
+
     .stats-cards {
       display: flex;
       gap: 24px;
       margin-bottom: 32px;
       flex-wrap: wrap;
     }
+
     .stat-card {
       flex: 1 1 180px;
       background: rgba(192, 190, 190, 0.399);
       border-radius: 16px;
       padding: 24px 0;
       text-align: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
       font-size: 1.2rem;
-      animation: fadeInUp 1.3s cubic-bezier(.23,1.01,.32,1) both;
+      animation: fadeInUp 1.3s cubic-bezier(.23, 1.01, .32, 1) both;
     }
-    .stat-card:hover{
+
+    .stat-card:hover {
       background-color: #111;
       scale: 1.05;
     }
+
     .stat-card h2 {
       font-size: 2.5rem;
       color: #fbbf24;
       margin-bottom: 6px;
       font-weight: 700;
       letter-spacing: 1px;
+      border-bottom: 2px solid #fbbf24;
     }
+
     .stat-card p {
       color: #fff;
       font-size: 1.1rem;
     }
+
     .rides-section {
       margin-bottom: 32px;
+      background: rgba(255, 255, 255, 0.10);
+      border-radius: 14px;
+      padding: 20px;
+
     }
+
+    .rides-section h3 {
+      color: #fbbf24;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fbbf24;
+    }
+
     .ride-card {
       background: rgba(192, 190, 190, 0.399);
       border-radius: 14px;
       margin-bottom: 18px;
       padding: 18px 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
       transition: box-shadow 0.3s;
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 1.4s cubic-bezier(.23,1.01,.32,1) both;
+      animation: fadeInUp 1.4s cubic-bezier(.23, 1.01, .32, 1) both;
     }
+
     .ride-card:hover {
-      
+
       background-color: black;
       scale: 1.1;
     }
+
     .ride-details {
       display: none;
       margin-top: 10px;
-      animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) both;
+      animation: fadeInUp 0.7s cubic-bezier(.23, 1.01, .32, 1) both;
     }
+
     .ride-card.active .ride-details {
       display: block;
     }
+
     .ride-summary {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
     }
+
     .ride-summary strong {
       color: #fbbf24;
     }
+
     .rating-stars span {
       font-size: 22px;
       color: #ccc;
       cursor: pointer;
       transition: color 0.2s;
     }
+
     .rating-stars span.active {
       color: gold;
     }
+
     .feedback-section {
       background: rgba(192, 190, 190, 0.399);
       border-radius: 16px;
       padding: 24px 20px;
       margin-bottom: 32px;
-      animation: fadeInUp 1.5s cubic-bezier(.23,1.01,.32,1) both;
+      animation: fadeInUp 1.5s cubic-bezier(.23, 1.01, .32, 1) both;
     }
+
     .feedback-section h3 {
       color: #fbbf24;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fbbf24;
     }
+
     .feedback-form {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
       margin-bottom: 12px;
     }
-    .feedback-form input, .feedback-form textarea {
+
+    .feedback-form input,
+    .feedback-form textarea {
       border-radius: 8px;
       border: none;
       padding: 10px;
       font-size: 1rem;
       margin-right: 8px;
-      background: rgba(255,255,255,0.18);
+      background: rgba(255, 255, 255, 0.18);
       color: #000000;
       min-width: 180px;
     }
+
     .feedback-form textarea {
       flex: 1 1 100%;
       min-width: 300px;
       margin-top: 8px;
     }
-    .feedback-form input::placeholder, .feedback-form textarea::placeholder {
+
+    .feedback-form input::placeholder,
+    .feedback-form textarea::placeholder {
       color: #070000;
     }
+
     .feedback-list {
       margin-top: 10px;
     }
+
     .feedback-item {
-      background: rgba(255,255,255,0.13);
+      background: rgba(255, 255, 255, 0.13);
       border-radius: 10px;
       padding: 10px 14px;
       margin-bottom: 8px;
       color: #22223b;
       font-size: 1rem;
-      animation: fadeInUp 0.7s cubic-bezier(.23,1.01,.32,1) both;
+      animation: fadeInUp 0.7s cubic-bezier(.23, 1.01, .32, 1) both;
     }
+
     .platform-rating {
-      background: rgba(255,255,255,0.10);
+      background: rgba(255, 255, 255, 0.10);
       border-radius: 16px;
       padding: 24px 20px;
       margin-bottom: 32px;
-      animation: fadeInUp 1.6s cubic-bezier(.23,1.01,.32,1) both;
+      animation: fadeInUp 1.6s cubic-bezier(.23, 1.01, .32, 1) both;
     }
+
     .platform-rating h3 {
       color: #fbbf24;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fbbf24;
     }
+
     @media (max-width: 900px) {
-      .info-grid { grid-template-columns: 1fr; }
-      .stats-cards { flex-direction: column; }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-cards {
+        flex-direction: column;
+      }
     }
+
     @media (max-width: 600px) {
-      .profile-header { flex-direction: column; gap: 18px; }
-      .profile-main { padding: 12px 2vw; }
-      .info-card, .stat-card, .feedback-section, .platform-rating { padding: 12px 8px; }
-      .feedback-form textarea { min-width: 120px; }
+      .profile-header {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .profile-main {
+        padding: 12px 2vw;
+      }
+
+      .info-card,
+      .stat-card,
+      .feedback-section,
+      .platform-rating {
+        padding: 12px 8px;
+      }
+
+      .feedback-form textarea {
+        min-width: 120px;
+      }
     }
   </style>
 </head>
+
 <body>
   <video autoplay muted loop id="bgVideo">
     <source src="152184-802335622_small.mp4" type="video/mp4" />
@@ -279,15 +366,23 @@
 
   <!-- Navbar -->
   <div class="nev">
-    <div class="par1"><h1>JD'S CAR POOLING</h1></div>
+    <div class="par1">
+      <div><img id="logo" src="rideshaadi_micro_80x80.png" alt=""></div>
+      <h1>RideShaadi.com</h1>
+    </div>
     <div class="par2">
       <div class="navigation">
         <ul>
-          <li class="list"><a href="home.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span class="text">Home</span></a></li>
-          <li class="list active"><a href="profile.html"><span class="icon"><ion-icon name="person-outline"></ion-icon></span><span class="text">Profile</span></a></li>
-          <li class="list"><a href="offerride.html"><span class="icon"><i class="fa-solid fa-briefcase"></i></span><span class="text">Offer</span></a></li>
-          <li class="list"><a href="searchride.html"><span class="icon"><i class="fa-solid fa-magnifying-glass-location"></i></span><span class="text">Search</span></a></li>
-          <li class="list"><a href="contectus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span class="text">About</span></a></li>
+          <li class="list"><a href="home.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span
+                class="text">Home</span></a></li>
+          <li class="list active"><a href="profile.html"><span class="icon"><ion-icon
+                  name="person-outline"></ion-icon></span><span class="text">Profile</span></a></li>
+          <li class="list"><a href="offerride.html"><span class="icon"><i class="fa-solid fa-briefcase"></i></span><span
+                class="text">Offer</span></a></li>
+          <li class="list"><a href="searchride.html"><span class="icon"><i
+                  class="fa-solid fa-magnifying-glass-location"></i></span><span class="text">Search</span></a></li>
+          <li class="list"><a href="contectus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span
+                class="text">About</span></a></li>
           <div class="indicator"></div>
         </ul>
       </div>
@@ -323,7 +418,7 @@
     </div>
     <div class="info-grid">
       <div class="info-card">
-        <h3>Personal Information</h3>
+        <h3>➢ Personal Information</h3>
         <p><strong>Email:</strong> jeel@example.com</p>
         <p><strong>Birthdate:</strong> 15 Jan 2003</p>
         <p><strong>Mobile:</strong> +91-9876543210</p>
@@ -332,7 +427,7 @@
         <p><strong>Aadhaar No.:</strong> XXXX-XXXX-1234</p>
       </div>
       <div class="info-card">
-        <h3>Driver Information</h3>
+        <h3>➢ Driver Information</h3>
         <p><strong>License No.:</strong> GJ-21-2023-DR1234</p>
         <p><strong>Vehicle:</strong> Maruti Swift (White)</p>
         <p><strong>Experience:</strong> 3 years</p>
@@ -354,7 +449,7 @@
       </div>
     </div>
     <div class="rides-section">
-      <h3 style="color:#fbbf24; margin-bottom:10px;">Ride History</h3>
+      <h3>➢ Ride History</h3>
       <div class="ride-card" onclick="toggleRideDetails(this)">
         <div class="ride-summary">
           <div><strong>Surat</strong> → Baroda</div>
@@ -401,7 +496,8 @@
         </div>
         <div class="ride-details">
           <p><strong>Distance:</strong> 260 km</p>
-          <p><strong>Taxi No:</strong> GJ-05-ZZ-4455 | <strong>Color:</strong> Blue | <strong>Fuel:</strong> Electric</p>
+          <p><strong>Taxi No:</strong> GJ-05-ZZ-4455 | <strong>Color:</strong> Blue | <strong>Fuel:</strong> Electric
+          </p>
           <p><strong>Payment Type:</strong> Online (Card)</p>
           <div class="rating-stars" data-ride-id="3">
             <span data-value="1">&#9733;</span>
@@ -414,7 +510,7 @@
       </div>
     </div>
     <div class="feedback-section">
-      <h3>Give Feedback to Us</h3>
+      <h3>➢ Give Feedback to Us</h3>
       <form class="feedback-form" onsubmit="addFeedback(event)">
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
@@ -427,13 +523,14 @@
           <span class="dot dot-5"></span>
           <span class="dot dot-6"></span>
           <span class="dot dot-7"></span>
-          <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Submit Feedback</span>
+          <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Submit
+            Feedback</span>
         </a>
       </form>
       <div class="feedback-list" id="feedbackList"></div>
     </div>
     <div class="platform-rating">
-      <h3>Rate Our Carpooling Service</h3>
+      <h3>➢ Rate Our Carpooling Service</h3>
       <div class="rating-stars" id="platformRating">
         <span data-value="1">&#9733;</span>
         <span data-value="2">&#9733;</span>
@@ -446,7 +543,7 @@
   <footer class="main-footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>JD'S CAR POOLING</h3>
+        <h3>RideShaadi.com</h3>
         <p>Connecting riders and drivers for a greener tomorrow.</p>
       </div>
       <div class="footer-nav">
@@ -494,7 +591,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2025 JD'S CAR POOLING. All rights reserved.
+      &copy; 2025 RideShaadi.com. All rights reserved.
     </div>
   </footer>
   <script>
@@ -564,4 +661,5 @@
     }
   </script>
 </body>
+
 </html>
