@@ -5,222 +5,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ABOUT US</title>
-  <link rel="stylesheet" href="nevstyle.css" />
-  <link rel="stylesheet" href="generalstyle.css" />
-  <link rel="stylesheet" href="footer.css">
-  <link rel="stylesheet" href="btnstyle.css">
+  <link rel="stylesheet" href="../style/nevstyle.css" />
+  <link rel="stylesheet" href="../style/generalstyle.css" />
+  <link rel="stylesheet" href="../style/footer.css">
+  <link rel="stylesheet" href="../style/btnstyle.css">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    .about-container {
-      position: relative;
-      top: 20px;
-      max-width: 1200px;
-      margin: 0 auto 200px auto;
-      background: rgba(0, 0, 0, 0.571);
-      padding: 50px;
-      border: 3px solid rgb(224, 222, 222);
-      border-radius: 0px 100px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      padding: 40px;
-      color: #fff;
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .about-container h2 {
-      font-size: 2.5rem;
-      color: #fbbf24;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #fbbf24;
-      display: inline-block;
-    }
-
-    .about-container p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-    }
-
-    .info-card:hover {
-      background-color: #111;
-      scale: 1.05;
-    }
-
-    .info-card {
-      background: rgba(192, 190, 190, 0.399);
-      padding: 30px;
+ <link rel="stylesheet" href="../style/contect.css">
+ <style>
+  .card {
       padding-left: 50px;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-      animation: fadeInUp 0.6s ease;
-    }
-
-    .info-card h3 {
-      color: #fbbf24;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-
-    .contact-info {
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-      gap: 10px;
-    }
-
-    .contact-info i {
-      color: #fbbf24;
-      font-size: 1.2rem;
-      width: 20px;
-    }
-
-    .stats-section {
-
-      padding: 30px;
-      border-radius: 15px;
-      margin: 10px 0;
-      text-align: center;
-
-    }
-
-    .stats-grid {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .stat-item {
-      background: rgba(192, 190, 190, 0.399);
-      padding: 20px;
-      border-radius: 10px;
-      margin: 20px;
-    }
-
-    .stat-item h4 {
-      color: #fbbf24;
-      font-size: 2rem;
-      margin-bottom: 5px;
-    }
-
-    .feedback-section {
-      margin-top: 40px;
-    }
-
-    .feedback-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      color: #fff;
-      background: rgba(192, 190, 190, 0.399);
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .feedback-form input,
-    .feedback-form textarea,
-    .feedback-form select,
-    .feedback-form button {
-      padding: 12px;
-      border-radius: 10px;
-      border: none;
-      color: #fff;
-      outline: none;
-      font-size: 1rem;
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .feedback-form input::placeholder,
-    .feedback-form textarea::placeholder {
-      color: #333;
-      font-weight: 500;
-    }
-
-    .feedback-form select {
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 16px;
-      padding-right: 40px;
-    }
-
-    .feedback-form select option {
-      background: #f8f6f600;
-      color: #fff;
-      padding: 8px;
-    }
-
-    .feedback-card {
-      margin-top: 20px;
-      background: rgba(255, 255, 255, 0.008);
-      padding: 25px;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      color: #fff;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
-      animation: fadeInUp 0.6s ease;
-      border-left: 4px solid #fbbf24;
-    }
-
-    .feedback-card h4 {
-      color: #fbbf24;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-
-    .feedback-card p {
-      margin: 8px 0;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    } 
+ </style>
 </head>
 
 <body>
   <video autoplay muted loop id="bgVideo">
-    <source src="152184-802335622_small.mp4" type="video/mp4" />
+    <source src="../other/152184-802335622_small.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
   <div class="nev">
     <div class="par1">
-      <div><img id="logo" src="rideshaadi_micro_80x80.png" alt=""></div>
+      <div><img id="logo" src="../other/rideshaadi_micro_80x80.png" alt=""></div>
       <h1>RideShaadi.com</h1>
     </div>
     <div class="par2">
@@ -298,21 +107,21 @@
     </p>
 
     <div class="info-grid">
-      <div class="info-card">
+      <div class="card">
         <h3>➢ Our Mission</h3>
         <p>
           To provide a convenient, affordable, and eco-friendly carpooling experience.
           We strive to make commuting easier for everyone by connecting drivers and passengers.
         </p>
       </div>
-      <div class="info-card">
+      <div class="card">
         <h3>➢ Our Vision</h3>
         <p>
           To become the leading carpooling platform in the region,
           transforming daily commutes into sustainable and social experiences.
         </p>
       </div>
-      <div class="info-card">
+      <div class="card">
         <h3>➢ Our Values</h3>
         <ul>
           <li>Safety and Trust</li>
@@ -347,7 +156,7 @@
     </div>
 
     <div class="info-grid">
-      <div class="info-card">
+      <div class="card">
         <h3>➢ Contact Information</h3>
         <div class="contact-info">
           <i class="fas fa-phone"></i>
@@ -366,7 +175,7 @@
           <span>24/7 Customer Support</span>
         </div>
       </div>
-      <div class="info-card">
+      <div class="card">
         <h3>➢ Business Hours</h3>
         <div class="contact-info">
           <i class="fas fa-calendar"></i>
@@ -381,7 +190,7 @@
           <span>Sunday: 10:00 AM - 4:00 PM</span>
         </div>
       </div>
-      <div class="info-card">
+      <div class="card">
         <h3>➢ Safety Features</h3>
         <ul>
           <li>Verified User Profiles</li>
@@ -394,7 +203,7 @@
     </div>
 
     <div class="info-grid">
-      <div class="info-card">
+      <div class="card">
         <h3>➢ How It Works</h3>
         <ol>
           <li><strong>Sign Up:</strong> Create your profile with verification</li>
@@ -403,7 +212,7 @@
           <li><strong>Travel:</strong> Enjoy your journey and rate your experience</li>
         </ol>
       </div>
-      <div class="info-card">
+      <div class="card">
         <h3>➢ Benefits</h3>
         <ul>
           <li>Save up to 60% on travel costs</li>
@@ -495,7 +304,7 @@
       submitFeedback();
     }
   </script>
-  <script src="./nevscript.js"></script>
+  <script src="../js/nevscript.js"></script>
   <footer class="main-footer">
     <div class="footer-content">
       <div class="footer-brand">

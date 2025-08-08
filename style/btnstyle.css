@@ -17,6 +17,19 @@
 
 .button-wrapper {
   position: relative;
+  animation: fadeInbtn 1s 2s ease-in-out ;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeInbtn {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .button {
@@ -32,7 +45,9 @@
   appearance: none;
   display: inline-block;
 }
-
+.button:hover{
+   scale: 1.1;
+}
 /* Styling for the button's glowing effect on hover */
 .button::before {
   content: "";
@@ -65,6 +80,7 @@
 .button-wrapper:hover {
   .button::before, .button::after {
     opacity: 1;
+   
   }
   
   .dot {
@@ -178,10 +194,10 @@
     opacity: 1;
   }
   25% {
-    opacity: 0.4;
+    opacity: 0.5;
   }
   50% {
-    opacity: 0.8;
+    opacity: 1;
   }
   75% {
     opacity: 0.5;

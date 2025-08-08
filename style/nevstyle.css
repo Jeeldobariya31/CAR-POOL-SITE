@@ -24,6 +24,8 @@
   border-radius: 10px;
   margin: 20px auto;
   padding: 0 20px; /* Add padding for spacing */
+   animation: fadeIn 1.2s ease-in-out;
+  
 }
 
 .par1 {
@@ -86,14 +88,65 @@
   color: rgba(235, 240, 236, 0.5);
 }
 
-.navigation ul li:hover a .icon,
-.navigation ul li.active a .icon {
+.navigation ul li:hover a .icon
+ {
   color: #fbbf24;
   margin-bottom: 20px;
+  animation: labuk 0.7s ease-in-out infinite;
 }
-
+@keyframes labuk{
+ 0%{
+  scale: 1.0;
+  rotate: 0deg;
+  
+ }
+ 10%{
+  scale: 1.05;
+  rotate: 45deg;
+ }
+ 20%{
+  scale: 1.1;
+  rotate: 0deg;
+ }
+ 30%{
+  scale: 1.15;
+  rotate: 0deg;
+ }
+ 40%{
+  scale: 1.2;
+  rotate: 0deg;
+ }
+ 50%{
+  scale: 1.25;
+  rotate: 0deg;
+ }
+ 60%{
+  scale: 1.20;
+  rotate: 0deg;
+ }
+ 70%{
+  scale: 1.15;
+  rotate: 0deg;
+ }
+ 80%{
+  scale: 1.1;
+  rotate: 0deg;
+ }
+ 90%{
+  scale: 1.05;
+  rotate:45deg;
+ }
+ 100%{
+  scale: 1.0;
+  rotate: 0deg;
+ }
+}
 .navigation ul li.active a .icon {
   transform: translateY(-8px);
+}
+.navigation ul li.active a .icon{
+color: #fbbf24;
+  margin-bottom: 20px;
 }
 
 .navigation ul li a .text {

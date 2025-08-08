@@ -15,8 +15,8 @@ body {
   min-height: 100vh;
   width: 100%;
   padding: 0 10px;
+ animation: fadeInUp 2s cubic-bezier(.23, 1.01, .32, 1) both;
 }
-
 /* body::before {
   content: "";
   position: absolute;
