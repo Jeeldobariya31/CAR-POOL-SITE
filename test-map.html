@@ -1,0 +1,132 @@
+ <div class="form-box">
+        <h2>Taxi Details</h2>
+        <form id="taxiForm" onsubmit="submitTaxi(event)">
+          <div class="form-section">
+            <h3><i class="fa-solid fa-user"></i> Driver Information</h3>
+            <label>Your Name <i class="fa fa-info-circle" title="Enter your full name."></i></label>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <label>Driver Phone Number</label>
+            <input type="tel" id="phone" placeholder="Driver Phone Number" required>
+            <label>Aadhaar Number</label>
+            <input type="text" id="aadhar" placeholder="Aadhaar Number" pattern="[0-9]{12}" title="12-digit Aadhaar number" required>
+            <label>License Number</label>
+            <input type="text" id="license" placeholder="License Number" required>
+            <label>Driver Photo</label>
+            <input type="file" id="driverPhoto" accept="image/*" required>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-car"></i> Vehicle Information</h3>
+            <label>Car Number <i class="fa fa-info-circle" title="e.g. GJ-01-AA-1234"></i></label>
+            <input type="text" id="carNumber" placeholder="Car Number" required>
+            <label>Car Type <i class="fa fa-info-circle" title="e.g. Sedan, Hatchback"></i></label>
+            <input type="text" id="carType" placeholder="Car Type" required>
+            <label>Car Color</label>
+            <input type="text" id="carColor" placeholder="Car Color" required>
+            <label>No. of Seats</label>
+            <select name="seat" required style="color: #fdfcfc">
+              <option value="">No of Seat</option>
+              <option value="7">7</option>
+              <option value="6">6</option>
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+            <label>Fuel Type</label>
+            <select name="fuel" required style="color: #f4f3f3">
+              <option value="">Fuel Type</option>
+              <option value="CNG">CNG</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+            <label>Taxi Photo</label>
+            <input type="file" id="taxiPhoto" accept="image/*" required>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-map-marker-alt"></i> Location & Route</h3>
+            <div class="location-inputs">
+              <div class="input-group">
+                <label>From Location</label>
+                <input type="text" id="fromLocation" placeholder="Starting Point" required>
+                <button type="button" onclick="setCurrentLocationAsFrom()" class="location-btn" title="Use Current Location">
+                  <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+              </div>
+              <div class="input-group">
+                <label>To Location</label>
+                <input type="text" id="toLocation" placeholder="Destination" required>
+                <button type="button" onclick="enableMapSelection()" class="map-select-btn" title="Select from Map">
+                  <i class="fa-solid fa-map-marker-alt"></i>
+                </button>
+              </div>
+            </div>
+           
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-money-bill"></i> Pricing & Schedule</h3>
+            <label>Price per Seat (₹)</label>
+            <input type="number" id="price" placeholder="Price per Seat" min="1" required>
+            <label>Departure Date</label>
+            <input type="date" id="departureDate" required>
+            <label>Departure Time</label>
+            <input type="time" id="departureTime" required>
+            <label>Available Seats</label>
+            <input type="number" id="availableSeats" placeholder="Available Seats" min="1" required>
+            <label>Service Rating (1-5)</label>
+            <select name="rating" required style="color: #ffffff">
+              <option value="">Select Rating</option>
+              <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+              <option value="4">⭐⭐⭐⭐ Very Good</option>
+              <option value="3">⭐⭐⭐ Good</option>
+              <option value="2">⭐⭐ Fair</option>
+              <option value="1">⭐ Poor</option>
+            </select>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-cog"></i> Additional Features</h3>
+            <div class="features-grid">
+              <label class="checkbox-label">
+                <input type="checkbox" id="ac" value="AC">
+                <span>Air Conditioning</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="music" value="Music">
+                <span>Music System</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="wifi" value="WiFi">
+                <span>WiFi Available</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="luggage" value="Luggage Space">
+                <span>Luggage Space</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="petFriendly" value="Pet Friendly">
+                <span>Pet Friendly</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="wheelchair" value="Wheelchair Accessible">
+                <span>Wheelchair Accessible</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <a class="button-wrapper" onclick="hideForm()" style="margin-right: 8px;">
+              <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Cancel</span>
+            </a>
+            <a class="button-wrapper" onclick="submitTaxi(event)">
+              <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Submit</span>
+            </a>
+          </div>
+          <div class="error" id="formError"></div>
+        </form>
+      </div>

@@ -9,14 +9,26 @@
   <link rel="stylesheet" href="../style/generalstyle.css" />
   <link rel="stylesheet" href="../style/footer.css">
   <link rel="stylesheet" href="../style/btnstyle.css" />
+  <link rel="stylesheet" href="../style/common-popup.css">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
-<link rel="stylesheet" href="../style/profile.css">
+  <link rel="stylesheet" href="../style/profile.css">
+
 </head>
 
 <body>
+  <!-- Floating Icons Background -->
+  <div class="floating-icons">
+    <div class="floating-icon"><i class="fas fa-car"></i></div>
+    <div class="floating-icon"><i class="fas fa-map-marker-alt"></i></div>
+    <div class="floating-icon"><i class="fas fa-users"></i></div>
+    <div class="floating-icon"><i class="fas fa-star"></i></div>
+    <div class="floating-icon"><i class="fas fa-leaf"></i></div>
+    <div class="floating-icon"><i class="fas fa-shield-alt"></i></div>
+  </div>
+
   <video autoplay muted loop id="bgVideo">
     <source src="../other/152184-802335622_small.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
@@ -57,9 +69,29 @@
     <div class="profile-header">
       <img src="https://i.pravatar.cc/150?img=15" alt="User Photo" class="profile-photo" />
       <div class="profile-info">
-        <h2>Jeel Dobariya <span class="verified" title="Verified"><i class="fa-solid fa-circle-check"></i></span></h2>
+        <h2>Jeel Dobariya <span class="verified" title="Verified"><i class="fas fa-check-circle"></i></span></h2>
         <div class="username">@jeeldobariya</div>
         <div>Member since <strong>2023</strong></div>
+        
+        <!-- Achievement Badges -->
+        <div class="achievement-badges">
+          <div class="badge verifieds" onclick="showBadgeInfo('verified')">
+            <i class="fas fa-check-circle"></i>
+            <span style="padding: 10px;">Verified</span>
+          </div>
+          <div class="badge premium" onclick="showBadgeInfo('premium')">
+            <i class="fas fa-crown"></i>
+            <span>Premium</span>
+          </div>
+          <div class="badge safety" onclick="showBadgeInfo('safety')">
+            <i class="fas fa-shield-alt"></i>
+            <span>Safety</span>
+          </div>
+          <div class="badge eco" onclick="showBadgeInfo('eco')">
+            <i class="fas fa-leaf"></i>
+            <span>Eco-Friendly</span>
+          </div>
+        </div>
       </div>
       <div class="profile-actions">
         <a class="button-wrapper" href="editprof.html">
@@ -74,9 +106,51 @@
         </a>
       </div>
     </div>
+
+    <!-- Level System -->
+    <div class="level-system">
+      <div class="level-circle">
+        <div class="level-text">Lv.5</div>
+      </div>
+      <h3>Ride Master</h3>
+      <p>You're in the top 10% of riders!</p>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="progress-section">
+      <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+      <div class="progress-item">
+        <div class="progress-label">
+          <span>Ride Completion</span>
+          <span>85%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 85%"></div>
+        </div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label">
+          <span>Safety Score</span>
+          <span>92%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 92%"></div>
+        </div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label">
+          <span>Community Rating</span>
+          <span>4.6/5</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 92%"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="info-grid">
       <div class="info-card">
-        <h3>➢ Personal Information</h3>
+        <h3><i class="fas fa-user"></i> Personal Information</h3>
         <p><strong>Email:</strong> jeel@example.com</p>
         <p><strong>Birthdate:</strong> 15 Jan 2003</p>
         <p><strong>Mobile:</strong> +91-9876543210</p>
@@ -85,11 +159,11 @@
         <p><strong>Aadhaar No.:</strong> XXXX-XXXX-1234</p>
       </div>
       <div class="info-card">
-        <h3>➢ Driver Information</h3>
+        <h3><i class="fas fa-id-card"></i> Driver Information</h3>
         <p><strong>License No.:</strong> GJ-21-2023-DR1234</p>
         <p><strong>Vehicle:</strong> Maruti Swift (White)</p>
         <p><strong>Experience:</strong> 3 years</p>
-        <p><strong>Verified:</strong> <span style="color:#4ade80">Yes</span></p>
+        <p><strong>Verified:</strong> <span class="verified-status">Verified</span></p>
       </div>
     </div>
     <div class="stats-cards">
@@ -107,12 +181,13 @@
       </div>
     </div>
     <div class="rides-section">
-      <h3>➢ Ride History</h3>
+      <h3><i class="fas fa-route"></i> Ride History</h3>
       <div class="ride-card" onclick="toggleRideDetails(this)">
+        <div class="ride-status status-completed">Completed</div>
         <div class="ride-summary">
           <div><strong>Surat</strong> → Baroda</div>
           <div>25 July 2025, 10:00 AM</div>
-          <div>₹450</div>
+          <div class="ride-price">₹450</div>
         </div>
         <div class="ride-details">
           <p><strong>Distance:</strong> 140 km</p>
@@ -128,10 +203,11 @@
         </div>
       </div>
       <div class="ride-card" onclick="toggleRideDetails(this)">
+        <div class="ride-status status-completed">Completed</div>
         <div class="ride-summary">
           <div><strong>Rajkot</strong> → Ahmedabad</div>
           <div>20 July 2025, 3:30 PM</div>
-          <div>₹700</div>
+          <div class="ride-price">₹700</div>
         </div>
         <div class="ride-details">
           <p><strong>Distance:</strong> 220 km</p>
@@ -147,10 +223,11 @@
         </div>
       </div>
       <div class="ride-card" onclick="toggleRideDetails(this)">
+        <div class="ride-status status-upcoming">Upcoming</div>
         <div class="ride-summary">
           <div><strong>Bhavnagar</strong> → Vadodara</div>
           <div>10 July 2025, 9:00 AM</div>
-          <div>₹900</div>
+          <div class="ride-price">₹900</div>
         </div>
         <div class="ride-details">
           <p><strong>Distance:</strong> 260 km</p>
@@ -168,7 +245,7 @@
       </div>
     </div>
     <div class="feedback-section">
-      <h3>➢ Give Feedback to Us</h3>
+      <h3><i class="fas fa-comment-dots"></i> Give Feedback to Us</h3>
       <form class="feedback-form" onsubmit="addFeedback(event)">
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
@@ -188,7 +265,7 @@
       <div class="feedback-list" id="feedbackList"></div>
     </div>
     <div class="platform-rating">
-      <h3>➢ Rate Our Carpooling Service</h3>
+      <h3><i class="fas fa-star"></i> Rate Our Carpooling Service</h3>
       <div class="rating-stars" id="platformRating">
         <span data-value="1">&#9733;</span>
         <span data-value="2">&#9733;</span>
@@ -253,6 +330,50 @@
     </div>
   </footer>
   <script>
+    // Notification functions
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="${getNotificationIcon(type)}"></i>
+          <span>${message}</span>
+          <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `;
+      document.body.appendChild(notification);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    function getNotificationIcon(type) {
+      switch (type) {
+        case 'success': return 'fas fa-check-circle';
+        case 'error': return 'fas fa-exclamation-circle';
+        case 'warning': return 'fas fa-exclamation-triangle';
+        case 'info': return 'fas fa-info-circle';
+        default: return 'fas fa-info-circle';
+      }
+    }
+
+    // Badge info function
+    function showBadgeInfo(badgeType) {
+      const badgeInfo = {
+        verified: 'Your account has been verified with government ID',
+        premium: 'Premium member with exclusive benefits',
+        safety: 'Excellent safety record with no incidents',
+        eco: 'Contributed to reducing carbon footprint'
+      };
+      showNotification(badgeInfo[badgeType], 'info');
+    }
+
     // Animated counters
     function animateCounter(id, end, duration = 1200) {
       const el = document.getElementById(id);
@@ -287,9 +408,9 @@
           });
           const rideId = this.dataset.rideId || "platform";
           if (rideId === "platform") {
-            alert(`Rated ${value} star(s) for platform`);
+            showNotification(`Rated ${value} star(s) for platform`, 'success');
           } else {
-            alert(`Rated ${value} star(s) for ride ${rideId}`);
+            showNotification(`Rated ${value} star(s) for ride ${rideId}`, 'success');
           }
         }
       });
@@ -302,7 +423,7 @@
       const email = form.querySelector('input[type="email"]').value;
       const message = form.querySelector('textarea').value;
       if (!name || !email || !message) {
-        alert('Please fill in all fields!');
+        showNotification('Please fill in all fields!', 'error');
         return;
       }
       const feedbackList = document.getElementById('feedbackList');
@@ -311,7 +432,7 @@
       item.innerHTML = `<strong>${name}</strong> (${email}): <br>${message}`;
       feedbackList.prepend(item);
       form.reset();
-      alert('Thank you for your feedback!');
+      showNotification('Thank you for your feedback!', 'success');
     }
     function addFeedback(e) {
       e.preventDefault();

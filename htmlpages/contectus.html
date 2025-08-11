@@ -4,11 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ABOUT US</title>
+  <title>Contact Us - RideShaadi.com</title>
   <link rel="stylesheet" href="../style/nevstyle.css" />
   <link rel="stylesheet" href="../style/generalstyle.css" />
   <link rel="stylesheet" href="../style/footer.css">
   <link rel="stylesheet" href="../style/btnstyle.css">
+  <link rel="stylesheet" href="../style/common-popup.css">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -266,6 +267,39 @@
   </div>
 
   <script>
+    // Notification functions
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="${getNotificationIcon(type)}"></i>
+          <span>${message}</span>
+          <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `;
+      document.body.appendChild(notification);
+      
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    function getNotificationIcon(type) {
+      switch (type) {
+        case 'success': return 'fas fa-check-circle';
+        case 'error': return 'fas fa-exclamation-circle';
+        case 'warning': return 'fas fa-exclamation-triangle';
+        case 'info': return 'fas fa-info-circle';
+        default: return 'fas fa-info-circle';
+      }
+    }
+
     function submitFeedback() {
       const form = document.querySelector('.feedback-form');
       const name = form.querySelector('input[type="text"]').value;
@@ -276,7 +310,7 @@
 
       // Validate form
       if (!name || !email || !rating.value || !serviceType.value || !message) {
-        alert('Please fill in all fields!');
+        showNotification('Please fill in all fields!', 'error');
         return;
       }
 
@@ -296,7 +330,7 @@
       form.reset();
 
       // Show success message
-      alert('Thank you for your feedback!');
+      showNotification('Thank you for your feedback!', 'success');
     }
 
     function addFeedback(event) {

@@ -15,6 +15,45 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="../style/search.css">
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places&callback=initMap" async defer></script>
+  <!-- Fallback for when Maps API fails -->
+  <script>
+    // Check if Google Maps API loaded successfully
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        if (typeof google === 'undefined' || !google.maps) {
+          console.warn('Google Maps API failed to load. Using fallback functionality.');
+          showFallbackMap();
+        }
+      }, 3000);
+    });
+    
+    function showFallbackMap() {
+      const mapElement = document.getElementById("map");
+      if (mapElement) {
+        mapElement.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 20px; border-radius: 8px;">
+            <i class="fa-solid fa-map" style="font-size: 48px; margin-bottom: 15px; color: #fbbf24;"></i>
+            <h3 style="margin-bottom: 10px;">Interactive Map</h3>
+            <p style="margin-bottom: 15px; font-size: 14px;">Map loading failed. You can still search for rides manually.</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
+              <button onclick="setCurrentLocationAsFrom()" style="padding: 8px 16px; background: #fbbf24; color: #000; border: none; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                <i class="fa-solid fa-location-crosshairs"></i> Use My Location
+              </button>
+              <button onclick="showLocationHelp()" style="padding: 8px 16px; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; cursor: pointer; font-size: 12px;">
+                <i class="fa-solid fa-question-circle"></i> Help
+              </button>
+            </div>
+          </div>
+        `;
+      }
+    }
+    
+    function showLocationHelp() {
+      showNotification('Enter your starting point and destination manually in the search fields above. You can also use "Use My Location" to set your current location.', 'info');
+    }
+  </script>
 </head>
 
 <body>
@@ -87,72 +126,368 @@
       </a>
     </div>
   </div>
+
   <div class="ride-main">
-    <div class="ride-form">
-      <h2>➢ Find a Ride</h2>
-      <input type="text" placeholder="From City" id="fromCity">
-      <input type="text" placeholder="To City" id="toCity">
-      <input type="date" id="rideDate">
-      <a class="button-wrapper" onclick="searchRide()" style="margin-left: 100px;color: black;">
-        <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Search ride<span>
-      </a>
-    </div>
+    <div class="search-container">
+      <div class="ride-form">
+        <h2>➢ Find a Ride</h2>
+        <div class="input-group">
+          <input type="text" placeholder="From City" id="fromCity">
+          <button onclick="setCurrentLocationAsFrom()" class="current-location-btn" title="Use Current Location">
+            <i class="fa-solid fa-location-crosshairs"></i>
+          </button>
+        </div>
+        <div class="input-group">
+          <input type="text" placeholder="To City" id="toCity">
+          <button onclick="enableMapSelection()" class="map-select-btn" title="Select from Map">
+            <i class="fa-solid fa-map-marker-alt"></i>
+          </button>
+        </div>
+        <div class="distance-info" id="distanceInfo" style="display: none;">
+          <div class="distance-card">
+            <i class="fa-solid fa-road"></i>
+            <span id="distanceText">Calculating distance...</span>
+          </div>
+          <div class="time-card">
+            <i class="fa-solid fa-clock"></i>
+            <span id="timeText">Calculating time...</span>
+          </div>
+        </div>
+        <input type="date" id="rideDate">
+        <a class="button-wrapper" onclick="searchRide()" style="margin-left: 100px;color: black;">
+          <span class="button bg-yellow-500 px-16 py-4 rounded-full uppercase">Search ride<span>
+        </a>
+      </div>
+
+      
 
     <div class="search-results" id="results">
       <!-- Ride results will appear here -->
     </div>
   </div>
+
   <script>
+   
+    // Book ride function
+    function bookRide(driver, car, price) {
+      showNotification(`Booking request sent to ${driver} (${car}) for ₹${price}!`, 'success');
+
+      // Add to favorites
+      addToFavorites(driver, car, price);
+
+      // Here you would typically send a booking request to your backend
+    }
+
+    // Add to favorites function
+    function addToFavorites(driver, car, price) {
+      let favorites = JSON.parse(localStorage.getItem('rideFavorites') || '[]');
+      const favorite = {
+        driver: driver,
+        car: car,
+        price: price,
+        date: new Date().toISOString(),
+        id: Date.now()
+      };
+
+      // Check if already in favorites
+      const exists = favorites.find(fav => fav.driver === driver && fav.car === car);
+      if (!exists) {
+        favorites.push(favorite);
+        localStorage.setItem('rideFavorites', JSON.stringify(favorites));
+        showNotification(`${driver} added to favorites!`, 'info');
+      } else {
+        showNotification(`${driver} is already in your favorites!`, 'info');
+      }
+    }
+
+  
+
+   
+    // Enhanced search function
     function searchRide() {
+      const fromCity = document.getElementById('fromCity').value;
+      const toCity = document.getElementById('toCity').value;
+      const rideDate = document.getElementById('rideDate').value;
+
+      if (!fromCity || !toCity) {
+        showNotification('Please enter both From and To locations', 'error');
+        return;
+      }
+
+      displayEnhancedSearchResults(fromCity, toCity, rideDate);
+    }
+
+    // Display enhanced search results
+    function displayEnhancedSearchResults(fromCity, toCity, rideDate) {
       const results = document.getElementById("results");
       results.innerHTML = "";
 
       const dummyRides = [
         {
-          driver: "Ravi Mehta",
-          car: "Maruti Swift - Red",
-          from: "Ahmedabad",
-          to: "Surat",
-          date: "2025-07-30",
+          driver: "Jeel Dobariya",
+          car: "Audi - Black",
+          from: fromCity,
+          to: toCity,
+          date: rideDate || "2025-07-30",
           price: "250",
           seats: 3,
-          driverPhoto: "driver1.jpg",
-          carPhoto: "car1.jpg"
+          rating: "⭐⭐⭐⭐⭐",
+          driverPhoto: "data:image/jpeg;base64,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",
+          carPhoto: "https://www.pexels.com/photo/black-audi-a-series-parked-near-brown-brick-house-909907/",
+          features: ["AC", "Music", "Clean Car"],
+          departureTime: "09:00 AM"
         },
         {
           driver: "Kiran Patel",
-          car: "Honda City - White",
-          from: "Rajkot",
-          to: "Vadodara",
-          date: "2025-07-29",
+          car: "Bmw Sedan - Blue",
+          from: fromCity,
+          to: toCity,
+          date: rideDate || "2025-07-29",
           price: "400",
           seats: 2,
-          driverPhoto: "driver2.jpg",
-          carPhoto: "car2.jpg"
+          rating: "⭐⭐⭐⭐",
+          driverPhoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTS7BjDJc-h4tpncKORHHiQGWKw5ivUBjL1w&s",
+          carPhoto: "https://www.pexels.com/photo/blue-bmw-sedan-near-green-lawn-grass-170811/",
+          features: ["AC", "Premium", "Verified"],
+          departureTime: "02:30 PM"
+        },
+        {
+          driver: "Priya Shah",
+          car: "Mercedez Benz- gray",
+          from: fromCity,
+          to: toCity,
+          date: rideDate || "2025-07-30",
+          price: "320",
+          seats: 4,
+          rating: "⭐⭐⭐⭐⭐",
+          driverPhoto: "data:image/jpeg;base64,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",
+          carPhoto: "https://www.pexels.com/photo/gray-mercedez-benz-amg-112460/",
+          features: ["AC", "Pet Friendly", "Luggage Space"],
+          departureTime: "11:15 AM"
         }
       ];
 
+      // Add search results header
+      results.innerHTML = `
+        <div class="search-results-header">
+          <h3>🚗 Found ${dummyRides.length} rides from ${fromCity} to ${toCity}</h3>
+          <div class="search-filters">
+            <button onclick="filterRides('price')" class="filter-btn">
+              <i class="fa-solid fa-sort-amount-down"></i> Sort by Price
+            </button>
+            <button onclick="filterRides('rating')" class="filter-btn">
+              <i class="fa-solid fa-star"></i> Sort by Rating
+            </button>
+            <button onclick="filterRides('time')" class="filter-btn">
+              <i class="fa-solid fa-clock"></i> Sort by Time
+            </button>
+          </div>
+        </div>
+      `;
+
       dummyRides.forEach(ride => {
         results.innerHTML += `
-          <div class="ride-card">
-            <div class="details">
-              <img src="${ride.driverPhoto}" alt="Driver">
-              <img src="${ride.carPhoto}" alt="Car">
-              <div>
-                <h3>${ride.driver}</h3>
-                <p><strong>Car:</strong> ${ride.car}</p>
-                <p><strong>From:</strong> ${ride.from} → <strong>To:</strong> ${ride.to}</p>
-                <p><strong>Date:</strong> ${ride.date}</p>
-                <p><strong>Seats Available:</strong> ${ride.seats}</p>
-                <p><strong>Price:</strong> ₹${ride.price} per seat</p>
+          <div class="ride-card" data-price="${ride.price}" data-rating="${ride.rating.length}" data-time="${ride.departureTime}">
+            <div class="ride-card-header">
+              <div class="driver-info">
+                <img src="${ride.driverPhoto}" alt="Driver" class="driver-photo">
+                <div>
+                  <h3>${ride.driver}</h3>
+                  <p class="rating">${ride.rating}</p>
+                  <p class="car-info">${ride.car}</p>
+                </div>
               </div>
+              <div class="price-info">
+                <h2>₹${ride.price}</h2>
+                <p>per seat</p>
+                <button onclick="bookRide('${ride.driver}', '${ride.car}', '${ride.price}')" class="book-btn">
+                  <i class="fa-solid fa-check"></i> Book Now
+                </button>
+              </div>
+            </div>
+            <div class="ride-card-details">
+              <div class="route-info">
+                <div class="route-point">
+                  <i class="fa-solid fa-map-marker-alt from-icon"></i>
+                  <span>${ride.from}</span>
+                </div>
+                <div class="route-line"></div>
+                <div class="route-point">
+                  <i class="fa-solid fa-map-marker-alt to-icon"></i>
+                  <span>${ride.to}</span>
+                </div>
+              </div>
+              <div class="ride-features">
+                <div class="feature">
+                  <i class="fa-solid fa-calendar"></i>
+                  <span>${ride.date}</span>
+                </div>
+                <div class="feature">
+                  <i class="fa-solid fa-clock"></i>
+                  <span>${ride.departureTime}</span>
+                </div>
+                <div class="feature">
+                  <i class="fa-solid fa-users"></i>
+                  <span>${ride.seats} seats</span>
+                </div>
+              </div>
+              <div class="car-features">
+                ${ride.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+              </div>
+            </div>
+            <div class="ride-card-actions">
+              <button onclick="addToFavorites('${ride.driver}', '${ride.car}', '${ride.price}')" class="action-btn favorite-btn">
+                <i class="fa-solid fa-heart"></i> Add to Favorites
+              </button>
+              <button onclick="showDriverDetails('${ride.driver}')" class="action-btn details-btn">
+                <i class="fa-solid fa-user"></i> Driver Details
+              </button>
+              <button onclick="shareRide('${ride.driver}', '${ride.from}', '${ride.to}')" class="action-btn share-btn">
+                <i class="fa-solid fa-share"></i> Share
+              </button>
             </div>
           </div>
         `;
       });
     }
+
+    // Filter rides function
+    function filterRides(criteria) {
+      const rideCards = document.querySelectorAll('.ride-card');
+      const cardsArray = Array.from(rideCards);
+
+      cardsArray.sort((a, b) => {
+        switch (criteria) {
+          case 'price':
+            return parseInt(a.dataset.price) - parseInt(b.dataset.price);
+          case 'rating':
+            return parseInt(b.dataset.rating) - parseInt(a.dataset.rating);
+          case 'time':
+            return a.dataset.time.localeCompare(b.dataset.time);
+          default:
+            return 0;
+        }
+      });
+
+      const results = document.getElementById("results");
+      const header = results.querySelector('.search-results-header');
+      results.innerHTML = '';
+      results.appendChild(header);
+
+      cardsArray.forEach(card => {
+        results.appendChild(card);
+      });
+
+      showNotification(`Rides sorted by ${criteria}!`, 'success');
+    }
+
+    // Show driver details
+    function showDriverDetails(driver) {
+      const details = {
+        'Ravi Mehta': {
+          phone: '+91 98765 43210',
+          email: 'ravi.mehta@email.com',
+          experience: '5 years',
+          trips: '1,250+',
+          languages: ['English', 'Hindi', 'Gujarati']
+        },
+        'Kiran Patel': {
+          phone: '+91 98765 43211',
+          email: 'kiran.patel@email.com',
+          experience: '3 years',
+          trips: '850+',
+          languages: ['English', 'Hindi', 'Gujarati']
+        },
+        'Priya Shah': {
+          phone: '+91 98765 43212',
+          email: 'priya.shah@email.com',
+          experience: '4 years',
+          trips: '1,100+',
+          languages: ['English', 'Hindi', 'Gujarati', 'Marathi']
+        }
+      };
+
+      const driverInfo = details[driver] || {
+        phone: '+91 98765 43210',
+        email: 'driver@email.com',
+        experience: '3+ years',
+        trips: '500+',
+        languages: ['English', 'Hindi']
+      };
+
+      showNotification(`
+        <strong>${driver}</strong><br>
+        📞 ${driverInfo.phone}<br>
+        📧 ${driverInfo.email}<br>
+        🚗 ${driverInfo.experience} experience<br>
+        🛣️ ${driverInfo.trips} trips completed<br>
+        🗣️ Languages: ${driverInfo.languages.join(', ')}
+      `, 'info');
+    }
+
+    // Share ride function
+    function shareRide(driver, from, to) {
+      const shareText = `Found a great ride with ${driver} from ${from} to ${to} on RideShaadi.com! 🚗`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'RideShaadi - Found a Ride!',
+          text: shareText,
+          url: window.location.href
+        });
+      } else {
+        // Fallback: copy to clipboard
+        navigator.clipboard.writeText(shareText).then(() => {
+          showNotification('Ride details copied to clipboard!', 'success');
+        });
+      }
+    }
+
+
+    // Notification system
+    function showNotification(message, type = 'info') {
+      // Remove existing notifications
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notification => notification.remove());
+
+      // Create notification element
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+         <div class="notification-content">
+           <i class="fa-solid ${getNotificationIcon(type)}"></i>
+           <span>${message}</span>
+           <button onclick="this.parentElement.parentElement.remove()" class="notification-close">
+             <i class="fa-solid fa-times"></i>
+           </button>
+         </div>
+       `;
+
+      // Add to page
+      document.body.appendChild(notification);
+
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    function getNotificationIcon(type) {
+      switch (type) {
+        case 'success': return 'fa-check-circle';
+        case 'error': return 'fa-exclamation-circle';
+        case 'warning': return 'fa-exclamation-triangle';
+        default: return 'fa-info-circle';
+      }
+    }
   </script>
+
   <script src="../js/nevscript.js"></script>
+
+
+
   <footer class="main-footer">
     <div class="footer-content">
       <div class="footer-brand">

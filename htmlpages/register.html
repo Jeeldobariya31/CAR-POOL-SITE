@@ -4,20 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Register</title>
-  <link rel="stylesheet" href="../style/loginstyle.css" />
-  <link rel="stylesheet" href="../style/nevstyle.css">
-   <!-- <link rel="stylesheet" href="btnstyle.css"> -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="stylesheet" href="../style/nevstyle.css" />
+  <link rel="stylesheet" href="../style/generalstyle.css" />
+  <link rel="stylesheet" href="../style/footer.css">
+  <link rel="stylesheet" href="../style/btnstyle.css" />
+  <link rel="stylesheet" href="../style/common-popup.css" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
 </head>
 <body>
   <video autoplay muted loop id="bgVideo">
     <source src="../other/152184-802335622_small.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
+  
   <div class="nev">
     <div class="par1">
       <div><img id="logo" src="../other/rideshaadi_micro_80x80.png" alt=""></div>
@@ -38,70 +40,337 @@
               <span class="text">ABOUT</span>
             </a>
           </li>
-          <!-- <div class="indicator"></div> -->
         </ul>
       </div>
     </div>
   </div>
-  <div class="wrapper">
-    <form action="">
-      <h2>Register</h2>
 
-      <div class="input-field">
-        <input type="text" required />
-        <label>Full Name</label>
+  <!-- Register Popup -->
+  <div class="form-popup active" id="registerPopup">
+    <div class="form-box">
+      <button class="form-close" onclick="closeRegister()">×</button>
+      <h2><i class="fa-solid fa-user-plus"></i> Create Account</h2>
+      
+      <form onsubmit="handleRegister(event)">
+        <div class="form-section">
+          <h3><i class="fa-solid fa-user"></i> Personal Information</h3>
+          
+          <label><i class="fa-solid fa-user"></i> Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your full name" required>
+          
+          <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+          <input type="email" id="regEmail" placeholder="Enter your email address" required>
+          
+          <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+          <input type="tel" id="regPhone" placeholder="Enter your phone number" required>
+          
+          <label><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+          <input type="date" id="regDob" required>
+          
+          <label><i class="fa-solid fa-venus-mars"></i> Gender</label>
+          <select id="regGender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-lock"></i> Security</h3>
+          
+          <label><i class="fa-solid fa-lock"></i> Create Password</label>
+          <div class="input-group">
+            <input type="password" id="regPassword" placeholder="Create a strong password" required>
+            <button type="button" onclick="toggleRegPassword()" title="Toggle Password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          
+          <label><i class="fa-solid fa-lock"></i> Confirm Password</label>
+          <input type="password" id="regConfirmPassword" placeholder="Confirm your password" required>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">I agree to the <a href="#" onclick="showTerms()" style="color: #fbbf24;">Terms & Conditions</a></label>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="newsletter">
+            <label for="newsletter">Subscribe to newsletter for updates</label>
+          </div>
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-id-card"></i> Additional Information</h3>
+          
+          <label><i class="fa-solid fa-id-card"></i> Aadhaar Number</label>
+          <input type="text" id="regAadhaar" placeholder="XXXX-XXXX-XXXX" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" title="Format: XXXX-XXXX-XXXX">
+          
+          <label><i class="fa-solid fa-car"></i> License Number (if applicable)</label>
+          <input type="text" id="regLicense" placeholder="Enter your license number">
+          
+          <label><i class="fa-solid fa-map-marker-alt"></i> Address</label>
+          <textarea id="regAddress" placeholder="Enter your full address" rows="3"></textarea>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="button">
+            <i class="fa-solid fa-user-plus"></i> Create Account
+          </button>
+          <button type="button" onclick="showLogin()" class="button secondary">
+            <i class="fa-solid fa-sign-in-alt"></i> Already have account? Login
+          </button>
+        </div>
+        
+        <div class="error" id="registerError" style="display: none;"></div>
+      </form>
+      
+      <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="color: #ccc; margin-bottom: 15px;">Or register with</p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <button onclick="socialRegister('google')" style="background: #db4437; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer;">
+            <i class="fab fa-google"></i> Google
+          </button>
+          <button onclick="socialRegister('facebook')" style="background: #4267B2; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer;">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </button>
+        </div>
       </div>
-
-      <div class="input-field">
-        <input type="email" required />
-        <label>Email Address</label>
-      </div>
-
-      <div class="input-field">
-        <input type="password" required id="password" />
-        <label>Create Password</label>
-        <span class="toggle" onclick="togglePassword()">👁️</span>
-      </div>
-
-      <div class="input-field">
-        <input type="password" required id="confirmPassword" />
-        <label>Confirm Password</label>
-      </div>
-
-      <div class="forget">
-        <label for="terms">
-          <input type="checkbox" id="terms" required />
-          I agree to the terms & conditions
-        </label>
-      </div>
-
-      <button type="submit">Register</button>
-
-      <div class="register">
-        <p>Already have an account? <a href="login.html">Login</a></p>
-      </div>
-
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-google"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-      </div>
-    </form>
+    </div>
   </div>
-  <br>
-  <script>
-    function togglePassword() {
-      const passwordInput = document.getElementById("password");
-      const toggle = document.querySelector(".toggle");
 
+  <!-- Terms & Conditions Popup -->
+  <div class="form-popup" id="termsPopup">
+    <div class="form-box">
+      <button class="form-close" onclick="closeTerms()">×</button>
+      <h2><i class="fa-solid fa-file-contract"></i> Terms & Conditions</h2>
+      
+      <div style="max-height: 400px; overflow-y: auto; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+        <h3 style="color: #fbbf24; margin-bottom: 15px;">RideShaadi.com Terms of Service</h3>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>1. Acceptance of Terms</strong><br>
+          By accessing and using RideShaadi.com, you accept and agree to be bound by the terms and provision of this agreement.
+        </p>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>2. User Responsibilities</strong><br>
+          You are responsible for maintaining the confidentiality of your account and password. You agree to accept responsibility for all activities that occur under your account.
+        </p>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>3. Safety & Security</strong><br>
+          We prioritize user safety. All users must provide valid identification and maintain appropriate behavior during rides.
+        </p>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>4. Privacy Policy</strong><br>
+          Your privacy is important to us. We collect and use your information as described in our Privacy Policy.
+        </p>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>5. Service Availability</strong><br>
+          We strive to provide reliable service but cannot guarantee uninterrupted availability due to technical issues or maintenance.
+        </p>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>6. Payment Terms</strong><br>
+          All payments are processed securely. Users agree to pay all applicable fees for services used.
+        </p>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>7. Termination</strong><br>
+          We reserve the right to terminate or suspend accounts that violate these terms or engage in inappropriate behavior.
+        </p>
+        
+        <p style="margin-bottom: 15px; line-height: 1.6;">
+          <strong>8. Changes to Terms</strong><br>
+          We may update these terms from time to time. Continued use of the service constitutes acceptance of updated terms.
+        </p>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" onclick="acceptTerms()" class="button">
+          <i class="fa-solid fa-check"></i> I Accept Terms
+        </button>
+        <button type="button" onclick="closeTerms()" class="button secondary">
+          <i class="fa-solid fa-times"></i> Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle password visibility
+    function toggleRegPassword() {
+      const passwordInput = document.getElementById('regPassword');
+      const toggle = document.querySelector('.input-group button i');
+      
       if (passwordInput.type === "password") {
         passwordInput.type = "text";
-        toggle.textContent = "🙈";
+        toggle.className = "fa-solid fa-eye-slash";
       } else {
         passwordInput.type = "password";
-        toggle.textContent = "👁️";
+        toggle.className = "fa-solid fa-eye";
       }
     }
+
+    // Popup management
+    function closeRegister() {
+      document.getElementById('registerPopup').classList.remove('active');
+      window.location.href = "login.html";
+    }
+
+    function showLogin() {
+      window.location.href = "login.html";
+    }
+
+    function showTerms() {
+      document.getElementById('registerPopup').classList.remove('active');
+      document.getElementById('termsPopup').classList.add('active');
+    }
+
+    function closeTerms() {
+      document.getElementById('termsPopup').classList.remove('active');
+      document.getElementById('registerPopup').classList.add('active');
+    }
+
+    function acceptTerms() {
+      document.getElementById('terms').checked = true;
+      closeTerms();
+      showNotification('Terms accepted!', 'success');
+    }
+
+    // Handle register
+    function handleRegister(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const dob = document.getElementById('regDob').value;
+      const gender = document.getElementById('regGender').value;
+      const password = document.getElementById('regPassword').value;
+      const confirmPassword = document.getElementById('regConfirmPassword').value;
+      const aadhaar = document.getElementById('regAadhaar').value.trim();
+      const license = document.getElementById('regLicense').value.trim();
+      const address = document.getElementById('regAddress').value.trim();
+      const terms = document.getElementById('terms').checked;
+      const newsletter = document.getElementById('newsletter').checked;
+      
+      const errorDiv = document.getElementById('registerError');
+      
+      // Clear previous errors
+      errorDiv.style.display = 'none';
+      errorDiv.textContent = '';
+      
+      // Validation
+      if (!name || !email || !phone || !dob || !gender || !password || !confirmPassword) {
+        errorDiv.textContent = "Please fill in all required fields.";
+        errorDiv.style.display = 'block';
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+      }
+      
+      if (password !== confirmPassword) {
+        errorDiv.textContent = "Passwords do not match!";
+        errorDiv.style.display = 'block';
+        showNotification('Passwords do not match!', 'error');
+        return;
+      }
+      
+      if (password.length < 6) {
+        errorDiv.textContent = "Password must be at least 6 characters long!";
+        errorDiv.style.display = 'block';
+        showNotification('Password must be at least 6 characters long!', 'error');
+        return;
+      }
+      
+      if (!terms) {
+        errorDiv.textContent = "You must accept the Terms & Conditions.";
+        errorDiv.style.display = 'block';
+        showNotification('You must accept the Terms & Conditions.', 'error');
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorDiv.textContent = "Please enter a valid email address.";
+        errorDiv.style.display = 'block';
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      // Phone validation
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
+        errorDiv.textContent = "Please enter a valid 10-digit phone number.";
+        errorDiv.style.display = 'block';
+        showNotification('Please enter a valid 10-digit phone number.', 'error');
+        return;
+      }
+      
+      // Success
+      showNotification('Account created successfully! Redirecting to login...', 'success');
+      
+      // Store user data (in real app, this would go to backend)
+      const userData = {
+        name, email, phone, dob, gender, aadhaar, license, address, newsletter
+      };
+      localStorage.setItem('userData', JSON.stringify(userData));
+      
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 2000);
+    }
+
+    // Social register
+    function socialRegister(provider) {
+      showNotification(`Registering with ${provider}...`, 'info');
+      // Here you would implement actual social registration
+    }
+
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notification => notification.remove());
+      
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="fa-solid ${getNotificationIcon(type)}"></i>
+          <span>${message}</span>
+          <button onclick="this.parentElement.parentElement.remove()" class="notification-close">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    function getNotificationIcon(type) {
+      switch(type) {
+        case 'success': return 'fa-check-circle';
+        case 'error': return 'fa-exclamation-circle';
+        case 'warning': return 'fa-exclamation-triangle';
+        default: return 'fa-info-circle';
+      }
+    }
+
+    // Auto-focus on name input when page loads
+    window.onload = function() {
+      document.getElementById('regName').focus();
+    };
   </script>
 </body>
 </html>

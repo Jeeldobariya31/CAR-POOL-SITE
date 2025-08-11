@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Offer Ride</title>
   <link rel="stylesheet" href="../style/nevstyle.css" />
   <link rel="stylesheet" href="../style/generalstyle.css" />
@@ -13,13 +14,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
   <link rel="stylesheet" href="../style/offer.css">
+  <link rel="stylesheet" href="../style/common-popup.css">
+
 </head>
+
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
   <video autoplay muted loop id="bgVideo">
     <source src="../other/152184-802335622_small.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
-  <!-- Navigation -->
   <div class="nev">
     <div class="par1">
       <div><img id="logo" src="../other/rideshaadi_micro_80x80.png" alt=""></div>
@@ -28,11 +31,16 @@
     <div class="par2">
       <div class="navigation">
         <ul>
-          <li class="list"><a href="home.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span class="text">Home</span></a></li>
-          <li class="list"><a href="profile.html"><span class="icon"><ion-icon name="person-outline"></ion-icon></span><span class="text">Profile</span></a></li>
-          <li class="list active"><a href="offerride.html"><span class="icon"><i class="fa-solid fa-briefcase"></i></span><span class="text">Offer</span></a></li>
-          <li class="list"><a href="searchride.html"><span class="icon"><i class="fa-solid fa-magnifying-glass-location"></i></span><span class="text">Search</span></a></li>
-          <li class="list"><a href="contectus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span class="text">About</span></a></li>
+          <li class="list"><a href="home.html"><span class="icon"><ion-icon name="home-outline"></ion-icon></span><span
+                class="text">Home</span></a></li>
+          <li class="list"><a href="profile.html"><span class="icon"><ion-icon
+                    name="person-outline"></ion-icon></span><span class="text">Profile</span></a></li>
+          <li class="list active"><a href="offerride.html"><span class="icon"><i
+                    class="fa-solid fa-briefcase"></i></span><span class="text">Offer</span></a></li>
+          <li class="list"><a href="searchride.html"><span class="icon"><i
+                    class="fa-solid fa-magnifying-glass-location"></i></span><span class="text">Search</span></a></li>
+          <li class="list"><a href="contectus.html"><span class="icon"><i class="fa-solid fa-phone"></i></span><span
+                class="text">About</span></a></li>
           <div class="indicator"></div>
         </ul>
       </div>
@@ -79,63 +87,126 @@
     <div class="form-popup" id="popupForm">
       <div class="form-box">
         <h2>Taxi Details</h2>
-        <form id="taxiForm" onsubmit="submitTaxi(event)">
-          <label>Your Name <i class="fa fa-info-circle" title="Enter your full name."></i></label>
-          <input type="text" id="name" placeholder="Your Name" required>
-          <label>Car Number <i class="fa fa-info-circle" title="e.g. GJ-01-AA-1234"></i></label>
-          <input type="text" id="carNumber" placeholder="Car Number" required>
-          <label>Car Type <i class="fa fa-info-circle" title="e.g. Sedan, Hatchback"></i></label>
-          <input type="text" id="carType" placeholder="Car Type" required>
-          <label>Car Color</label>
-          <input type="text" id="carColor" placeholder="Car Color" required>
-          <label>No. of Seats</label>
-          <select name="seat" required style="color: #111">
-            <option value="">No of Seat</option>
-            <option value="7">7</option>
-            <option value="6">6</option>
-            <option value="5">5</option>
-            <option value="4">4</option>
-            <option value="3">3</option>
-            <option value="2">2</option>
-            <option value="1">1</option>
-          </select>
-          <label>Fuel Type</label>
-          <select name="fuel" required style="color: #111">
-            <option value="">Fuel Type</option>
-            <option value="CNG">CNG</option>
-            <option value="Disel">Disel</option>
-            <option value="Petrol">Petrol</option>
-            <option value="Electrict">Electrict</option>
-          </select>
-          <label>Price per Seat (₹)</label>
-          <input type="number" id="price" placeholder="Price per Seat" min="1" required>
-          <label>Aadhaar Number</label>
-          <input type="text" id="aadhar" placeholder="Aadhaar Number" required>
-          <label>License Number</label>
-          <input type="text" id="license" placeholder="License Number" required>
-          <label>Driver Phone Number</label>
-          <input type="text" id="phone" placeholder="Driver Phone Number" required>
-          <label>Current Location</label>
-          <input type="text" id="location" placeholder="Current Location" required>
-          <label>Service Rating (1-5)</label>
-         <select name="rating" required style="color: #111">
-            <option value="">Select Rating</option>
-            <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
-            <option value="4">⭐⭐⭐⭐ Very Good</option>
-            <option value="3">⭐⭐⭐ Good</option>
-            <option value="2">⭐⭐ Fair</option>
-            <option value="1">⭐ Poor</option>
-          </select>
-          <label>Driver Photo</label>
-          <input type="file" id="driverPhoto" accept="image/*" required>
-          <label>Taxi Photo</label>
-          <input type="file" id="taxiPhoto" accept="image/*" required>
+        <form id="taxiForm">
+          <div class="form-section">
+            <h3><i class="fa-solid fa-user"></i> Driver Information</h3>
+            <label>Your Name <i class="fa fa-info-circle" title="Enter your full name."></i></label>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <label>Driver Phone Number</label>
+            <input type="tel" id="phone" placeholder="Driver Phone Number" required>
+            <label>Aadhaar Number</label>
+            <input type="text" id="aadhar" placeholder="Aadhaar Number" pattern="[0-9]{12}"
+              title="12-digit Aadhaar number" required>
+            <label>License Number</label>
+            <input type="text" id="license" placeholder="License Number" required>
+            <label>Driver Photo</label>
+            <input type="file" id="driverPhoto" accept="image/*" required>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-car"></i> Vehicle Information</h3>
+            <label>Car Number <i class="fa fa-info-circle" title="e.g. GJ-01-AA-1234"></i></label>
+            <input type="text" id="carNumber" placeholder="Car Number" required>
+            <label>Car Type <i class="fa fa-info-circle" title="e.g. Sedan, Hatchback"></i></label>
+            <input type="text" id="carType" placeholder="Car Type" required>
+            <label>Car Color</label>
+            <input type="text" id="carColor" placeholder="Car Color" required>
+            <label>No. of Seats</label>
+            <select name="seat" required style="color: #fdfcfc">
+              <option value="">No of Seat</option>
+              <option value="7">7</option>
+              <option value="6">6</option>
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+            <label>Fuel Type</label>
+            <select name="fuel" required style="color: #f4f3f3">
+              <option value="">Fuel Type</option>
+              <option value="CNG">CNG</option>
+              <option value="Diesel">Diesel</option>
+              <option value="Petrol">Petrol</option>
+              <option value="Electric">Electric</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+            <label>Taxi Photo</label>
+            <input type="file" id="taxiPhoto" accept="image/*" required>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-map-marker-alt"></i> Location & Route</h3>
+            <div class="location-inputs">
+              <div class="input-group">
+                <label>From Location</label>
+                <input type="text" id="fromLocation" placeholder="Starting Point" required>
+              </div>
+              <div class="input-group">
+                <label>To Location</label>
+                <input type="text" id="toLocation" placeholder="Destination" required>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-money-bill"></i> Pricing & Schedule</h3>
+            <label>Price per Seat (₹)</label>
+            <input type="number" id="price" placeholder="Price per Seat" min="1" required>
+            <label>Departure Date</label>
+            <input type="date" id="departureDate" required>
+            <label>Departure Time</label>
+            <input type="time" id="departureTime" required>
+            <label>Available Seats</label>
+            <input type="number" id="availableSeats" placeholder="Available Seats" min="1" required>
+            <label>Service Rating (1-5)</label>
+            <select name="rating" required style="color: #ffffff">
+              <option value="">Select Rating</option>
+              <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+              <option value="4">⭐⭐⭐⭐ Very Good</option>
+              <option value="3">⭐⭐⭐ Good</option>
+              <option value="2">⭐⭐ Fair</option>
+              <option value="1">⭐ Poor</option>
+            </select>
+          </div>
+
+          <div class="form-section">
+            <h3><i class="fa-solid fa-cog"></i> Additional Features</h3>
+            <div class="features-grid">
+              <label class="checkbox-label">
+                <input type="checkbox" id="ac" value="AC">
+                <span>Air Conditioning</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="music" value="Music">
+                <span>Music System</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="wifi" value="WiFi">
+                <span>WiFi Available</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="luggage" value="Luggage Space">
+                <span>Luggage Space</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="petFriendly" value="Pet Friendly">
+                <span>Pet Friendly</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="wheelchair" value="Wheelchair Accessible">
+                <span>Wheelchair Accessible</span>
+              </label>
+            </div>
+          </div>
+
           <div class="form-actions">
             <a class="button-wrapper" onclick="hideForm()" style="margin-right: 8px;">
-              <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Cancel</span>
+              <span class="button bg-yellow-500 px-8 py-3 rounded-full" style="color: #111;">Cancel</span>
             </a>
-            <a class="button-wrapper" onclick="submitTaxi(event)">
-              <span class="button bg-yellow-500 px-8 py-3 rounded-full uppercase" style="color: #111;">Submit</span>
+             <a class="button-wrapper" onclick="submitTaxi()" style="margin-right: 8px;">
+              <span class="button bg-yellow-500 px-8 py-3 rounded-full" style="color: #111;">Submit</span>
             </a>
           </div>
           <div class="error" id="formError"></div>
@@ -143,7 +214,8 @@
       </div>
     </div>
     <div class="rides-list" id="history"></div>
-    <div class="no-rides" id="noRides" style="display:none;">➢ No rides offered yet. Click "+ Add Taxi" to get started!</div>
+    <div class="no-rides" id="noRides" style="display:none;">➢ No rides offered yet. Click "+ Add Taxi" to get started!
+    </div>
   </div>
   <footer class="main-footer" style="flex-shrink: 0;">
     <div class="footer-content">
@@ -202,9 +274,49 @@
   <script src="../js/nevscript.js"></script>
   <script src="../js/btnscript.js"></script>
   <script>
-    // Animated counters
+    // A helpful notification system to give user feedback.
+    function showNotification(message, type = 'info') {
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notification => notification.remove());
+
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+    <div class="notification-content">
+      <i class="fa-solid ${getNotificationIcon(type)}"></i>
+      <span>${message}</span>
+      <button onclick="this.parentElement.parentElement.remove()" class="notification-close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+  `;
+
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    function getNotificationIcon(type) {
+      switch (type) {
+        case 'success':
+          return 'fa-check-circle';
+        case 'error':
+          return 'fa-exclamation-circle';
+        case 'warning':
+          return 'fa-exclamation-triangle';
+        default:
+          return 'fa-info-circle';
+      }
+    }
+
+    // Animated counters for the stats at the top of the page.
     function animateCounter(id, end, duration = 1200) {
       const el = document.getElementById(id);
+      if (!el) return;
       let start = 0;
       const step = Math.ceil(end / (duration / 20));
       const timer = setInterval(() => {
@@ -217,108 +329,212 @@
         }
       }, 20);
     }
-    // Taxi data
+
+    // ---------------------------------------------------
+
+    // The main logic for handling taxi data.
+
+    // Load taxi data from local storage, or start with an empty array.
     let taxiList = JSON.parse(localStorage.getItem("taxis")) || [];
-    // Show/Hide form
+    let editIndex = null; // Used to track which taxi is being edited.
+
     const popup = document.getElementById('popupForm');
-    function showForm() { popup.classList.add("active"); }
-    function hideForm() { popup.classList.remove("active"); document.getElementById('formError').textContent = ""; }
-    // Add/Edit Taxi
-    let editIndex = null;
-    function submitTaxi(e) {
-  if (e) e.preventDefault();
 
-  // Get form values safely
-  const name = document.getElementById('name').value.trim();
-  const carNumber = document.getElementById('carNumber').value.trim();
-  const carType = document.getElementById('carType').value.trim();
-  const carColor = document.getElementById('carColor').value.trim();
-  const seat = document.querySelector('select[name="seat"]').value.trim();
-  const fuel = document.querySelector('select[name="fuel"]').value.trim();
-  const price = document.getElementById('price').value.trim();
-  const aadhar = document.getElementById('aadhar').value.trim();
-  const license = document.getElementById('license').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const location = document.getElementById('location').value.trim();
-  const rating = document.querySelector('select[name="rating"]').value.trim();
-  const driverPhotoInput = document.getElementById('driverPhoto');
-  const taxiPhotoInput = document.getElementById('taxiPhoto');
-  const errorDiv = document.getElementById('formError');
-
-  // Basic validation
-  if (!name || !carNumber || !carType || !carColor || !seat || !fuel || !price || !aadhar || !license || !phone || !location || !rating) {
-    errorDiv.textContent = "Please fill in all fields.";
-    return;
-  }
-
-  // Value checks
-  if (isNaN(seat) || seat < 1) { errorDiv.textContent = "Seats must be a positive number."; return; }
-  if (isNaN(price) || price < 1) { errorDiv.textContent = "Price must be a positive number."; return; }
-  if (isNaN(rating) || rating < 1 || rating > 5) { errorDiv.textContent = "Rating must be 1-5."; return; }
-
-  // Handle image files
-  let driverPhoto, taxiPhoto;
-  if (editIndex === null) {
-    if (!driverPhotoInput.files[0] || !taxiPhotoInput.files[0]) {
-      errorDiv.textContent = "Please upload both photos.";
-      return;
+    // Show the form popup.
+    function showForm() {
+      popup.classList.add("active");
     }
-    driverPhoto = URL.createObjectURL(driverPhotoInput.files[0]);
-    taxiPhoto = URL.createObjectURL(taxiPhotoInput.files[0]);
-  } else {
-    driverPhoto = driverPhotoInput.files[0] ? URL.createObjectURL(driverPhotoInput.files[0]) : taxiList[editIndex].driverPhoto;
-    taxiPhoto = taxiPhotoInput.files[0] ? URL.createObjectURL(taxiPhotoInput.files[0]) : taxiList[editIndex].taxiPhoto;
-  }
 
-  const now = new Date();
-  const addedDate = now.toLocaleString();
+    // Hide the form popup and reset the form.
+    function hideForm() {
+      popup.classList.remove("active");
+      document.getElementById('formError').textContent = "";
+      document.getElementById('taxiForm').reset();
+      editIndex = null;
+    }
 
-  const taxi = {
-    name, carNumber, carType, carColor, seat, fuel, price, aadhar, license,
-    phone, location, rating, driverPhoto, taxiPhoto, addedDate
-  };
+    // Main function to handle form submission (add/edit taxi).
+    function submitTaxi(e) {
+      if (e) e.preventDefault(); // Prevents page reload on form submit.
 
-  if (editIndex === null) {
-    taxiList.push(taxi);
-  } else {
-    taxiList[editIndex] = taxi;
-    editIndex = null;
-  }
+      // Get all form values. Using querySelector for select elements.
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const aadhar = document.getElementById('aadhar').value.trim();
+      const license = document.getElementById('license').value.trim();
+      const driverPhotoInput = document.getElementById('driverPhoto');
 
-  localStorage.setItem("taxis", JSON.stringify(taxiList));
-  hideForm();
-  renderTaxis();
-  errorDiv.textContent = "";
-  document.getElementById('taxiForm').reset(); // Clear form
-  setTimeout(() => alert('Taxi details saved!'), 200);
-}
+      const carNumber = document.getElementById('carNumber').value.trim();
+      const carType = document.getElementById('carType').value.trim();
+      const carColor = document.getElementById('carColor').value.trim();
+      const seat = document.querySelector('#taxiForm select[name="seat"]').value.trim();
+      const fuel = document.querySelector('#taxiForm select[name="fuel"]').value.trim();
+      const taxiPhotoInput = document.getElementById('taxiPhoto');
 
-    function deleteTaxi(index) {
-      if (!confirm('Delete this ride?')) return;
-      taxiList.splice(index, 1);
+      const fromLocation = document.getElementById('fromLocation').value.trim();
+      const toLocation = document.getElementById('toLocation').value.trim();
+
+      const price = document.getElementById('price').value.trim();
+      const departureDate = document.getElementById('departureDate').value;
+      const departureTime = document.getElementById('departureTime').value;
+      const availableSeats = document.getElementById('availableSeats').value.trim();
+      const rating = document.querySelector('#taxiForm select[name="rating"]').value.trim();
+
+      const errorDiv = document.getElementById('formError');
+
+      // Basic validation.
+      if (!name || !carNumber || !carType || !carColor || !seat || !fuel || !price || !aadhar || !license || !phone || !fromLocation || !toLocation || !departureDate || !departureTime || !availableSeats || !rating) {
+        errorDiv.textContent = "Please fill in all required fields.";
+        return;
+      }
+
+      // Handle image files.
+      let driverPhoto = "";
+      let taxiPhoto = "";
+
+      if (editIndex === null) {
+        // For a new taxi, photos are required.
+        if (!driverPhotoInput.files[0] || !taxiPhotoInput.files[0]) {
+          errorDiv.textContent = "Please upload both photos.";
+          return;
+        }
+        driverPhoto = URL.createObjectURL(driverPhotoInput.files[0]);
+        taxiPhoto = URL.createObjectURL(taxiPhotoInput.files[0]);
+      } else {
+        // For editing, use existing photos if new ones aren't provided.
+        const existingTaxi = taxiList[editIndex];
+        driverPhoto = driverPhotoInput.files[0] ? URL.createObjectURL(driverPhotoInput.files[0]) : existingTaxi.driverPhoto;
+        taxiPhoto = taxiPhotoInput.files[0] ? URL.createObjectURL(taxiPhotoInput.files[0]) : existingTaxi.taxiPhoto;
+      }
+
+      // Get selected features.
+      const features = [];
+      document.querySelectorAll('#taxiForm input[type="checkbox"]').forEach(checkbox => {
+        if (checkbox.checked) {
+          features.push(checkbox.value);
+        }
+      });
+
+      const now = new Date();
+      const addedDate = now.toLocaleString();
+
+      const taxi = {
+        name,
+        carNumber,
+        carType,
+        carColor,
+        seat,
+        fuel,
+        price,
+        aadhar,
+        license,
+        phone,
+        fromLocation,
+        toLocation,
+        departureDate,
+        departureTime,
+        availableSeats,
+        rating,
+        driverPhoto,
+        taxiPhoto,
+        addedDate,
+        features
+      };
+
+      if (editIndex === null) {
+        taxiList.push(taxi);
+        showNotification('Taxi added successfully!', 'success');
+      } else {
+        taxiList[editIndex] = taxi;
+        showNotification('Taxi details updated successfully!', 'success');
+      }
+
       localStorage.setItem("taxis", JSON.stringify(taxiList));
+      hideForm();
       renderTaxis();
     }
-   function editTaxi(index) {
-  editIndex = index;
-  const t = taxiList[index];
-  document.getElementById('name').value = t.name;
-  document.getElementById('carNumber').value = t.carNumber;
-  document.getElementById('carType').value = t.carType;
-  document.getElementById('carColor').value = t.carColor;
-  document.querySelector('select[name="seat"]').value = t.seat;
-  document.querySelector('select[name="fuel"]').value = t.fuel;
-  document.getElementById('price').value = t.price;
-  document.getElementById('aadhar').value = t.aadhar;
-  document.getElementById('license').value = t.license;
-  document.getElementById('phone').value = t.phone;
-  document.getElementById('location').value = t.location;
-  document.querySelector('select[name="rating"]').value = t.rating;
-  document.getElementById('driverPhoto').value = "";
-  document.getElementById('taxiPhoto').value = "";
-  showForm();
+
+   // Function to delete a taxi entry.
+function deleteTaxi(index) {
+  // Create a custom confirmation dialog.
+  const confirmDialog = document.createElement('div');
+  confirmDialog.className = 'common-popup active';
+  confirmDialog.innerHTML = `
+    <div class="common-popup-content">
+      <h2>Confirm Delete</h2>
+      <p>Are you sure you want to delete this ride?</p>
+      <div class="common-popup-actions">
+        <button class="common-popup-btn cancel">Cancel</button>
+        <button class="common-popup-btn confirm">Delete</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(confirmDialog);
+
+  // Attach event listeners to the new buttons
+  const cancelButton = confirmDialog.querySelector('.cancel');
+  const confirmButton = confirmDialog.querySelector('.confirm');
+
+  cancelButton.addEventListener('click', () => {
+    confirmDialog.remove(); // This removes the whole popup from the DOM
+  });
+
+  confirmButton.addEventListener('click', () => {
+    confirmDeleteTaxi(index); // This function will handle the deletion logic
+    confirmDialog.remove(); // This removes the whole popup from the DOM
+  });
 }
 
+// Confirms the deletion of a taxi.
+function confirmDeleteTaxi(index) {
+  // Remove the taxi from the array.
+  taxiList.splice(index, 1);
+  // Update local storage with the new array.
+  localStorage.setItem("taxis", JSON.stringify(taxiList));
+  // Re-render the taxi list to show the updated state.
+  renderTaxis();
+  // Show a success notification.
+  showNotification('Ride deleted successfully!', 'success');
+}
+    // Function to edit a taxi entry.
+    function editTaxi(index) {
+      editIndex = index;
+      const t = taxiList[index];
+
+      // Fill the form with existing data.
+      document.getElementById('name').value = t.name;
+      document.getElementById('phone').value = t.phone;
+      document.getElementById('aadhar').value = t.aadhar;
+      document.getElementById('license').value = t.license;
+
+      document.getElementById('carNumber').value = t.carNumber;
+      document.getElementById('carType').value = t.carType;
+      document.getElementById('carColor').value = t.carColor;
+      document.querySelector('#taxiForm select[name="seat"]').value = t.seat;
+      document.querySelector('#taxiForm select[name="fuel"]').value = t.fuel;
+
+      document.getElementById('fromLocation').value = t.fromLocation;
+      document.getElementById('toLocation').value = t.toLocation;
+
+      document.getElementById('price').value = t.price;
+      document.getElementById('departureDate').value = t.departureDate;
+      document.getElementById('departureTime').value = t.departureTime;
+      document.getElementById('availableSeats').value = t.availableSeats;
+      document.querySelector('#taxiForm select[name="rating"]').value = t.rating;
+
+      // Reset file inputs as they can't be pre-filled for security reasons.
+      document.getElementById('driverPhoto').value = "";
+      document.getElementById('taxiPhoto').value = "";
+
+      // Set the features checkboxes.
+      document.querySelectorAll('#taxiForm input[type="checkbox"]').forEach(checkbox => {
+        checkbox.checked = t.features && t.features.includes(checkbox.value);
+      });
+
+      showForm();
+    }
+
+    // Renders the list of taxis and updates stats.
     function renderTaxis() {
       const history = document.getElementById('history');
       const noRides = document.getElementById('noRides');
@@ -328,67 +544,75 @@
       } else {
         noRides.style.display = "none";
       }
-      let totalSeats = 0, totalRating = 0;
+
+      let totalSeats = 0,
+        totalRating = 0;
       taxiList.forEach((taxi, index) => {
-        totalSeats += parseInt(taxi.seat);
+        totalSeats += parseInt(taxi.availableSeats);
         totalRating += parseFloat(taxi.rating);
         history.innerHTML += `
-          <div class="card" id="card${index}">
-            <div class="card-header">
-              <img src="${taxi.driverPhoto}" alt="Driver" class="driver-photo">
-              <img src="${taxi.taxiPhoto}" alt="Taxi" class="taxi-photo">
-              <div class="info">
-                <strong>${taxi.name}</strong> | <span style="color:#fbbf24">${taxi.carNumber}</span><br>
-                <strong>color:</strong>${taxi.carColor}, <strong>Type:</strong> ${taxi.carType},  <strong>Fuel Type:</strong>${taxi.fuel}<br>
-                Seats: ${taxi.seat}, ₹${taxi.price}/seat<br>
-                Aadhaar: ${taxi.aadhar}, License: ${taxi.license}<br>
-                Phone: ${taxi.phone}, Location: ${taxi.location}
-                <div class="added-date">Added: ${taxi.addedDate}</div>
-              </div>
-              <button class="expand-btn" onclick="toggleDetails(event, ${index})"><i class="fa fa-chevron-down"></i></button>
-            </div>
-            <div class="details" id="details${index}">
-              <div class="rating-stars" data-index="${index}">
-                <span data-value="1">&#9733;</span>
-                <span data-value="2">&#9733;</span>
-                <span data-value="3">&#9733;</span>
-                <span data-value="4">&#9733;</span>
-                <span data-value="5">&#9733;</span>
-              </div>
-              <div style="margin-top:8px;">Service Rating: <strong>${taxi.rating} ★</strong></div>
-              <div class="card-actions">
-                <button class="edit-btn" onclick="editTaxi(${index})">Edit</button>
-                <button class="delete-btn" onclick="deleteTaxi(${index})">Delete</button>
-              </div>
-            </div>
+      <div class="card" id="card${index}">
+        <div class="card-header">
+          <img src="${taxi.driverPhoto}" alt="Driver" class="driver-photo">
+          <img src="${taxi.taxiPhoto}" alt="Taxi" class="taxi-photo">
+          <div class="info">
+            <strong>${taxi.name}</strong> | <span style="color:#fbbf24">${taxi.carNumber}</span><br>
+            <strong>Color:</strong> ${taxi.carColor}, <strong>Type:</strong> ${taxi.carType}, <strong>Fuel:</strong> ${taxi.fuel}<br>
+            <strong>Route:</strong> ${taxi.fromLocation || 'N/A'} → ${taxi.toLocation || 'N/A'}<br>
+            <strong>Departure:</strong> ${taxi.departureDate || 'N/A'} at ${taxi.departureTime || 'N/A'}<br>
+            Seats: ${taxi.availableSeats || taxi.seat}, ₹${taxi.price}/seat<br>
+            Phone: ${taxi.phone}
+            <div class="added-date">Added: ${taxi.addedDate}</div>
           </div>
-        `;
+          <button class="expand-btn" onclick="toggleDetails(event, ${index})"><i class="fa fa-chevron-down"></i></button>
+        </div>
+        <div class="details" id="details${index}">
+          <div class="rating-stars" data-index="${index}">
+            ${generateStarRating(taxi.rating)}
+          </div>
+          <div style="margin-top:8px;">Service Rating: <strong>${taxi.rating} ★</strong></div>
+          ${taxi.features && taxi.features.length > 0 ? `<div style="margin-top:8px;"><strong>Features:</strong> ${taxi.features.join(', ')}</div>` : ''}
+          <div class="card-actions">
+            <button class="edit-btn" onclick="editTaxi(${index})">Edit</button>
+            <button class="delete-btn" onclick="deleteTaxi(${index})">Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
       });
+
+      // Update the stats with animation.
       animateCounter('totalRides', taxiList.length);
       animateCounter('totalSeats', totalSeats);
-      animateCounter('avgRating', taxiList.length ? (totalRating/taxiList.length).toFixed(1) : 0);
-      setTimeout(() => {
-        document.querySelectorAll('.rating-stars').forEach(group => {
-          group.addEventListener('click', function (e) {
-            if (e.target.tagName === 'SPAN') {
-              const value = e.target.dataset.value;
-              [...this.children].forEach(star => {
-                star.classList.toggle('active', star.dataset.value <= value);
-              });
-              alert(`Rated ${value} star(s) for this ride!`);
-            }
-          });
-        });
-      }, 100);
+      animateCounter('avgRating', taxiList.length ? (totalRating / taxiList.length).toFixed(1) : 0);
     }
+
+    // Generates the star rating HTML for each card.
+    function generateStarRating(rating) {
+      let starsHtml = '';
+      for (let i = 1; i <= 5; i++) {
+        starsHtml += `<span class="${i <= rating ? 'active' : ''}">&#9733;</span>`;
+      }
+      return starsHtml;
+    }
+
+
+    // Toggles the visibility of a card's details section.
     function toggleDetails(e, index) {
       e.stopPropagation();
-      const card = document.getElementById('card'+index);
-      const details = document.getElementById('details'+index);
+      const card = document.getElementById('card' + index);
+      const details = document.getElementById('details' + index);
       card.classList.toggle('active');
       details.classList.toggle('active');
     }
-    renderTaxis();
+
+    // Initial render when the page loads.
+    document.addEventListener("DOMContentLoaded", () => {
+      renderTaxis();
+      // Ensure the form popup has event listeners.
+      document.getElementById('taxiForm').addEventListener('submit', submitTaxi);
+    });
   </script>
 </body>
+
 </html>

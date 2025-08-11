@@ -9,24 +9,22 @@
   <link rel="stylesheet" href="../style/nevstyle.css" />
   <link rel="stylesheet" href="../style/generalstyle.css" />
   <link rel="stylesheet" href="../style/footer.css">
-<link rel="stylesheet" href="../style/btnstyle.css" />
+  <link rel="stylesheet" href="../style/btnstyle.css" />
+  <link rel="stylesheet" href="../style/common-popup.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
 
   <!-- Icons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<link rel="stylesheet" href="../style/editprofile.css">
 </head>
 <body>
-
   <!-- Background Video -->
   <video autoplay muted loop id="bgVideo">
     <source src="../other/152184-802335622_small.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
 
-  
   <div class="nev">
     <div class="par1">
       <div><img id="logo" src="../other/rideshaadi_micro_80x80.png" alt=""></div>
@@ -51,114 +49,277 @@
     </div>
   </div>
 
-  <!-- ✅ Main Edit Form -->
-  <div class="glass-container">
-    <h2 style="margin-bottom: 30px;">Edit Your Profile</h2>
-
-    <form class="edit-form">
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" value="Jeel Dobariya" />
-      </div>
-
-      <div class="form-group">
-        <label>Birthdate</label>
-        <input type="date" value="2003-01-15" />
-      </div>
-
-      <div class="form-group">
-        <label>Gender</label>
-        <select>
-          <option selected>Male</option>
-          <option>Female</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Mobile Number</label>
-        <input type="tel" value="9876543210" />
-      </div>
-
-      <div class="form-group">
-        <label>Alternate Mobile Number</label>
-        <input type="tel" value="9000000000" />
-      </div>
-
-      <div class="form-group">
-        <label>Aadhaar Number</label>
-        <input type="text" value="XXXX-XXXX-1234" />
-      </div>
-
-      <div class="form-group">
-        <label>License Number</label>
-        <input type="text" value="GJ-21-2023-DR1234" />
-      </div>
-
-      <div class="form-actions">
-        <button type="submit">Save Changes</button>
-        <button type="button" onclick="history.back()">Cancel</button>
-      </div>
-    </form>
+  <!-- Edit Profile Popup -->
+  <div class="form-popup active" id="editProfilePopup">
+    <div class="form-box">
+      <button class="form-close" onclick="closeEditProfile()">×</button>
+      <h2><i class="fa-solid fa-user-edit"></i> Edit Profile</h2>
+      
+      <form onsubmit="handleEditProfile(event)">
+        <div class="form-section">
+          <h3><i class="fa-solid fa-user"></i> Personal Information</h3>
+          
+          <label><i class="fa-solid fa-user"></i> Full Name</label>
+          <input type="text" id="editName" value="Jeel Dobariya" required>
+          
+          <label><i class="fa-solid fa-calendar"></i> Date of Birth</label>
+          <input type="date" id="editDob" value="2003-01-15" required>
+          
+          <label><i class="fa-solid fa-venus-mars"></i> Gender</label>
+          <select id="editGender" required>
+            <option value="male" selected>Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+          
+          <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+          <input type="email" id="editEmail" value="jeel@example.com" required>
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-phone"></i> Contact Information</h3>
+          
+          <label><i class="fa-solid fa-phone"></i> Primary Phone Number</label>
+          <input type="tel" id="editPhone" value="9876543210" required>
+          
+          <label><i class="fa-solid fa-phone"></i> Alternate Phone Number</label>
+          <input type="tel" id="editAltPhone" value="9000000000">
+          
+          <label><i class="fa-solid fa-map-marker-alt"></i> Address</label>
+          <textarea id="editAddress" rows="3" placeholder="Enter your full address">123, Green Avenue, Surat</textarea>
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-id-card"></i> Identification</h3>
+          
+          <label><i class="fa-solid fa-id-card"></i> Aadhaar Number</label>
+          <input type="text" id="editAadhaar" value="XXXX-XXXX-1234" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}" title="Format: XXXX-XXXX-XXXX">
+          
+          <label><i class="fa-solid fa-car"></i> License Number</label>
+          <input type="text" id="editLicense" value="GJ-21-2023-DR1234">
+          
+          <label><i class="fa-solid fa-calendar-check"></i> License Expiry Date</label>
+          <input type="date" id="editLicenseExpiry" value="2028-12-31">
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-car"></i> Vehicle Information</h3>
+          
+          <label><i class="fa-solid fa-car"></i> Vehicle Model</label>
+          <input type="text" id="editVehicle" value="Maruti Swift" placeholder="Enter vehicle model">
+          
+          <label><i class="fa-solid fa-palette"></i> Vehicle Color</label>
+          <input type="text" id="editVehicleColor" value="White" placeholder="Enter vehicle color">
+          
+          <label><i class="fa-solid fa-hashtag"></i> Vehicle Number</label>
+          <input type="text" id="editVehicleNumber" value="GJ-01-AA-1234" placeholder="Enter vehicle number">
+          
+          <label><i class="fa-solid fa-gas-pump"></i> Fuel Type</label>
+          <select id="editFuelType">
+            <option value="petrol" selected>Petrol</option>
+            <option value="diesel">Diesel</option>
+            <option value="cng">CNG</option>
+            <option value="electric">Electric</option>
+            <option value="hybrid">Hybrid</option>
+          </select>
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-cog"></i> Preferences</h3>
+          
+          <label><i class="fa-solid fa-globe"></i> Language Preference</label>
+          <select id="editLanguage" multiple>
+            <option value="english" selected>English</option>
+            <option value="hindi" selected>Hindi</option>
+            <option value="gujarati" selected>Gujarati</option>
+            <option value="marathi">Marathi</option>
+          </select>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="editNotifications" checked>
+            <label for="editNotifications">Receive email notifications</label>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="editSMS" checked>
+            <label for="editSMS">Receive SMS notifications</label>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="editNewsletter">
+            <label for="editNewsletter">Subscribe to newsletter</label>
+          </div>
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-image"></i> Profile Photo</h3>
+          
+          <label><i class="fa-solid fa-camera"></i> Upload New Photo</label>
+          <input type="file" id="editPhoto" accept="image/*">
+          
+          <div style="margin-top: 15px; text-align: center;">
+            <img id="currentPhoto" src="https://i.pravatar.cc/150?img=15" alt="Current Photo" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #fbbf24;">
+            <p style="color: #ccc; font-size: 14px; margin-top: 10px;">Current Profile Photo</p>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="button">
+            <i class="fa-solid fa-save"></i> Save Changes
+          </button>
+          <button type="button" onclick="closeEditProfile()" class="button secondary">
+            <i class="fa-solid fa-times"></i> Cancel
+          </button>
+        </div>
+        
+        <div class="error" id="editError" style="display: none;"></div>
+      </form>
+    </div>
   </div>
 
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <h3>RideShaadi.com</h3>
-        <p>Connecting riders and drivers for a greener tomorrow.</p>
-      </div>
-      <div class="footer-nav">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="home.html">Home</a></li>
-          <li><a href="profile.html">Profile</a></li>
-          <li><a href="offerride.html">Offer Ride</a></li>
-          <li><a href="searchride.html">Search Ride</a></li>
-          <li><a href="contectus.html">About/Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-social">
-        <h4>Follow Us</h4>
-        <a href="#" title="Instagram" class="button-wrapper">
-          <span class="dot dot-1"></span>
-          <span class="dot dot-2"></span>
-          <span class="dot dot-3"></span>
-          <span class="dot dot-4"></span>
-          <span class="dot dot-5"></span>
-          <span class="dot dot-6"></span>
-          <span class="dot dot-7"></span>
-          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-instagram"></i></span>
-        </a>
-        <a href="#" title="Facebook" class="button-wrapper">
-          <span class="dot dot-1"></span>
-          <span class="dot dot-2"></span>
-          <span class="dot dot-3"></span>
-          <span class="dot dot-4"></span>
-          <span class="dot dot-5"></span>
-          <span class="dot dot-6"></span>
-          <span class="dot dot-7"></span>
-          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-facebook"></i></span>
-        </a>
-        <a href="#" title="Twitter" class="button-wrapper">
-          <span class="dot dot-1"></span>
-          <span class="dot dot-2"></span>
-          <span class="dot dot-3"></span>
-          <span class="dot dot-4"></span>
-          <span class="dot dot-5"></span>
-          <span class="dot dot-6"></span>
-          <span class="dot dot-7"></span>
-          <span class="button bg-yellow-500 px-8 py-3 rounded-full"><i class="fab fa-twitter"></i></span>
-        </a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy; 2025 RideShaadi.com. All rights reserved.
-    </div>
-  </footer>
+  <script>
+    // Popup management
+    function closeEditProfile() {
+      document.getElementById('editProfilePopup').classList.remove('active');
+      window.location.href = "profile.html";
+    }
 
-  <!-- Scripts -->
-  <script src="../js/nevscript.js"></script>
+    // Handle profile edit
+    function handleEditProfile(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('editName').value.trim();
+      const dob = document.getElementById('editDob').value;
+      const gender = document.getElementById('editGender').value;
+      const email = document.getElementById('editEmail').value.trim();
+      const phone = document.getElementById('editPhone').value.trim();
+      const altPhone = document.getElementById('editAltPhone').value.trim();
+      const address = document.getElementById('editAddress').value.trim();
+      const aadhaar = document.getElementById('editAadhaar').value.trim();
+      const license = document.getElementById('editLicense').value.trim();
+      const licenseExpiry = document.getElementById('editLicenseExpiry').value;
+      const vehicle = document.getElementById('editVehicle').value.trim();
+      const vehicleColor = document.getElementById('editVehicleColor').value.trim();
+      const vehicleNumber = document.getElementById('editVehicleNumber').value.trim();
+      const fuelType = document.getElementById('editFuelType').value;
+      const notifications = document.getElementById('editNotifications').checked;
+      const sms = document.getElementById('editSMS').checked;
+      const newsletter = document.getElementById('editNewsletter').checked;
+      
+      const errorDiv = document.getElementById('editError');
+      
+      // Clear previous errors
+      errorDiv.style.display = 'none';
+      errorDiv.textContent = '';
+      
+      // Validation
+      if (!name || !dob || !gender || !email || !phone) {
+        errorDiv.textContent = "Please fill in all required fields.";
+        errorDiv.style.display = 'block';
+        showNotification('Please fill in all required fields.', 'error');
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        errorDiv.textContent = "Please enter a valid email address.";
+        errorDiv.style.display = 'block';
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      // Phone validation
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
+        errorDiv.textContent = "Please enter a valid 10-digit phone number.";
+        errorDiv.style.display = 'block';
+        showNotification('Please enter a valid 10-digit phone number.', 'error');
+        return;
+      }
+      
+      // Success
+      showNotification('Profile updated successfully!', 'success');
+      
+      // Store updated profile data
+      const profileData = {
+        name, dob, gender, email, phone, altPhone, address, aadhaar, license, 
+        licenseExpiry, vehicle, vehicleColor, vehicleNumber, fuelType,
+        notifications, sms, newsletter
+      };
+      localStorage.setItem('profileData', JSON.stringify(profileData));
+      
+      setTimeout(() => {
+        window.location.href = "profile.html";
+      }, 1500);
+    }
 
+    // Handle photo upload
+    document.getElementById('editPhoto').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('currentPhoto').src = e.target.result;
+          showNotification('Photo uploaded successfully!', 'success');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notification => notification.remove());
+      
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="fa-solid ${getNotificationIcon(type)}"></i>
+          <span>${message}</span>
+          <button onclick="this.parentElement.parentElement.remove()" class="notification-close">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    function getNotificationIcon(type) {
+      switch(type) {
+        case 'success': return 'fa-check-circle';
+        case 'error': return 'fa-exclamation-circle';
+        case 'warning': return 'fa-exclamation-triangle';
+        default: return 'fa-info-circle';
+      }
+    }
+
+    // Load existing profile data
+    window.onload = function() {
+      const savedProfile = localStorage.getItem('profileData');
+      if (savedProfile) {
+        const profile = JSON.parse(savedProfile);
+        // Populate form with saved data
+        Object.keys(profile).forEach(key => {
+          const element = document.getElementById('edit' + key.charAt(0).toUpperCase() + key.slice(1));
+          if (element) {
+            if (element.type === 'checkbox') {
+              element.checked = profile[key];
+            } else {
+              element.value = profile[key];
+            }
+          }
+        });
+      }
+    };
+  </script>
 </body>
 </html>

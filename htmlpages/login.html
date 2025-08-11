@@ -4,23 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
-  <link rel="stylesheet" href="../style/loginstyle.css" />
-   <!-- <link rel="stylesheet" href="btnstyle.css"> -->
-    <link rel="stylesheet" href="../style/nevstyle.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <link rel="stylesheet" href="../style/nevstyle.css" />
+  <link rel="stylesheet" href="../style/generalstyle.css" />
+  <link rel="stylesheet" href="../style/footer.css">
+  <link rel="stylesheet" href="../style/btnstyle.css" />
+  <link rel="stylesheet" href="../style/common-popup.css" />
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
 </head>
 <body>
-
   <video autoplay muted loop id="bgVideo">
     <source src="../other/152184-802335622_small.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
-<div class="nev">
+  
+  <div class="nev">
     <div class="par1">
       <div><img id="logo" src="../other/rideshaadi_micro_80x80.png" alt=""></div>
       <h1>RideShaadi.com</h1>
@@ -40,74 +40,313 @@
               <span class="text">ABOUT</span>
             </a>
           </li>
-          <!-- <div class="indicator"></div> -->
         </ul>
       </div>
     </div>
   </div>
-  <div class="wrapper">
-    <form id="loginForm">
-      <h2>Login Form</h2>
 
-      <!-- Email Input -->
-      <div class="input-field">
-        <input type="text" id="email" required />
-        <label for="email">Enter your email</label>
+  <!-- Login Popup -->
+  <div class="form-popup active" id="loginPopup">
+    <div class="form-box">
+      <button class="form-close" onclick="closeLogin()">×</button>
+      <h2><i class="fa-solid fa-user"></i> Login</h2>
+      
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-section">
+          <h3><i class="fa-solid fa-envelope"></i> Account Details</h3>
+          
+          <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+          
+          <label><i class="fa-solid fa-lock"></i> Password</label>
+          <div class="input-group">
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="button" onclick="togglePassword()" title="Toggle Password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="remember">
+            <label for="remember">Remember me</label>
+          </div>
+          
+          <div style="text-align: center; margin-top: 15px;">
+            <a href="#" onclick="showForgotPassword()" style="color: #fbbf24; text-decoration: none;">
+              <i class="fa-solid fa-key"></i> Forgot Password?
+            </a>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="button">
+            <i class="fa-solid fa-sign-in-alt"></i> Login
+          </button>
+          <button type="button" onclick="showRegister()" class="button secondary">
+            <i class="fa-solid fa-user-plus"></i> Register
+          </button>
+        </div>
+        
+        <div class="error" id="loginError" style="display: none;"></div>
+      </form>
+      
+      <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="color: #ccc; margin-bottom: 15px;">Or login with</p>
+        <div style="display: flex; gap: 15px; justify-content: center;">
+          <button onclick="socialLogin('google')" style="background: #db4437; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer;">
+            <i class="fab fa-google"></i> Google
+          </button>
+          <button onclick="socialLogin('facebook')" style="background: #4267B2; color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer;">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </button>
+        </div>
       </div>
-
-      <!-- Password Input -->
-      <div class="input-field">
-        <input type="password" id="password" required />
-        <label for="password">Enter your password</label>
-        <span class="toggle" onclick="togglePassword()">👁️</span>
-      </div>
-
-      <!-- Remember Me + Forgot -->
-      <div class="forget">
-        <label for="remember">
-          <input type="checkbox" id="remember" />
-          <p>Remember me</p>
-        </label>
-        <a href="#">Forgot password?</a>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit">Login</button>
-
-      <!-- Register Link -->
-      <div class="register">
-        <p>Don't have an account? <a href="register.html">Register</a></p>
-      </div>
-    </form>
+    </div>
   </div>
+
+  <!-- Forgot Password Popup -->
+  <div class="form-popup" id="forgotPopup">
+    <div class="form-box">
+      <button class="form-close" onclick="closeForgotPassword()">×</button>
+      <h2><i class="fa-solid fa-key"></i> Forgot Password</h2>
+      
+      <form onsubmit="handleForgotPassword(event)">
+        <div class="form-section">
+          <h3><i class="fa-solid fa-envelope"></i> Reset Password</h3>
+          
+          <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+          <input type="email" id="forgotEmail" placeholder="Enter your email address" required>
+          
+          <p style="color: #ccc; font-size: 14px; margin-top: 10px;">
+            We'll send you a link to reset your password.
+          </p>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="button">
+            <i class="fa-solid fa-paper-plane"></i> Send Reset Link
+          </button>
+          <button type="button" onclick="closeForgotPassword()" class="button secondary">
+            <i class="fa-solid fa-arrow-left"></i> Back to Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Register Popup -->
+  <div class="form-popup" id="registerPopup">
+    <div class="form-box">
+      <button class="form-close" onclick="closeRegister()">×</button>
+      <h2><i class="fa-solid fa-user-plus"></i> Register</h2>
+      
+      <form onsubmit="handleRegister(event)">
+        <div class="form-section">
+          <h3><i class="fa-solid fa-user"></i> Personal Information</h3>
+          
+          <label><i class="fa-solid fa-user"></i> Full Name</label>
+          <input type="text" id="regName" placeholder="Enter your full name" required>
+          
+          <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+          <input type="email" id="regEmail" placeholder="Enter your email address" required>
+          
+          <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+          <input type="tel" id="regPhone" placeholder="Enter your phone number" required>
+        </div>
+        
+        <div class="form-section">
+          <h3><i class="fa-solid fa-lock"></i> Security</h3>
+          
+          <label><i class="fa-solid fa-lock"></i> Create Password</label>
+          <div class="input-group">
+            <input type="password" id="regPassword" placeholder="Create a strong password" required>
+            <button type="button" onclick="toggleRegPassword()" title="Toggle Password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          
+          <label><i class="fa-solid fa-lock"></i> Confirm Password</label>
+          <input type="password" id="regConfirmPassword" placeholder="Confirm your password" required>
+          
+          <div class="checkbox-group">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">I agree to the <a href="#" style="color: #fbbf24;">Terms & Conditions</a></label>
+          </div>
+        </div>
+        
+        <div class="form-actions">
+          <button type="submit" class="button">
+            <i class="fa-solid fa-user-plus"></i> Create Account
+          </button>
+          <button type="button" onclick="closeRegister()" class="button secondary">
+            <i class="fa-solid fa-arrow-left"></i> Back to Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
     // Login validation
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // Stop form from refreshing
-
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-
+    function handleLogin(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('loginError');
+      
+      // Clear previous errors
+      errorDiv.style.display = 'none';
+      errorDiv.textContent = '';
+      
       if (email === "jeeldobariya33@gmail.com" && password === "Jeel@123") {
-        window.location.href = "home.html"; // Redirect to homepage
+        showNotification('Login successful! Redirecting...', 'success');
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 1500);
       } else {
-        alert("❌ Invalid email or password!");
-      }
-    });
-
-    // Toggle password show/hide
-    function togglePassword() {
-      const passwordInput = document.getElementById("password");
-      const toggle = document.querySelector(".toggle");
-
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggle.textContent = "🙈";
-      } else {
-        passwordInput.type = "password";
-        toggle.textContent = "👁️";
+        errorDiv.textContent = "❌ Invalid email or password!";
+        errorDiv.style.display = 'block';
+        showNotification('Invalid credentials. Please try again.', 'error');
       }
     }
+
+    // Toggle password visibility
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggle = document.querySelector('.input-group button i');
+      
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggle.className = "fa-solid fa-eye-slash";
+      } else {
+        passwordInput.type = "password";
+        toggle.className = "fa-solid fa-eye";
+      }
+    }
+
+    function toggleRegPassword() {
+      const passwordInput = document.getElementById('regPassword');
+      const toggle = document.querySelector('#registerPopup .input-group button i');
+      
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggle.className = "fa-solid fa-eye-slash";
+      } else {
+        passwordInput.type = "password";
+        toggle.className = "fa-solid fa-eye";
+      }
+    }
+
+    // Popup management
+    function closeLogin() {
+      document.getElementById('loginPopup').classList.remove('active');
+    }
+
+    function showForgotPassword() {
+      document.getElementById('loginPopup').classList.remove('active');
+      document.getElementById('forgotPopup').classList.add('active');
+    }
+
+    function closeForgotPassword() {
+      document.getElementById('forgotPopup').classList.remove('active');
+      document.getElementById('loginPopup').classList.add('active');
+    }
+
+    function showRegister() {
+      document.getElementById('loginPopup').classList.remove('active');
+      document.getElementById('registerPopup').classList.add('active');
+    }
+
+    function closeRegister() {
+      document.getElementById('registerPopup').classList.remove('active');
+      document.getElementById('loginPopup').classList.add('active');
+    }
+
+    // Handle forgot password
+    function handleForgotPassword(e) {
+      e.preventDefault();
+      const email = document.getElementById('forgotEmail').value.trim();
+      
+      if (email) {
+        showNotification('Password reset link sent to your email!', 'success');
+        setTimeout(() => {
+          closeForgotPassword();
+        }, 2000);
+      }
+    }
+
+    // Handle register
+    function handleRegister(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const confirmPassword = document.getElementById('regConfirmPassword').value;
+      
+      if (password !== confirmPassword) {
+        showNotification('Passwords do not match!', 'error');
+        return;
+      }
+      
+      if (password.length < 6) {
+        showNotification('Password must be at least 6 characters long!', 'error');
+        return;
+      }
+      
+      showNotification('Account created successfully! Please login.', 'success');
+      setTimeout(() => {
+        closeRegister();
+      }, 2000);
+    }
+
+    // Social login
+    function socialLogin(provider) {
+      showNotification(`Logging in with ${provider}...`, 'info');
+      // Here you would implement actual social login
+    }
+
+    // Notification system
+    function showNotification(message, type = 'info') {
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notification => notification.remove());
+      
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="fa-solid ${getNotificationIcon(type)}"></i>
+          <span>${message}</span>
+          <button onclick="this.parentElement.parentElement.remove()" class="notification-close">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        if (notification.parentElement) {
+          notification.remove();
+        }
+      }, 5000);
+    }
+
+    function getNotificationIcon(type) {
+      switch(type) {
+        case 'success': return 'fa-check-circle';
+        case 'error': return 'fa-exclamation-circle';
+        case 'warning': return 'fa-exclamation-triangle';
+        default: return 'fa-info-circle';
+      }
+    }
+
+    // Auto-focus on email input when page loads
+    window.onload = function() {
+      document.getElementById('email').focus();
+    };
   </script>
 </body>
 </html>
