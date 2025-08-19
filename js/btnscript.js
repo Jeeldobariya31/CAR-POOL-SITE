@@ -1,4 +1,8 @@
-// Guarded kinetic hover effect (optional visual enhancement)
+// ------------------------------------------------------------
+// Optional: Kinetic hover effect
+// - Requires Kinet library (skips gracefully if absent)
+// - Animates an element with id "circle" to follow the cursor
+// ------------------------------------------------------------
 (function initKinetEffect() {
   try {
     if (typeof Kinet === 'undefined') return; // Skip if library not loaded

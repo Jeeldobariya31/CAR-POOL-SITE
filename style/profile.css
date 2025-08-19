@@ -1,3 +1,8 @@
+/* ------------------------------------------------------------
+   File: style/profile.css
+   Purpose: Profile page layout, badges, stats and ride cards
+   Notes: Uses shared colors and button wrappers from general styles
+------------------------------------------------------------ */
 * {
       margin: 0;
       padding: 0;
@@ -48,7 +53,7 @@
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      border: 4px solid #fbbf24;
+      border: 4px solid #00b4d8;
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
       object-fit: cover;
       transition: transform 0.4s cubic-bezier(.23, 1.01, .32, 1);
@@ -101,7 +106,7 @@
     }
 
     .profile-info .username {
-      color: #fbbf24;
+      color: #00b4d8;
       font-size: 1.1rem;
       margin-bottom: 8px;
     }
@@ -148,10 +153,10 @@
 
    
     .info-card h3 {
-      color: #fbbf24;
+      color: #00b4d8;
       margin-bottom: 10px;
       font-size: 1.2rem;
-      border-bottom: 2px solid #fbbf24;
+      border-bottom: 2px solid #00b4d8;
     }
 
     .stats-cards {
@@ -180,11 +185,11 @@
 
     .stat-card h2 {
       font-size: 2.5rem;
-      color: #fbbf24;
+      color: #00b4d8;
       margin-bottom: 6px;
       font-weight: 700;
       letter-spacing: 1px;
-      border-bottom: 2px solid #fbbf24;
+      border-bottom: 2px solid #00b4d8;
     }
 
     .stat-card p {
@@ -201,9 +206,9 @@
     }
 
     .rides-section h3 {
-      color: #fbbf24;
+      color: #00b4d8;
       margin-bottom: 30px;
-      border-bottom: 2px solid #fbbf24;
+      border-bottom: 2px solid #00b4d8;
     }
 
     .ride-card {
@@ -228,7 +233,7 @@
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+    background-color:#00b4d8;
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.4s ease-in-out;
@@ -236,11 +241,11 @@
 
 .info-card:hover:before,.ride-card:hover::before,.stat-card:hover::before {
     transform: scaleX(1);
-    box-shadow: 0 0 8px 2px rgba(245, 158, 11, 0.6);
+    box-shadow: 0 0 8px 2px rgba(0, 180, 216, 0.6);
 }
     .ride-card:hover {
-  
-    box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
+
+    box-shadow: 0 10px 20px rgba(0, 180, 216, 0.4);
 
       background-color: black;
       scale: 1.05;
@@ -267,12 +272,12 @@
     }
 
     .ride-summary strong {
-      color: #fbbf24;
+      color: #00b4d8;
     }
 
     .ride-price {
       font-weight: bold;
-      color: #fbbf24;
+      color: #00b4d8;
       font-size: 1.1rem;
     }
 
@@ -301,9 +306,9 @@
     }
 
     .feedback-section h3 {
-      color: #fbbf24;
+      color: #00b4d8;
       margin-bottom: 30px;
-      border-bottom: 2px solid #fbbf24;
+      border-bottom: 2px solid #00b4d8;
     }
 
     .feedback-form {
@@ -359,9 +364,9 @@
     }
 
     .platform-rating h3 {
-      color: #fbbf24;
+      color: #00b4d8;
       margin-bottom: 30px;
-      border-bottom: 2px solid #fbbf24;
+      border-bottom: 2px solid #00b4d8;
     }
 
     @media (max-width: 900px) {
@@ -425,7 +430,7 @@
 
     .floating-icon {
       position: absolute;
-      color: rgba(251, 191, 36, 0.3);
+      color: #00d5ff28;
       font-size: 24px;
       animation: float 6s ease-in-out infinite;
     }
@@ -477,15 +482,15 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.3), rgba(245, 158, 11, 0.3));
+      background: linear-gradient(135deg, rgba(0, 180, 216, 0.3), rgba(0, 150, 167, 0.3));
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
     .badge:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(251, 191, 36, 0.3);
-      border-color: rgba(251, 191, 36, 0.5);
+      box-shadow: 0 8px 25px rgba(0, 180, 216, 0.3);
+      border-color: rgba(0, 180, 216, 0.5);
     }
 
     .badge:hover::before {
@@ -525,7 +530,7 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 8px;
-      color: #fbbf24;
+      color: #00b4d8;
       font-weight: 500;
     }
 
@@ -540,7 +545,7 @@
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+      background: linear-gradient(90deg, #00b4d85b, #00b4d895);
       border-radius: 4px;
       transition: width 1.5s ease-in-out;
       position: relative;
@@ -575,8 +580,8 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(251, 191, 36, 0.1), transparent);
-      animation: rotate 4s linear infinite;
+     
+      
     }
 
     @keyframes rotate {
@@ -591,14 +596,14 @@
       padding: 20px;
       background: rgba(255, 255, 255, 0.05);
       border-radius: 15px;
-      border: 1px solid rgba(251, 191, 36, 0.3);
+      border: 1px solid #00b4d8;
     }
 
     .level-circle {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: conic-gradient(from 0deg, #fbbf24 0deg, #fbbf24 252deg, rgba(255, 255, 255, 0.1) 252deg);
+      background: conic-gradient(from 0deg, #00b4d8 0deg, #00b4d8 252deg, rgba(255, 255, 255, 0.1) 252deg);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -619,7 +624,7 @@
     .level-text {
       position: relative;
       z-index: 1;
-      color: #fbbf24;
+      color: #00b4d8;
       font-weight: bold;
       font-size: 1.2rem;
     }
@@ -664,7 +669,7 @@
     }
 
     .status-completed { background: #10b981; color: white; }
-    .status-upcoming { background: #f59e0b; color: white; }
+    .status-upcoming { background: #f5610b; color: white; }
 
     /* Notification System */
     .notification {
@@ -696,7 +701,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      border-left: 4px solid #fbbf24;
+      border-left: 4px solid #00b4d8;
     }
 
     .notification-success .notification-content {

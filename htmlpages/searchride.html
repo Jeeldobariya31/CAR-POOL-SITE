@@ -63,8 +63,8 @@
   </video>
   <div class="nev">
     <div class="par1">
-      <div><img id="logo" src="../other/rideshaadi_micro_80x80.png" alt=""></div>
-      <h1>RideShaadi.com</h1>
+      <div class="brand-badge"><i class="fa-solid fa-face-grin-beam"></i></div>
+      <h1>LOLift</h1>
     </div>
     <div class="par2">
       <div class="navigation">
@@ -127,10 +127,14 @@
     </div>
   </div>
 
+  <!-- =========================================================
+       Search Ride Main
+       - Search form, results list, notification utilities
+       ========================================================= -->
   <div class="ride-main">
     <div class="search-container">
       <div class="ride-form">
-        <h2>➢ Find a Ride</h2>
+        <h2><span class="card-icon"><i class="fa-solid fa-location-dot"></i></span> Find a Ride</h2>
         <div class="input-group">
           <input type="text" placeholder="From City" id="fromCity">
           <button onclick="setCurrentLocationAsFrom()" class="current-location-btn" title="Use Current Location">
@@ -164,6 +168,8 @@
     <div class="search-results" id="results">
       <!-- Ride results will appear here -->
     </div>
+  </div>
+  </div>
   </div>
 
   <script>
@@ -427,7 +433,7 @@
 
     // Share ride function
     function shareRide(driver, from, to) {
-      const shareText = `Found a great ride with ${driver} from ${from} to ${to} on RideShaadi.com! 🚗`;
+      const shareText = `Found a great ride with ${driver} from ${from} to ${to} on LOLift! 🚗😄`;
 
       if (navigator.share) {
         navigator.share({
@@ -491,7 +497,7 @@
   <footer class="main-footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>RideShaadi.com</h3>
+        <h3>LOLift</h3>
         <p>Connecting riders and drivers for a greener tomorrow.</p>
       </div>
       <div class="footer-nav">
@@ -539,7 +545,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2025 RideShaadi.com. All rights reserved.
+      &copy; 2025 LOLift. All rights reserved.
     </div>
   </footer>
 

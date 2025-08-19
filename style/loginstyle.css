@@ -1,3 +1,8 @@
+/* ------------------------------------------------------------
+   File: style/loginstyle.css
+   Purpose: Login/Register/Terms popups styling
+   Depends on: Open Sans font, generalstyle.css base
+------------------------------------------------------------ */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
 
 * {

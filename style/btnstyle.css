@@ -12,7 +12,7 @@
   pointer-events: none;
   mix-blend-mode: screen;
   z-index: 10;
-  box-shadow: 0px 0px 8px 0px #FDFCA9 inset, 0px 0px 24px 0px #FFEB3B, 0px 0px 8px 0px #FFFFFF42;
+  box-shadow: 0px 0px 8px 0px #2c717f inset, 0px 0px 24px 0px #00b4d8, 0px 0px 8px 0px #FFFFFF42;
 }
 
 .button-wrapper {
@@ -33,7 +33,7 @@
 }
 
 .button {
-  background-color: #fbbf24;
+  background-color: #00b4d8;
   color: #000;
   border-radius: 30px;
   padding:10px;
@@ -51,7 +51,7 @@
 /* Styling for the button's glowing effect on hover */
 .button::before {
   content: "";
-  box-shadow: 0px 0px 24px 0px #FFEB3B;
+  box-shadow: 0px 0px 24px 0px #00b4d8;
   mix-blend-mode: screen;
   transition: opacity 0.3s;
   position: absolute;
@@ -66,7 +66,7 @@
 /* Additional glowing effect for the button */
 .button::after {
   content: "";
-  box-shadow: 0px 0px 23px 0px #FDFCA9 inset, 0px 0px 8px 0px #FFFFFF42;
+  box-shadow: 0px 0px 23px 0px #2c717f inset, 0px 0px 8px 0px #FFFFFF42;
   transition: opacity 0.3s;
   position: absolute;
   top: 0;
@@ -108,10 +108,10 @@
   animation-play-state: paused; 
   display: block;
   border-radius: 100%;
-  background: #fbbf24;
+  background: #00b4d8;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 6px 0px #FFEB3B, 0px 0px 4px 0px #FDFCA9 inset, 0px 0px 2px 1px #FFFFFF42;
+  box-shadow: 0px 0px 6px 0px #359eb4, 0px 0px 4px 0px #2c717f inset, 0px 0px 2px 1px #FFFFFF42;
 }
 
 .dot-1 {

@@ -1,4 +1,9 @@
-// Robust navbar active state handling for .navigation blocks
+// ------------------------------------------------------------
+// Navigation Active State
+// - Highlights the current page in the navbar
+// - Keeps a safe fallback if route doesn't match
+// - Leaves room for future responsive logic
+// ------------------------------------------------------------
 (function initNavigationActiveState() {
   try {
     const nav = document.querySelector('.navigation');
@@ -27,12 +32,12 @@
       listItems[0].classList.add('active');
     }
 
-    // Recalculate indicator position on resize to match CSS sibling selector behavior
+    // Recalculate indicator position on resize (placeholder for future needs)
     window.addEventListener('resize', () => {
       // No JS positioning required because indicator uses CSS sibling selectors.
       // This event listener is kept for future extensibility.
     });
   } catch (e) {
-    // Silent guard
+    // Silent guard: never block the UI due to nav script errors
   }
 })();

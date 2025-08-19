@@ -15,7 +15,12 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap" />
   <link rel="stylesheet" href="../style/offer.css">
   <link rel="stylesheet" href="../style/common-popup.css">
-
+<style>
+  .form-box{
+    background-color: #2c717f2d;
+    backdrop-filter: blur(15px);
+  }
+</style>
 </head>
 
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
@@ -25,8 +30,8 @@
   </video>
   <div class="nev">
     <div class="par1">
-      <div><img id="logo" src="../other/rideshaadi_micro_80x80.png" alt=""></div>
-      <h1>RideShaadi.com</h1>
+      <div class="brand-badge"><i class="fa-solid fa-face-grin-beam"></i></div>
+      <h1>LOLift</h1>
     </div>
     <div class="par2">
       <div class="navigation">
@@ -68,17 +73,24 @@
       </a>
     </div>
   </div>
+  <!-- =========================================================
+       Offer Ride Main
+       - Top stats, Taxi form popup, Rides listing
+       ========================================================= -->
   <div class="offer-main" style="flex: 1 0 auto;">
     <div class="stats-cards">
       <div class="stat-card">
+        <div class="card-icon"><i class="fa-solid fa-route"></i></div>
         <h2 id="totalRides">0</h2>
         <p>Total Rides Offered</p>
       </div>
       <div class="stat-card">
+        <div class="card-icon"><i class="fa-solid fa-chair"></i></div>
         <h2 id="totalSeats">0</h2>
         <p>Total Seats</p>
       </div>
       <div class="stat-card">
+        <div class="card-icon"><i class="fa-solid fa-star"></i></div>
         <h2 id="avgRating">0</h2>
         <p>Average Rating</p>
       </div>
@@ -214,13 +226,13 @@
       </div>
     </div>
     <div class="rides-list" id="history"></div>
-    <div class="no-rides" id="noRides" style="display:none;">➢ No rides offered yet. Click "+ Add Taxi" to get started!
+    <div class="no-rides" id="noRides" style="display:none;">No rides offered yet. Click "+ Add Taxi" to get started!
     </div>
   </div>
   <footer class="main-footer" style="flex-shrink: 0;">
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>RideShaadi.com</h3>
+        <h3>LOLift</h3>
         <p>Connecting riders and drivers for a greener tomorrow.</p>
       </div>
       <div class="footer-nav">
@@ -268,7 +280,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      &copy; 2025 RideShaadi.com. All rights reserved.
+      &copy; 2025 LOLift. All rights reserved.
     </div>
   </footer>
   <script src="../js/nevscript.js"></script>
@@ -564,7 +576,7 @@ function confirmDeleteTaxi(index) {
             Phone: ${taxi.phone}
             <div class="added-date">Added: ${taxi.addedDate}</div>
           </div>
-          <button class="expand-btn" onclick="toggleDetails(event, ${index})"><i class="fa fa-chevron-down"></i></button>
+          <button class="expand-btn" onclick="toggleDetails(event, ${index})">Details</button>
         </div>
         <div class="details" id="details${index}">
           <div class="rating-stars" data-index="${index}">

@@ -1,3 +1,8 @@
+/* ------------------------------------------------------------
+   File: style/nevstyle.css
+   Purpose: Navigation/header layout and responsive behavior
+   Depends on: Poppins font, Font Awesome/Ionicons in pages
+------------------------------------------------------------ */
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 
 * {
@@ -10,6 +15,21 @@
  
   border:2px solid white ;
   border-radius: 20px;
+}
+/* New brand badge to replace image logo */
+.brand-badge{
+  width: 56px;
+  height: 56px;
+  display: flex;
+  margin-top: 12px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  color: #00b4d8;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+  font-size: 28px;
 }
 
 .nev {
@@ -32,7 +52,7 @@
 
 .par1 {
   flex: 1; 
-  color: #fbbf24;
+  color: #00b4d8;
   font-size: 18px;
   display: flex;
   flex-direction: row;
@@ -105,7 +125,7 @@
 
 .navigation ul li:hover a .icon
  {
-  color: #fbbf24;
+  color: #00b4d8;
   margin-bottom: 20px;
   animation: labuk 0.7s ease-in-out infinite;
 }
@@ -160,7 +180,7 @@
   transform: translateY(-8px);
 }
 .navigation ul li.active a .icon{
-color: #fbbf24;
+color: #00b4d8;
   margin-bottom: 20px;
 }
 
@@ -200,7 +220,7 @@ color: #fbbf24;
   bottom: 5px;
   width: 85%;
   height: 18px;
-  background: #fbbf24;
+  background: #00b4d8;
   border-radius: 10px;
   padding: 4px;
 }
@@ -213,7 +233,7 @@ color: #fbbf24;
   height: 7.5px;
   border-radius: 50%;
   background: #333;
-  box-shadow: 0 0 0 2px #edd207, 50px 50px #edd207, 40px 0 #edd207, 0 40px #edd207;
+  box-shadow: 0 0 0 2px #00b4d8, 50px 50px #00b4d8, 40px 0 #00b4d8, 0 40px #00b4d8;
   transform: rotate(45deg);
   animation: animate 2s ease-in-out infinite;
 }
@@ -265,6 +285,7 @@ color: #fbbf24;
     width: 48px;
     height: 48px;
   }
+  .brand-badge { width: 48px; height: 48px; font-size: 24px; }
   .par2 {
     order: 3;
     width: 100%;
@@ -306,7 +327,7 @@ color: #fbbf24;
   .navigation ul li a .icon ion-icon { color: rgba(235,240,236,0.9); text-decoration: none;}
   .navigation ul li.active a .icon,
   .navigation ul li.active a .icon i,
-  .navigation ul li.active a .icon ion-icon { color: #fbbf24; }
+  .navigation ul li.active a .icon ion-icon { color: #00b4d8; }
   /* Show labels under icons on mobile */
   .navigation ul li a .text {
     display: block;
