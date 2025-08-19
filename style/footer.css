@@ -2,7 +2,7 @@
   .main-footer {
     background: #22223b;
     color: #fff;
-    padding: 40px 0 0 0;
+    padding: 28px 0 0 0;
     margin-top: 40px;
     font-size: 1rem;
     border-top-left-radius: 24px;
@@ -15,23 +15,27 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
-    padding: 0 10vw 24px 10vw;
-    gap: 2rem;
+    padding: 0 6vw 16px 6vw;
+    gap: 1.2rem;
+  }
+  .footer-content > * {
+    min-width: 220px;
+    flex: 1 1 220px;
   }
   .footer-brand h3 {
     color: #fbbf24;
     margin-bottom: 8px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
   .footer-brand p {
     color: #e0e0e0;
-    font-size: 1rem;
+    font-size: 0.95rem;
     margin: 0;
   }
   .footer-nav h4, .footer-social h4 {
     color: #fbbf24;
     margin-bottom: 8px;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   .footer-nav ul {
     list-style: none;
@@ -39,7 +43,7 @@
     margin: 0;
   }
   .footer-nav ul li {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
   .footer-nav ul li a {
     color: #fff;
@@ -60,20 +64,38 @@
     text-align: center;
     background: #1a1a2e;
     color: #bdbdbd;
-    padding: 16px 0;
+    padding: 12px 0;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-top: 12px;
   }
   @media (max-width: 800px) {
     .footer-content {
       flex-direction: column;
       align-items: center;
-      padding: 0 4vw 24px 4vw;
+      padding: 0 4vw 16px 4vw;
     }
-    .main-footer {
-      padding: 32px 0 0 0;
-    }
+    .main-footer { padding: 20px 0 0 0; margin-top:10px; }
+  }
+
+  @media (max-width: 480px) {
+    .main-footer { padding-top: 20px; }
+    .footer-content { padding: 0 4vw 10px 4vw; gap: 0.6rem; }
+    .footer-content > * { min-width: 140px; }
+    .footer-brand, .footer-nav, .footer-social { margin: 0; padding: 0; }
+    .footer-brand p { line-height: 1.4; }
+    .footer-brand h3 { font-size: 1.1rem; }
+    .footer-brand p { font-size: 0.9rem; }
+    .footer-nav h4, .footer-social h4 { font-size: 0.95rem; }
+    .footer-nav ul li { margin-bottom: 3px; }
+    .footer-bottom { font-size: 0.8rem; padding: 8px 0; }
+  }
+
+  @media (max-width: 360px) {
+    .footer-content { gap: 0.5rem; }
+    .footer-content > * { min-width: 130px; }
+    .footer-brand h3 { font-size: 1rem; }
+    .footer-bottom { font-size: 0.78rem; }
   }
   

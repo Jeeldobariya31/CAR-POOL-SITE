@@ -84,8 +84,10 @@ body {
   background: #100f0f8f;
   padding: 50px;
   border: 2px solid rgb(224, 222, 222);
-  margin-left: 135px;
-  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  max-width: 1200px;
   border-radius: 0px 100px;
   overflow: hidden;
   padding-top: 40px;
@@ -127,6 +129,7 @@ body {
     color: #fff;
     margin: 10px;
     padding: 30px;
+    overflow: visible;
   }
   .stats-section h2, .stats-section h3, .stats-section p,
   .testimonials-section h2, .testimonials-section p, .testimonials-section span,
@@ -141,3 +144,78 @@ body {
   .button{
     color: #100f0f;
   }
+  @media (max-width: 1200px) {
+  .partb {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border-radius: 20px;
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .parta h1 {
+    font-size: 2.2rem;
+  }
+
+  .parta h2 {
+    font-size: 1.5rem;
+  }
+
+  .parta p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .partb {
+    padding: 30px 15px;
+  }
+
+  .partb section h2 {
+    font-size: 1.5rem;
+  }
+
+  .steps-section, .Choose-section, .stats-section, .testimonials-section, 
+  .faq-section, .safety-section, .contact-section {
+    padding: 20px;
+    margin: 5px;
+  }
+  /* Ensure inner card grids wrap nicely */
+  .steps-section .cards,
+  .Choose-section .cards,
+  .stats-section .cards,
+  .testimonials-section .cards,
+  .faq-section .cards,
+  .safety-section .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .parta {
+    padding: 24px 16px;
+  }
+
+  .parta h1 {
+    font-size: 1.8rem;
+  }
+
+  .parta h2 {
+    font-size: 1.2rem;
+  }
+
+  .parta p {
+    font-size: 0.95rem;
+  }
+
+  .partb {
+    padding: 20px 10px;
+  }
+
+  .partb section h2 {
+    font-size: 1.2rem;
+  }
+}

@@ -19,10 +19,10 @@
     }
    
     .stats-cards {
-      display: flex;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       margin-bottom: 32px;
-      flex-wrap: wrap;
     }
     .stat-card {
       flex: 1 1 180px;
@@ -220,9 +220,11 @@
       position: relative;
       animation: fadeInUp 0.8s cubic-bezier(.23,1.01,.32,1) both;
       transition: box-shadow 0.3s;
+      overflow: visible;
     }
     .card:hover {
       box-shadow: 0 6px 24px rgba(251,191,36,0.18);
+      z-index: 3;
     }
     .card .card-header {
       display: flex;
@@ -254,6 +256,7 @@
       margin-top: 10px;
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
     .card .delete-btn, .card .edit-btn {
       padding: 6px 16px;
@@ -327,7 +330,7 @@
       .stats-cards { flex-direction: column; }
     }
     @media (max-width: 600px) {
-      .offer-main { padding: 12px 2vw; }
+      .offer-main { padding: 16px 3vw; border-radius: 16px; }
       .form-box, .stat-card, .card { padding: 12px 8px; }
       .card-header { flex-direction: column; gap: 8px; }
     }

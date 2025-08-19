@@ -56,13 +56,14 @@ body {
 
 .wrapper {
   margin:30px ;
-  background: #00000082;
-  width: 400px;
+  background: rgba(0, 0, 0, 0.51);
+  width: 90%;
+  max-width: 400px;
   border-radius: 8px 80px;
   padding: 30px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.723);
-  
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(4px);
 }
 
 form {
@@ -192,4 +193,18 @@ button:hover {
   background: #fff;
   color: #000;
   transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 20px;
+    border-radius: 8px 40px;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  .forget {
+    flex-direction: column;
+    gap: 15px;
+  }
 }

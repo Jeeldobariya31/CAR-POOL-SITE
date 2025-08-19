@@ -155,10 +155,10 @@
     }
 
     .stats-cards {
-      display: flex;
-      gap: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
       margin-bottom: 32px;
-      flex-wrap: wrap;
     }
 
     .stat-card {
@@ -215,7 +215,7 @@
       transition: box-shadow 0.3s;
       cursor: pointer;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
       animation: fadeInUp 1.4s cubic-bezier(.23, 1.01, .32, 1) both;
     }
 
@@ -243,7 +243,8 @@
     box-shadow: 0 10px 20px rgba(245, 158, 11, 0.4);
 
       background-color: black;
-      scale: 1.1;
+      scale: 1.05;
+      z-index: 3;
     }
 
     .ride-details {
@@ -258,6 +259,7 @@
 
     .ride-summary {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
@@ -379,7 +381,8 @@
       }
 
       .profile-main {
-        padding: 12px 2vw;
+        padding: 16px 3vw;
+        border-radius: 16px;
       }
 
       .info-card,

@@ -15,8 +15,10 @@
 .nev {
   border: #ffffff 2px solid;
   position: relative;
-  width: 1280px;
-  height: 120px;
+  width: 100%;
+  max-width: 1280px;
+  height: auto;
+  min-height: 120px;
   display: flex;
   justify-content: space-between;/* Align left and right */
   align-items: center;
@@ -43,6 +45,9 @@
 .par3 {
   color: white;
   font-size: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .par2 {
@@ -79,6 +84,16 @@
   width: 100%;
   text-align: center;
   font-weight: 500;
+  gap: 2px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure no underline in any state */
+.navigation ul li a:hover,
+.navigation ul li a:focus,
+.navigation ul li a:active {
+  text-decoration: none;
 }
 
 .navigation ul li a .icon {
@@ -154,7 +169,7 @@ color: #fbbf24;
   opacity: 0;
   font-weight: 700;
   font-size: 0.7em;
-  color: #040404;
+  color: rgba(0, 0, 0, 0.9);
   transition: 0.5s;
   text-transform: uppercase;
 }
@@ -162,7 +177,10 @@ color: #fbbf24;
 .navigation ul li.active a .text {
   transform: translateY(13px);
   opacity: 1;
+  color: #070707;
 }
+
+
 
 .indicator {
   position: absolute;
@@ -172,6 +190,8 @@ color: #fbbf24;
   justify-content: center;
   align-items: center;
   transition: 0.5s;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .indicator::before {
@@ -218,4 +238,104 @@ color: #fbbf24;
 }
 .navigation ul li:nth-child(5).active ~ .indicator {
   transform: translateX(calc(70px * 4));
+}
+
+/* Responsive navigation & header */
+@media (max-width: 1024px) {
+  .nev {
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nev {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .par1 {
+    padding: 10px 0;
+    align-items: center;
+  }
+  .par1 h1 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+  #logo {
+    width: 48px;
+    height: 48px;
+  }
+  .par2 {
+    order: 3;
+    width: 100%;
+    margin-top: 6px;
+  }
+  .par3 {
+    order: 2;
+    justify-content: center;
+    margin-top: 6px;
+  }
+  .navigation {
+    overflow: hidden;
+    width: 100%;
+  }
+  .navigation::-webkit-scrollbar { display: none; }
+  .navigation ul {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .navigation ul li {
+    height: 78px;
+    flex: 1 1 20%;
+    width: auto;
+    z-index: 2; /* sit above indicator */
+    overflow: visible;
+  }
+  .navigation ul li a { padding: 6px 0 6px; }
+  .navigation ul li a .icon {
+    line-height: 28px;
+    font-size: 1.25em;
+    margin: 4px 0 0 0;
+    height: 28px;
+    display: inline-block;
+  }
+  .navigation ul li:hover a .icon { animation: none; margin-bottom: 0; }
+  .navigation ul li.active a .icon { transform: none; margin-bottom: 0; }
+  .navigation ul li a .icon,
+  .navigation ul li a .icon i,
+  .navigation ul li a .icon ion-icon { color: rgba(235,240,236,0.9); text-decoration: none;}
+  .navigation ul li.active a .icon,
+  .navigation ul li.active a .icon i,
+  .navigation ul li.active a .icon ion-icon { color: #fbbf24; }
+  /* Show labels under icons on mobile */
+  .navigation ul li a .text {
+    display: block;
+    position: static;
+    opacity: 1;
+    transform: none;
+    font-size: 0.72rem;
+    color: #040404;
+    margin: 2px 0 0 0;
+    letter-spacing: 0.25px;
+  }
+  .navigation ul li.active a .text { transform: none; opacity: 1; }
+  .navigation ul { width: 100%; }
+  .indicator {
+    height: 60px;
+    width: calc(100% / 5);
+  }
+  .indicator::before { height: 8px; bottom: 6px; }
+  .indicator::after { display: none; }
+  /* Mobile indicator positions based on equal-width tabs */
+  .navigation ul li:nth-child(1).active ~ .indicator { transform: translateX(0%); }
+  .navigation ul li:nth-child(2).active ~ .indicator { transform: translateX(100%); }
+  .navigation ul li:nth-child(3).active ~ .indicator { transform: translateX(200%); }
+  .navigation ul li:nth-child(4).active ~ .indicator { transform: translateX(300%); }
+  .navigation ul li:nth-child(5).active ~ .indicator { transform: translateX(400%); }
+}
+
+@media (max-width: 480px) {
+  .par1 h1 {
+    font-size: 18px;
+  }
 }
