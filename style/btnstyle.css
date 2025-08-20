@@ -1,5 +1,7 @@
 
 
+/* Enhanced button styling with better glassmorphism integration */
+
 /* Styling for the glowing circles */
 .circle {
   width: 8px;
@@ -12,15 +14,20 @@
   pointer-events: none;
   mix-blend-mode: screen;
   z-index: 10;
-  box-shadow: 0px 0px 8px 0px #2c717f inset, 0px 0px 24px 0px #00b4d8, 0px 0px 8px 0px #FFFFFF42;
+  box-shadow: 
+    0px 0px 8px 0px #2c717f inset, 
+    0px 0px 24px 0px #38bdf8, 
+    0px 0px 8px 0px #FFFFFF42;
 }
 
 .button-wrapper {
   position: relative;
-  animation: fadeInbtn 1s 2s ease-in-out ;
+  animation: fadeInbtn 1s 2s ease-in-out;
   opacity: 0;
   animation-fill-mode: forwards;
+  transition: all 0.3s ease;
 }
+
 @keyframes fadeInbtn {
   from {
     opacity: 0;
@@ -32,11 +39,12 @@
   }
 }
 
+/* Enhanced button with better glassmorphism */
 .button {
-  background-color: #00b4d8;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
   color: #000;
   border-radius: 30px;
-  padding:10px;
+  padding: 12px 24px;
   margin-right: 20px;
   z-index: 1;
   position: relative;
@@ -44,14 +52,32 @@
   text-align: center;
   appearance: none;
   display: inline-block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 180, 216, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-.button:hover{
-   scale: 1.1;
+
+.button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 180, 216, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #38c7fb, #22b3f1);
 }
-/* Styling for the button's glowing effect on hover */
+
+/* Enhanced glowing effect for the button */
 .button::before {
   content: "";
-  box-shadow: 0px 0px 24px 0px #00b4d8;
+  box-shadow: 0px 0px 24px 0px #38bdf8;
   mix-blend-mode: screen;
   transition: opacity 0.3s;
   position: absolute;
@@ -66,7 +92,9 @@
 /* Additional glowing effect for the button */
 .button::after {
   content: "";
-  box-shadow: 0px 0px 23px 0px #2c717f inset, 0px 0px 8px 0px #FFFFFF42;
+  box-shadow: 
+    0px 0px 23px 0px #2c717f inset, 
+    0px 0px 8px 0px #FFFFFF42;
   transition: opacity 0.3s;
   position: absolute;
   top: 0;
@@ -80,7 +108,6 @@
 .button-wrapper:hover {
   .button::before, .button::after {
     opacity: 1;
-   
   }
   
   .dot {
@@ -92,7 +119,7 @@
   }
 }
 
-/* Styling for individual dots */
+/* Enhanced dot styling */
 .dot {
   display: block;
   position: absolute;
@@ -108,10 +135,13 @@
   animation-play-state: paused; 
   display: block;
   border-radius: 100%;
-  background: #00b4d8;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 6px 0px #359eb4, 0px 0px 4px 0px #2c717f inset, 0px 0px 2px 1px #FFFFFF42;
+  box-shadow: 
+    0px 0px 6px 0px #359eb4, 
+    0px 0px 4px 0px #2c717f inset, 
+    0px 0px 2px 1px #FFFFFF42;
 }
 
 .dot-1 {
@@ -122,7 +152,7 @@
   --starting-y: 20px;
   top: 2px;
   left: -16px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .dot-2 {
@@ -133,7 +163,7 @@
   --starting-y: 10px;
   top: 1px;
   left: 0px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .dot-3 {
@@ -144,6 +174,7 @@
   --starting-y: 20px;
   top: -8px;
   right: 14px;
+  opacity: 0.9;
 }
 
 .dot-4 {
@@ -165,6 +196,7 @@
   --starting-y: -20px;
   bottom: -6px;
   right: -3px;
+  opacity: 0.8;
 }
 
 .dot-6 {
@@ -175,7 +207,7 @@
   --starting-y: -18px;
   bottom: -12px;
   left: 30px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .dot-7 {
@@ -186,21 +218,22 @@
   --starting-y: -20px;
   bottom: -16px;
   left: 44px;
+  opacity: 0.9;
 }
 
-/* Keyframe animations */
+/* Enhanced keyframe animations */
 @keyframes dimFirefly {
   0% {
     opacity: 1;
   }
   25% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
   50% {
     opacity: 1;
   }
   75% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
   100% {
     opacity: 1;
@@ -208,28 +241,52 @@
 }
 
 @keyframes hoverFirefly {
-    0% {
-      transform: translate(0, 0);
-    }
-    12% {
-      transform: translate(3px, 1px);
-    }
-    24% {
-      transform: translate(-2px, 3px);
-    }
-    37% {
-      transform: translate(2px, -2px);
-    }
-    55% {
-      transform: translate(-1px, 0);
-    }
-    74% {
-      transform: translate(0, 2px);
-    }
-    88% {
-      transform: translate(-3px, -1px);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
+  0% {
+    transform: translate(0, 0);
+  }
+  12% {
+    transform: translate(3px, 1px);
+  }
+  24% {
+    transform: translate(-2px, 3px);
+  }
+  37% {
+    transform: translate(2px, -2px);
+  }
+  55% {
+    transform: translate(-1px, 0);
+  }
+  74% {
+    transform: translate(0, 2px);
+  }
+  88% {
+    transform: translate(-3px, -1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Responsive button adjustments */
+@media (max-width: 768px) {
+  .button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .button:hover {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    margin-right: 12px;
+  }
+  
+  .button:hover {
+    transform: none;
+  }
 }

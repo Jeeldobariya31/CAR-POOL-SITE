@@ -6,7 +6,9 @@
 /* Base & global layout */
 body{
   font-size: x-large;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
 }
+
 #bgVideo {
   position: fixed;
   top: 0;
@@ -15,7 +17,25 @@ body{
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  filter: brightness(0.7) contrast(1.1) saturate(1.2);
 }
+
+/* Enhanced glassmorphism overlay for better video integration */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(26, 26, 46, 0.3), 
+    rgba(22, 33, 62, 0.4), 
+    rgba(15, 52, 96, 0.3));
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* Grid-based card containers */
 .cards{   
     display: grid;
@@ -30,34 +50,62 @@ body{
      width: 100%;
      min-width: 0;
   }
-/* Card component */
+/* Enhanced Card component with better glassmorphism */
   .card {
-  background: rgba(192, 190, 190, 0.399);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 20px;
   padding: 30px;
   width: auto;
   min-width: 240px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.4s, box-shadow 0.4s;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
-  box-shadow: 0 8px 20px rgba(5, 5, 5, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   backface-visibility: hidden;
   will-change: transform, box-shadow;
   contain: layout paint;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s ease-in-out;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  background-color: #111;
-  box-shadow: 0 10px 20px rgba(0, 180, 216, 0.4);
+  transform: translateY(-8px) scale(1.02);
+  background:black;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 180, 216, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   z-index: 3;
 }
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
 .card{
       position: relative;
       transition: all 0.3s ease;
       z-index: 1;
       overflow: hidden; 
     }
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -69,38 +117,19 @@ body{
     transform: translateY(0);
   }
 }
- 
-
-/* (Removed duplicate alternate hover to avoid conflicting transforms) */
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: linear-gradient(135deg, #04d1fa, #0790ab, #014856);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.4s ease-in-out;
-}
-
-.card:hover::before {
-    transform: scaleX(1);
-    box-shadow: 0 0 8px 2px rgba(0, 180, 216, 0.4);
-}
- 
 
 .card h3 {
   margin-bottom: 10px;
-  color: #00b4d8;
+  color: #38bdf8;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .card p {
-  color: #fffdfd;
+  color: #ffffff;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeInUp {
@@ -121,7 +150,11 @@ body{
     font-size: large;
   }
   /* Reduce hover effects to prevent overlap on tablets */
-  .card:hover { transform: none; box-shadow: 0 8px 20px rgba(0, 180, 216, 0.25); }
+  .card:hover { 
+    transform: translateY(-4px) scale(1.01); 
+    background: rgba(0, 180, 216, 0.15);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 180, 216, 0.3); 
+  }
 }
 
 @media (max-width: 600px) {
@@ -132,39 +165,56 @@ body{
     gap: 12px;
   }
   /* Disable hover lift/scale on small screens  */
-  .card:hover { transform: none; box-shadow: 0 8px 20px rgba(0, 180, 216, 0.25); }
+  .card:hover { 
+    transform: none; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
+  }
 }
-/* --- Shared card icon styling & animations (used across pages) --- */
+
+/* --- Enhanced card icon styling & animations --- */
 .card .card-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
   color: #00b4d8;
-  background: rgba(0, 180, 216, 0.1);
-  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.15) inset;
-  margin-bottom: 12px;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(0, 153, 204, 0.1));
+  box-shadow: 
+    0 4px 16px rgba(0, 180, 216, 0.2) inset,
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  transition: all 0.3s ease;
 }
 
 .card .card-icon i,
 .card .card-icon ion-icon {
   font-size: clamp(24px, 3.8vw, 32px);
   line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
- 
-
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.0); }
-  50% { box-shadow: 0 0 18px 2px rgba(0, 180, 216, 0.45); }
+  0%, 100% { 
+    box-shadow: 
+      0 4px 16px rgba(0, 180, 216, 0.2) inset,
+      0 2px 8px rgba(0, 0, 0, 0.1); 
+  }
+  50% { 
+    box-shadow: 
+      0 4px 16px rgba(0, 180, 216, 0.2) inset,
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      0 0 20px rgba(0, 180, 216, 0.4); 
+  }
 }
 
 .card:hover .card-icon {
-  animation:  pulseGlow 1.6s ease-in-out infinite;
-  color: #00b4d8;
-  background: rgba(0, 180, 216, 0.15);
+  animation: pulseGlow 1.6s ease-in-out infinite;
+  color: #38bdf8;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.25), rgba(0, 153, 204, 0.2));
+  transform: scale(1.05);
 }
 
 /* Apply the same icon style to non-.card blocks used as cards */
@@ -174,13 +224,17 @@ body{
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  color: #00b4d8;
-  background: rgba(0, 180, 216, 0.1);
-  box-shadow: 0 4px 14px rgba(0, 180, 216, 0.15) inset;
-  margin-bottom: 12px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  color: #38bdf8;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.15), rgba(0, 153, 204, 0.1));
+  box-shadow: 
+    0 4px 16px rgba(0, 180, 216, 0.2) inset,
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  transition: all 0.3s ease;
 }
 
 .stat-card .card-icon i,
@@ -191,40 +245,46 @@ body{
 .ride-card .card-icon ion-icon {
   font-size: clamp(24px, 3.8vw, 32px);
   line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 .stat-card:hover .card-icon,
 .info-card:hover .card-icon,
 .ride-card:hover .card-icon {
-  animation:  pulseGlow 1.6s ease-in-out infinite;
-  color: #00b4d8;
-  background: rgba(0, 180, 216, 0.15);
+  animation: pulseGlow 1.6s ease-in-out infinite;
+  color: #38bdf8;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.25), rgba(0, 153, 204, 0.2));
+  transform: scale(1.05);
 }
 
-/* Heading icon styles */
+/* Enhanced heading icon styles */
 .heading-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-  border-radius: 10px;
-  color: #00b4d8;
-  background: rgba(0, 180, 216, 0.08);
-  box-shadow: inset 0 2px 8px rgba(0, 180, 216, 0.18);
+  width: 44px;
+  height: 44px;
+  margin-right: 12px;
+  border-radius: 12px;
+  color: #38bdf8;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(14, 165, 233, 0.1));
+  
+  border: 1px solid rgba(56, 189, 248, 0.2);
 }
+
 .heading-icon i,
 .heading-icon ion-icon {
-  font-size: 20px;
+  font-size: 22px;
+
 }
+
 .heading-inline-icon {
-  color: #00b4d8;
+  color: #38bdf8;
   margin-right: 6px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
-
-/* Make underline match text width by using inline-block and bottom border */
+/* Enhanced underline styling */
 .steps-section h2,
 .Choose-section h2,
 .stats-section h2,
@@ -239,6 +299,8 @@ body{
 .profile-main h2,
 .form-box h2 {
   display: inline-block;
-  padding-bottom: 6px;
-  border-bottom: 2px solid #00b4d8;
+  padding-bottom: 8px;
+  border-bottom: 3px solid;
+  border-image: linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7) 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
