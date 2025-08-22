@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../style/footer.css">
   <link rel="stylesheet" href="../style/btnstyle.css" />
   <link rel="stylesheet" href="../style/common-popup.css">
+  <link rel="stylesheet" href="../style/theme-toggle.css">
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
@@ -118,7 +119,7 @@
 
     <!-- Progress Section -->
     <div class="progress-section">
-      <h3><i class="fas fa-chart-line"></i> Your Progress</h3>
+      <h2 class="heading"><span class="heading-icon"><i class="fas fa-chart-line"></i></span> Your Progress</h2>
       <div class="progress-item">
         <div class="progress-label">
           <span>Ride Completion</span>
@@ -184,7 +185,7 @@
       </div>
     </div>
     <div class="rides-section">
-      <h3><i class="fas fa-route"></i> Ride History</h3>
+      <h2><span class="heading-icon"><i class="fas fa-route"></i></span> Ride History</h2>
       <div class="ride-card" onclick="toggleRideDetails(this)">
         <div class="ride-status status-completed">Completed</div>
         <div class="ride-summary">
@@ -443,5 +444,7 @@
     }
   </script>
 </body>
+
+<script src="../js/theme-toggle.js"></script>
 
 </html>

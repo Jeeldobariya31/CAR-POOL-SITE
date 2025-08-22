@@ -6,7 +6,6 @@
 /* Base & global layout */
 body{
   font-size: x-large;
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
 }
 
 #bgVideo {
@@ -17,11 +16,11 @@ body{
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(0.7) contrast(1.1) saturate(1.2);
+  
 }
 
 /* Enhanced glassmorphism overlay for better video integration */
-body::before {
+/* body::before {
   content: '';
   position: fixed;
   top: 0;
@@ -34,7 +33,7 @@ body::before {
     rgba(15, 52, 96, 0.3));
   z-index: -1;
   pointer-events: none;
-}
+} */
 
 /* Grid-based card containers */
 .cards{   
@@ -52,7 +51,7 @@ body::before {
   }
 /* Enhanced Card component with better glassmorphism */
   .card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgb(0, 0, 0);
   border-radius: 20px;
   padding: 30px;
   width: auto;
@@ -78,7 +77,7 @@ body::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 5px;
   background: linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7);
   transform: scaleX(0);
   transform-origin: center;
@@ -93,6 +92,7 @@ body::before {
     0 0 20px rgba(0, 180, 216, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   z-index: 3;
+  border: none;
 }
 
 .card:hover::before {
@@ -100,6 +100,8 @@ body::before {
 }
 
 .card{
+  background-color: black;
+  border: 0.1px solid white;
       position: relative;
       transition: all 0.3s ease;
       z-index: 1;
@@ -152,7 +154,7 @@ body::before {
   /* Reduce hover effects to prevent overlap on tablets */
   .card:hover { 
     transform: translateY(-4px) scale(1.01); 
-    background: rgba(0, 180, 216, 0.15);
+    
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 180, 216, 0.3); 
   }
 }
@@ -268,7 +270,6 @@ body::before {
   border-radius: 12px;
   color: #38bdf8;
   background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(14, 165, 233, 0.1));
-  
   border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
@@ -281,7 +282,6 @@ body::before {
 .heading-inline-icon {
   color: #38bdf8;
   margin-right: 6px;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* Enhanced underline styling */
@@ -297,10 +297,13 @@ body::before {
 .ride-form h2,
 .offer-main h2,
 .profile-main h2,
-.form-box h2 {
+.form-box h2,
+.progress-section h2 {
   display: inline-block;
   padding-bottom: 8px;
   border-bottom: 3px solid;
-  border-image: linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7) 1;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-image: linear-gradient(90deg, rgba(0, 180, 216, 0.5), rgba(0, 217, 255, 0.5));
+  border-image-slice: 1;
 }
+
+

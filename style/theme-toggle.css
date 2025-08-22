@@ -1,0 +1,69 @@
+/* ------------------------------------------------------------
+   File: style/theme-toggle.css
+   Purpose: Minimal two-theme (light/dark) toggle without
+            refactoring existing styles. Uses global invert
+            technique and re-inverts media/brand elements.
+------------------------------------------------------------ */
+
+/* Light theme: invert the whole page, then re-invert media */
+html[data-theme="light"] {
+  /* Page base: invert and shift hue so overall tone leans purple */
+  filter: invert(1) hue-rotate(310deg);
+  color-scheme: light;
+}
+
+html[data-theme="light"] video,
+html[data-theme="light"] picture,
+html[data-theme="light"] img,
+html[data-theme="light"] .form-box .error,
+html[data-theme="light"] .form-box .success,
+html[data-theme="light"] .notification-content,
+html[data-theme="light"] .book-btn,
+html[data-theme="light"] .verified,
+html[data-theme="light"] .achievement-badges,
+html[data-theme="light"] .verified-status {
+  /* Revert media/UI back to natural look but keep hint */
+  filter: invert(1) hue-rotate(50deg);
+}
+
+html[data-theme="light"] iframe,
+html[data-theme="light"] canvas,
+html[data-theme="light"] svg,
+html[data-theme="light"] .button,
+html[data-theme="light"] .brand-badge,
+html[data-theme="light"] .indicator::before {
+  /* Full revert for graphics/brand marks */
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Floating toggle button */
+.theme-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgb(255, 255, 255);
+  color: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 9999;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(1, 178, 254, 0.849);
+  transform: translateY(-8px);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+/* Light theme appearance for the toggle itself */
+
+

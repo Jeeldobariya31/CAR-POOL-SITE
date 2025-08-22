@@ -10,10 +10,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {
-  color: #ffffff;
-  overflow-x: hidden;
-}
 
 /* Enhanced hero section with better video integration */
 .parta {
@@ -28,48 +24,23 @@ body {
   height: auto;
   text-align: center;
   padding: 40px 32px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid #00b4d8;
   border-radius: 24px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(0, 180, 216, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+   background-color: #000d0e;
   transform-style: preserve-3d;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   perspective: 1000px;
   overflow: hidden;
 }
 
-.parta::before {
-  content: '';
-  position: absolute;
-  top: 0; 
-  left: 0; 
-  right: 0; 
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(0, 180, 216, 0.1), 
-    rgba(0, 153, 204, 0.05), 
-    rgba(0, 119, 170, 0.1));
-  border-radius: 24px;
-  z-index: 0;
-}
 
 .parta > * {
   position: relative;
   z-index: 1;
 }
-
 .parta:hover {
   transform: translateY(-5px);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(0, 180, 216, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  border-color: rgba(0, 180, 216, 0.4);
+  
 }
 
 .parta h1, .parta h2, .parta p {
@@ -104,22 +75,19 @@ body {
 
 /* Enhanced main content container */
 .partb {
-  background: rgba(0, 0, 0, 0.4);
+  
   padding: 60px 40px;
-  border: 2px solid rgba(0, 180, 216, 0.3);
+  
   margin-left: auto;
   margin-right: auto;
   width: 95%;
   max-width: 1200px;
-  border-radius: 32px;
+  
   overflow: hidden;
   padding-top: 50px;
-  box-shadow: 
-    inset 0 8px 20px rgba(0, 0, 0, 0.3),
-    0 0 20px rgba(0, 180, 216, 0.1);
+  
   animation: fadeInUp 2s cubic-bezier(.23, 1.01, .32, 1) both;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  
 }
 
 .partb section h2 {
@@ -147,14 +115,11 @@ body {
 
 /* Enhanced section styling with better glassmorphism */
 .steps-section, .Choose-section, .stats-section, .testimonials-section, .faq-section, .safety-section, .contact-section {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 
-    0 12px 32px rgba(0, 0, 0, 0.3),
-    0 0 16px rgba(0, 180, 216, 0.1);
+  background: rgb(0, 0, 0);
+  
+  
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 3px solid #00b4d8;
   color: #fff;
   margin: 15px;
   padding: 35px;

@@ -5,7 +5,7 @@
 ------------------------------------------------------------ */
 /* Enhanced Footer Styles with better glassmorphism */
 .main-footer {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgb(0, 0, 0);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   color: #fff;
